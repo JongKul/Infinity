@@ -26,7 +26,8 @@ public:
 public:
     void SetUser(Match_User* user);
     void SetParent(CCNode* parent);
-    void SetSelected();
+    void SetMapIndex(int index){curMapIndex = index;}
+    virtual void SetSelected(Match_Map* curMap);
     virtual void setPosition(const cocos2d::CCPoint &var);
 public:
     bool Process_TouchMove(Match_Map* curMap, const CCPoint& touchPos);
@@ -35,8 +36,11 @@ public:
 protected:
     CCSprite* sprite;
     Match_User* user;
+    float scal_X,scal_Y;
+    int curMapIndex = -1;
 protected:
     virtual void Delegate_FinishMove(CCNode* node);
+    virtual void Real_TouchMove(const CCPoint& movePos){}
 };
 
 #endif /* defined(__Chess__Unit_Base__) */

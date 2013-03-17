@@ -18,6 +18,10 @@ public:
     ~Unit_Bishop();
     CREATE_FUNC(Unit_Bishop);
     virtual bool init();
+public:
+    virtual void SetSelected(Match_Map* curMap);
+protected:
+    virtual void Real_TouchMove(const CCPoint& movePos);
 };
 
 #endif /* defined(__Chess__Unit_Bishop__) */
