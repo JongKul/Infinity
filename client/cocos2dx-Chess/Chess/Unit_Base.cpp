@@ -12,7 +12,8 @@
 
 Unit_Base::Unit_Base()
 {
-
+    scal_X = 0.3f;
+    scal_Y = 0.2f;
 }
 
 Unit_Base::~Unit_Base()
@@ -29,16 +30,20 @@ bool Unit_Base::init()
 bool Unit_Base::Process_TouchMove(Match_Map *curMap, const cocos2d::CCPoint &touchPos)
 {
     CCPoint pos;
-    if(curMap->GetPosition_FromTouch(touchPos, &pos) == true)
+    int index;
+    
+    sprite->setColor(ccc3(255, 255, 255));
+    
+    if(curMap->GetMovePosition_FromTouch(touchPos, &pos, &index) == true)
     {
-        sprite->setColor(ccc3(255, 255, 255));
-        
-        CCFiniteTimeAction* move = CCMoveTo::create(3.0f, pos);
-        CCFiniteTimeAction* callBack = CCCallFuncN::create(this, callfuncN_selector(Unit_Base::Delegate_FinishMove));
-        CCAction* action = CCSequence::create(move, callBack, NULL);
-        sprite->runAction(action);
-        
+        curMap->MoveToUnit(curMapIndex, index);
+        Real_TouchMove(pos);
+        curMap->SetDisable_MoveTileAll();
         return true;
+    }
+    else
+    {
+        curMap->SetDisable_MoveTileAll();
     }
     
     return false;
@@ -63,11 +68,10 @@ void Unit_Base::SetParent(CCNode* parent)
     }
 }
 
-void Unit_Base::SetSelected()
+void Unit_Base::SetSelected(Match_Map* curMap)
 {
     if(sprite == NULL) return;
     
-    CCLog("SetSElected");
     sprite->setColor(ccc3(0, 255, 0));
 }
 

@@ -48,6 +48,7 @@ void Match_User::Start(Match_Map *map)
         list_Unit[i]->SetParent(this);
         list_Unit[i]->setPosition(curMap->GetPosition_FromIndex(i, 0));
         list_Unit[i]->SetUser(this);
+        curMap->SetUnit_ToMap(list_Unit[i], 0, i);
     }
     
     for(int i=0; i<8; ++i)
@@ -57,6 +58,7 @@ void Match_User::Start(Match_Map *map)
         unit_Pawn->setPosition(curMap->GetPosition_FromIndex(i, 1));
         unit_Pawn->SetUser(this);
         list_Unit.push_back(unit_Pawn);
+        curMap->SetUnit_ToMap(unit_Pawn, 1, i);
     }
     
     TouchDelegate = &Match_User::TouchDelegate_WaitUnitSelect;
@@ -73,9 +75,8 @@ void Match_User::TouchDelegate_WaitUnitSelect(const cocos2d::CCPoint &touchPos)
     {
         if(list_Unit[i]->boundingBox().containsPoint(touchPos) == true)
         {
-            CCLog("TouchProcess");
             curSelectedUnit = list_Unit[i];
-            curSelectedUnit->SetSelected();
+            curSelectedUnit->SetSelected(curMap);
             TouchDelegate = &Match_User::TouchDelegate_WaitMoveSelect;
             break;
         }
@@ -84,10 +85,14 @@ void Match_User::TouchDelegate_WaitUnitSelect(const cocos2d::CCPoint &touchPos)
 
 void Match_User::TouchDelegate_WaitMoveSelect(const cocos2d::CCPoint &touchPos)
 {
-    CCLog("TouchDelegate_WaitMoveSelect");
     if(curSelectedUnit->Process_TouchMove(curMap, touchPos) == true)
     {
         TouchDelegate = NULL;
+        curSelectedUnit = NULL;
+    }
+    else
+    {
+        TouchDelegate = &Match_User::TouchDelegate_WaitUnitSelect;
         curSelectedUnit = NULL;
     }
 }
