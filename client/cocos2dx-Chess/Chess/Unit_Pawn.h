@@ -18,6 +18,12 @@ public:
     ~Unit_Pawn();
     CREATE_FUNC(Unit_Pawn);
     virtual bool init();
+public:
+    virtual void SetSelected(Match_Map* curMap);
+protected:
+    virtual void Real_TouchMove(const CCPoint& movePos);
+private:
+    bool isFirstMove;
 };
 
 #endif /* defined(__Chess__Unit_Pawn__) */
