@@ -225,6 +225,8 @@
 		6FCEDDF016F1A18500F0AB06 /* 200px-Chess_rlt45_svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCEDDE416F1A18500F0AB06 /* 200px-Chess_rlt45_svg.png */; };
 		6FCEDDF516F1A28400F0AB06 /* Unit_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEDDF316F1A28400F0AB06 /* Unit_Base.cpp */; };
 		6FCEDDF816F1A34D00F0AB06 /* Unit_Bishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEDDF616F1A34D00F0AB06 /* Unit_Bishop.cpp */; };
+		6FD4804C16F7F16C007BE1ED /* GameScene_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */; };
+		6FD4806516F80A19007BE1ED /* GameUI_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4806316F80A19007BE1ED /* GameUI_MainTitle.cpp */; };
 		6FF3073D16F2206B00A3F63C /* Match_User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FF3073B16F2206B00A3F63C /* Match_User.cpp */; };
 		6FF3074016F227CC00A3F63C /* Unit_King.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FF3073E16F227CB00A3F63C /* Unit_King.cpp */; };
 /* End PBXBuildFile section */
@@ -689,6 +691,10 @@
 		6FCEDDF416F1A28400F0AB06 /* Unit_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Base.h; sourceTree = "<group>"; };
 		6FCEDDF616F1A34D00F0AB06 /* Unit_Bishop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Unit_Bishop.cpp; sourceTree = "<group>"; };
 		6FCEDDF716F1A34D00F0AB06 /* Unit_Bishop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Bishop.h; sourceTree = "<group>"; };
+		6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene_MainTitle.cpp; sourceTree = "<group>"; };
+		6FD4804B16F7F16C007BE1ED /* GameScene_MainTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_MainTitle.h; sourceTree = "<group>"; };
+		6FD4806316F80A19007BE1ED /* GameUI_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI_MainTitle.cpp; sourceTree = "<group>"; };
+		6FD4806416F80A19007BE1ED /* GameUI_MainTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUI_MainTitle.h; sourceTree = "<group>"; };
 		6FF3073B16F2206B00A3F63C /* Match_User.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Match_User.cpp; sourceTree = "<group>"; };
 		6FF3073C16F2206B00A3F63C /* Match_User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match_User.h; sourceTree = "<group>"; };
 		6FF3073E16F227CB00A3F63C /* Unit_King.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Unit_King.cpp; sourceTree = "<group>"; };
@@ -1584,6 +1590,7 @@
 		6F48A13016F0B99400CC0973 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6FD4804916F7F154007BE1ED /* MainTitle */,
 				6F48A13116F0B99F00CC0973 /* Match */,
 			);
 			name = Scene;
@@ -1678,6 +1685,25 @@
 				6FF3073F16F227CC00A3F63C /* Unit_King.h */,
 			);
 			name = Unit;
+			sourceTree = "<group>";
+		};
+		6FD4804916F7F154007BE1ED /* MainTitle */ = {
+			isa = PBXGroup;
+			children = (
+				6FD4806216F809C8007BE1ED /* UI */,
+				6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */,
+				6FD4804B16F7F16C007BE1ED /* GameScene_MainTitle.h */,
+			);
+			name = MainTitle;
+			sourceTree = "<group>";
+		};
+		6FD4806216F809C8007BE1ED /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6FD4806316F80A19007BE1ED /* GameUI_MainTitle.cpp */,
+				6FD4806416F80A19007BE1ED /* GameUI_MainTitle.h */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		6FF3073A16F2205B00A3F63C /* User */ = {
@@ -1960,6 +1986,8 @@
 				6F955F6616F1FE6800CBA77B /* Match_Map.cpp in Sources */,
 				6FF3073D16F2206B00A3F63C /* Match_User.cpp in Sources */,
 				6FF3074016F227CC00A3F63C /* Unit_King.cpp in Sources */,
+				6FD4804C16F7F16C007BE1ED /* GameScene_MainTitle.cpp in Sources */,
+				6FD4806516F80A19007BE1ED /* GameUI_MainTitle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
