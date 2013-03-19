@@ -72,6 +72,7 @@ void Match_Map::SetUnit_ToMap(Unit_Base *unit, int x, int y)
 {
     int index = x*tileCount_Width + y;
     list_MapUnit[index] = unit;
+    unit->SetParent(this);
     unit->SetMapIndex(index);
 }
 

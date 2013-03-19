@@ -45,7 +45,6 @@ void Match_User::Start(Match_Map *map)
     
     for(int i=0; i<list_Unit.size(); ++i)
     {
-        list_Unit[i]->SetParent(this);
         list_Unit[i]->setPosition(curMap->GetPosition_FromIndex(i, 0));
         list_Unit[i]->SetUser(this);
         curMap->SetUnit_ToMap(list_Unit[i], 0, i);
@@ -54,7 +53,6 @@ void Match_User::Start(Match_Map *map)
     for(int i=0; i<8; ++i)
     {
         Unit_Base* unit_Pawn = Unit_Pawn::create();
-        unit_Pawn->SetParent(this);
         unit_Pawn->setPosition(curMap->GetPosition_FromIndex(i, 1));
         unit_Pawn->SetUser(this);
         list_Unit.push_back(unit_Pawn);
