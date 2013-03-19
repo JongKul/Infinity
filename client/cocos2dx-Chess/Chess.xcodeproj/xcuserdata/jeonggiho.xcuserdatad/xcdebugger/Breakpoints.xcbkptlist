@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Chess/Match_User.cpp"
-         timestampString = "385239769.417899"
+         timestampString = "385244737.270977"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
+         startingLineNumber = "78"
+         endingLineNumber = "78"
          landmarkName = "Match_User::TouchDelegate_WaitUnitSelect(const cocos2d::CCPoint &amp;touchPos)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Chess/Match_User.cpp"
-         timestampString = "385017335.453929"
+         timestampString = "385242663.011832"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
          landmarkName = "Match_User::Start(Match_Map *map)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -34,12 +34,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Chess/Match_User.cpp"
-         timestampString = "385017335.453929"
+         timestampString = "385244737.270977"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
+         startingLineNumber = "67"
+         endingLineNumber = "67"
          landmarkName = "Match_User::TouchProcess(cocos2d::CCPoint touchPos)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Chess/CCScrollLayerExt/CCScrollLayerExt.cpp"
+         timestampString = "385350535.265541"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "26"
+         endingLineNumber = "26"
+         landmarkName = "CCScrollLayerExt::CCScrollLayerExt(CCRect mRect)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
