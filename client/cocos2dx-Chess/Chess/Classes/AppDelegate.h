@@ -11,6 +11,34 @@
 
 #include "CCApplication.h"
 
+/* 플래폼 디파인.
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+CCDirector::sharedDirector()->end();
+exit(0);
+#endif
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
 @brief    The cocos2d Application.
 
