@@ -8,6 +8,8 @@
 
 #include "GameUI_MainTitle.h"
 #include "GameScene_MainTitle.h"
+#include "IOS_Helper.h"
+#include "curl.h"
 
 bool GameUI_MainTitle::init()
 {
@@ -44,7 +46,9 @@ bool GameUI_MainTitle::init()
 
 void GameUI_MainTitle::ButtonDelegate_Start(cocos2d::CCObject *sender)
 {
-    gameLayer->ChangeScene();
+    //IOS_Helper::sharedInstance()->ShowAlert();
+    IOS_Helper::sharedInstance()->FacebookLogin();
+    //gameLayer->ChangeScene();
 }
 
 void GameUI_MainTitle::tableCellTouched(cocos2d::extension::CCTableView* table, cocos2d::extension::CCTableViewCell* cell)
