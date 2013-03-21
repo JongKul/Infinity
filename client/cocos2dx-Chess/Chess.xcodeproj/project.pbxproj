@@ -225,6 +225,14 @@
 		6FCEDDF016F1A18500F0AB06 /* 200px-Chess_rlt45_svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCEDDE416F1A18500F0AB06 /* 200px-Chess_rlt45_svg.png */; };
 		6FCEDDF516F1A28400F0AB06 /* Unit_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEDDF316F1A28400F0AB06 /* Unit_Base.cpp */; };
 		6FCEDDF816F1A34D00F0AB06 /* Unit_Bishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEDDF616F1A34D00F0AB06 /* Unit_Bishop.cpp */; };
+		6FCFC77416F9A31A00CA8BBD /* IOS_Helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC77216F9A31A00CA8BBD /* IOS_Helper.cpp */; };
+		6FCFC77716F9A3DF00CA8BBD /* IOS_Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC77616F9A3DF00CA8BBD /* IOS_Native.m */; };
+		6FCFC77916F9AC4300CA8BBD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC77816F9AC4300CA8BBD /* FacebookSDK.framework */; };
+		6FCFC77B16F9AC6800CA8BBD /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFC77A16F9AC6800CA8BBD /* FacebookSDKResources.bundle */; };
+		6FCFC77D16F9AC8700CA8BBD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC77C16F9AC8700CA8BBD /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6FCFC77F16F9AC8E00CA8BBD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC77E16F9AC8E00CA8BBD /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6FCFC78116F9B51A00CA8BBD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC78016F9B51A00CA8BBD /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6FCFC78516F9BC6D00CA8BBD /* IOS_Facebook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */; };
 		6FD4804C16F7F16C007BE1ED /* GameScene_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */; };
 		6FD4806516F80A19007BE1ED /* GameUI_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4806316F80A19007BE1ED /* GameUI_MainTitle.cpp */; };
 		6FF3073D16F2206B00A3F63C /* Match_User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FF3073B16F2206B00A3F63C /* Match_User.cpp */; };
@@ -691,6 +699,17 @@
 		6FCEDDF416F1A28400F0AB06 /* Unit_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Base.h; sourceTree = "<group>"; };
 		6FCEDDF616F1A34D00F0AB06 /* Unit_Bishop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Unit_Bishop.cpp; sourceTree = "<group>"; };
 		6FCEDDF716F1A34D00F0AB06 /* Unit_Bishop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Bishop.h; sourceTree = "<group>"; };
+		6FCFC77216F9A31A00CA8BBD /* IOS_Helper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Helper.cpp; sourceTree = "<group>"; };
+		6FCFC77316F9A31A00CA8BBD /* IOS_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Helper.h; sourceTree = "<group>"; };
+		6FCFC77516F9A3DF00CA8BBD /* IOS_Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Native.h; sourceTree = "<group>"; };
+		6FCFC77616F9A3DF00CA8BBD /* IOS_Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOS_Native.m; sourceTree = "<group>"; };
+		6FCFC77816F9AC4300CA8BBD /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		6FCFC77A16F9AC6800CA8BBD /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		6FCFC77C16F9AC8700CA8BBD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		6FCFC77E16F9AC8E00CA8BBD /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		6FCFC78016F9B51A00CA8BBD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		6FCFC78316F9BC6D00CA8BBD /* IOS_Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Facebook.h; sourceTree = "<group>"; };
+		6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Facebook.mm; sourceTree = "<group>"; };
 		6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene_MainTitle.cpp; sourceTree = "<group>"; };
 		6FD4804B16F7F16C007BE1ED /* GameScene_MainTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_MainTitle.h; sourceTree = "<group>"; };
 		6FD4806316F80A19007BE1ED /* GameUI_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI_MainTitle.cpp; sourceTree = "<group>"; };
@@ -706,6 +725,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FCFC78116F9B51A00CA8BBD /* Social.framework in Frameworks */,
+				6FCFC77F16F9AC8E00CA8BBD /* AdSupport.framework in Frameworks */,
+				6FCFC77D16F9AC8700CA8BBD /* Accounts.framework in Frameworks */,
 				6F489E8016F0B8A400CC0973 /* QuartzCore.framework in Frameworks */,
 				6F489E8216F0B8A400CC0973 /* OpenGLES.framework in Frameworks */,
 				6F489E8416F0B8A400CC0973 /* OpenAL.framework in Frameworks */,
@@ -715,6 +737,7 @@
 				6F489E8C16F0B8A400CC0973 /* Foundation.framework in Frameworks */,
 				6F489E8E16F0B8A400CC0973 /* CoreGraphics.framework in Frameworks */,
 				6F489FDD16F0B8A600CC0973 /* libcurl.a in Frameworks */,
+				6FCFC77916F9AC4300CA8BBD /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +764,11 @@
 		6F489E7E16F0B8A400CC0973 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6FCFC78016F9B51A00CA8BBD /* Social.framework */,
+				6FCFC77E16F9AC8E00CA8BBD /* AdSupport.framework */,
+				6FCFC77C16F9AC8700CA8BBD /* Accounts.framework */,
+				6FCFC77A16F9AC6800CA8BBD /* FacebookSDKResources.bundle */,
+				6FCFC77816F9AC4300CA8BBD /* FacebookSDK.framework */,
 				6F489E7F16F0B8A400CC0973 /* QuartzCore.framework */,
 				6F489E8116F0B8A400CC0973 /* OpenGLES.framework */,
 				6F489E8316F0B8A400CC0973 /* OpenAL.framework */,
@@ -1582,6 +1610,7 @@
 		6F48A12F16F0B98900CC0973 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				6FCFC77016F9A2EE00CA8BBD /* Platform */,
 				6F48A13016F0B99400CC0973 /* Scene */,
 			);
 			name = Game;
@@ -1685,6 +1714,35 @@
 				6FF3073F16F227CC00A3F63C /* Unit_King.h */,
 			);
 			name = Unit;
+			sourceTree = "<group>";
+		};
+		6FCFC77016F9A2EE00CA8BBD /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFC77116F9A2F600CA8BBD /* IOS */,
+			);
+			name = Platform;
+			sourceTree = "<group>";
+		};
+		6FCFC77116F9A2F600CA8BBD /* IOS */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFC78216F9BC5200CA8BBD /* Facebook */,
+				6FCFC77216F9A31A00CA8BBD /* IOS_Helper.cpp */,
+				6FCFC77316F9A31A00CA8BBD /* IOS_Helper.h */,
+				6FCFC77516F9A3DF00CA8BBD /* IOS_Native.h */,
+				6FCFC77616F9A3DF00CA8BBD /* IOS_Native.m */,
+			);
+			name = IOS;
+			sourceTree = "<group>";
+		};
+		6FCFC78216F9BC5200CA8BBD /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFC78316F9BC6D00CA8BBD /* IOS_Facebook.h */,
+				6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */,
+			);
+			name = Facebook;
 			sourceTree = "<group>";
 		};
 		6FD4804916F7F154007BE1ED /* MainTitle */ = {
@@ -1793,6 +1851,7 @@
 				6FCEDDEE16F1A18500F0AB06 /* 200px-Chess_qlt45_svg.png in Resources */,
 				6FCEDDEF16F1A18500F0AB06 /* 200px-Chess_rdt45_svg.png in Resources */,
 				6FCEDDF016F1A18500F0AB06 /* 200px-Chess_rlt45_svg.png in Resources */,
+				6FCFC77B16F9AC6800CA8BBD /* FacebookSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1988,6 +2047,9 @@
 				6FF3074016F227CC00A3F63C /* Unit_King.cpp in Sources */,
 				6FD4804C16F7F16C007BE1ED /* GameScene_MainTitle.cpp in Sources */,
 				6FD4806516F80A19007BE1ED /* GameUI_MainTitle.cpp in Sources */,
+				6FCFC77416F9A31A00CA8BBD /* IOS_Helper.cpp in Sources */,
+				6FCFC77716F9A3DF00CA8BBD /* IOS_Native.m in Sources */,
+				6FCFC78516F9BC6D00CA8BBD /* IOS_Facebook.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2059,11 +2121,16 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Chess/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = Chess/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Chess/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2071,6 +2138,8 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-lsqlite3.0",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -2082,10 +2151,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Chess/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = Chess/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Chess/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2093,6 +2167,8 @@
 				OTHER_LDFLAGS = (
 					"-lxml2",
 					"-lz",
+					"-lsqlite3.0",
+					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
