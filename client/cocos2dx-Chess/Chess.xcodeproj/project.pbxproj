@@ -233,6 +233,9 @@
 		6FCFC77F16F9AC8E00CA8BBD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC77E16F9AC8E00CA8BBD /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6FCFC78116F9B51A00CA8BBD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC78016F9B51A00CA8BBD /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6FCFC78516F9BC6D00CA8BBD /* IOS_Facebook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */; };
+		6FCFC78816FB138E00CA8BBD /* IOS_Facebook_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.cpp */; };
+		6FCFC78D16FB20BD00CA8BBD /* Facebook_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78B16FB20BD00CA8BBD /* Facebook_Manager.cpp */; };
+		6FCFC79416FB215800CA8BBD /* Facebook_Binder_IOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC79216FB215800CA8BBD /* Facebook_Binder_IOS.cpp */; };
 		6FD4804C16F7F16C007BE1ED /* GameScene_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */; };
 		6FD4806516F80A19007BE1ED /* GameUI_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4806316F80A19007BE1ED /* GameUI_MainTitle.cpp */; };
 		6FF3073D16F2206B00A3F63C /* Match_User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FF3073B16F2206B00A3F63C /* Match_User.cpp */; };
@@ -710,6 +713,14 @@
 		6FCFC78016F9B51A00CA8BBD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		6FCFC78316F9BC6D00CA8BBD /* IOS_Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Facebook.h; sourceTree = "<group>"; };
 		6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Facebook.mm; sourceTree = "<group>"; };
+		6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Facebook_Manager.cpp; sourceTree = "<group>"; };
+		6FCFC78716FB138E00CA8BBD /* IOS_Facebook_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Facebook_Manager.h; sourceTree = "<group>"; };
+		6FCFC78B16FB20BD00CA8BBD /* Facebook_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Facebook_Manager.cpp; sourceTree = "<group>"; };
+		6FCFC78C16FB20BD00CA8BBD /* Facebook_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook_Manager.h; sourceTree = "<group>"; };
+		6FCFC79016FB214300CA8BBD /* Facebook_Binder_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook_Binder_Base.h; sourceTree = "<group>"; };
+		6FCFC79216FB215800CA8BBD /* Facebook_Binder_IOS.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = Facebook_Binder_IOS.cpp; sourceTree = "<group>"; };
+		6FCFC79316FB215800CA8BBD /* Facebook_Binder_IOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook_Binder_IOS.h; sourceTree = "<group>"; };
+		6FCFC79616FB42E900CA8BBD /* Facebook_Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook_Account.h; sourceTree = "<group>"; };
 		6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene_MainTitle.cpp; sourceTree = "<group>"; };
 		6FD4804B16F7F16C007BE1ED /* GameScene_MainTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_MainTitle.h; sourceTree = "<group>"; };
 		6FD4806316F80A19007BE1ED /* GameUI_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI_MainTitle.cpp; sourceTree = "<group>"; };
@@ -1610,6 +1621,7 @@
 		6F48A12F16F0B98900CC0973 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				6FCFC78916FB209B00CA8BBD /* Social */,
 				6FCFC77016F9A2EE00CA8BBD /* Platform */,
 				6F48A13016F0B99400CC0973 /* Scene */,
 			);
@@ -1741,8 +1753,39 @@
 			children = (
 				6FCFC78316F9BC6D00CA8BBD /* IOS_Facebook.h */,
 				6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */,
+				6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.cpp */,
+				6FCFC78716FB138E00CA8BBD /* IOS_Facebook_Manager.h */,
 			);
 			name = Facebook;
+			sourceTree = "<group>";
+		};
+		6FCFC78916FB209B00CA8BBD /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFC78A16FB20A600CA8BBD /* Facebook */,
+			);
+			name = Social;
+			sourceTree = "<group>";
+		};
+		6FCFC78A16FB20A600CA8BBD /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFC78E16FB211D00CA8BBD /* Binder */,
+				6FCFC78B16FB20BD00CA8BBD /* Facebook_Manager.cpp */,
+				6FCFC78C16FB20BD00CA8BBD /* Facebook_Manager.h */,
+				6FCFC79616FB42E900CA8BBD /* Facebook_Account.h */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		6FCFC78E16FB211D00CA8BBD /* Binder */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFC79016FB214300CA8BBD /* Facebook_Binder_Base.h */,
+				6FCFC79216FB215800CA8BBD /* Facebook_Binder_IOS.cpp */,
+				6FCFC79316FB215800CA8BBD /* Facebook_Binder_IOS.h */,
+			);
+			name = Binder;
 			sourceTree = "<group>";
 		};
 		6FD4804916F7F154007BE1ED /* MainTitle */ = {
@@ -2050,6 +2093,9 @@
 				6FCFC77416F9A31A00CA8BBD /* IOS_Helper.cpp in Sources */,
 				6FCFC77716F9A3DF00CA8BBD /* IOS_Native.m in Sources */,
 				6FCFC78516F9BC6D00CA8BBD /* IOS_Facebook.mm in Sources */,
+				6FCFC78816FB138E00CA8BBD /* IOS_Facebook_Manager.cpp in Sources */,
+				6FCFC78D16FB20BD00CA8BBD /* Facebook_Manager.cpp in Sources */,
+				6FCFC79416FB215800CA8BBD /* Facebook_Binder_IOS.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

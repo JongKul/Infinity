@@ -8,6 +8,7 @@
 
 #import "IOS_Facebook.h"
 #import "IOS_Helper.h"
+#include "IOS_Facebook_Manager.h"
 
 @implementation IOS_Facebook
 
@@ -59,8 +60,9 @@
     }
     else
     {
-        [[FBSession activeSession] closeAndClearTokenInformation];
         NSLog(@"Login Faile");
+        [[FBSession activeSession] closeAndClearTokenInformation];
+        IOS_Facebook_Manager::sharedInstance()->Callback_Login(false);
     }
 }
 
@@ -81,13 +83,76 @@
 {
     if (!error)
     {
-        NSLog(@"name : %@, id : %@", user.name, user.id);
-        IOS_Helper::sharedInstance()->ShowAlert(NsToChar(user.name));
+        IOS_Facebook_Manager::sharedInstance()->SetMyAccount(NsToChar(user.name), NsToChar(user.id));
     }
     else
     {
         NSLog(@"error : %@", error.localizedFailureReason);
+        IOS_Facebook_Manager::sharedInstance()->Callback_Login(false);
     }
+}
+
+-(void)Facebook_Friends
+{
+    if (FBSession.activeSession.isOpen)
+    {
+    [[FBRequest requestForMyFriends] startWithCompletionHandler:^(FBRequestConnection *connection, NSArray<FBGraphUser> *result, NSError *error)
+    {
+        if(error == nil)
+        {
+            NSArray *data = [result objectForKey:@"data"];
+        
+            for (FBGraphObject<FBGraphUser> *fri in data)
+            {
+                NSString* addName = [[NSString alloc] initWithFormat:@"%@%@",fri.last_name,fri.first_name];
+                [addName retain];
+                IOS_Facebook_Manager::sharedInstance()->AddFriend(NsToChar(addName), NsToChar(fri.id));
+            }
+            IOS_Facebook_Manager::sharedInstance()->Callback_Login(true);
+        }
+        else
+        {
+            NSLog(@"error : %@", error.localizedFailureReason);
+            IOS_Facebook_Manager::sharedInstance()->Callback_Login(false);
+        }
+    }];
+    }
+}
+
+-(void)Facebook_Picture:(NSString *)fbID
+{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal", fbID]];
+    dispatch_queue_t downloader = dispatch_queue_create("PicDownloader", NULL);
+    dispatch_async(downloader,
+                   ^{
+                       NSData *data = [NSData dataWithContentsOfURL:url];
+                       UIImage *image = [UIImage imageWithData:data];
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           if(image != nil)
+                           {
+                               IOS_Facebook_Manager::sharedInstance()->Callback_Picture(NsToChar(fbID), image);
+                           }
+                           dispatch_release(dispatch_get_main_queue());
+                       });
+                   });
+}
+
+-(void)Facebook_Post
+{
+    NSMutableDictionary *params =
+    [NSMutableDictionary dictionaryWithObjectsAndKeys:
+     @"Facebook SDK for iOS", @"name",
+     @"Build great social apps and get more installs.", @"caption",
+     @"The Facebook SDK for iOS makes it easier and faster to develop Facebook integrated iOS apps.", @"description",
+     @"https://developers.facebook.com/ios", @"link",
+     @"https://raw.github.com/fbsamples/ios-3.x-howtos/master/Images/iossdk_logo.png", @"picture",
+     nil];
+    [FBWebDialogs presentFeedDialogModallyWithSession:[FBSession activeSession]
+                                           parameters:params
+                                              handler:
+     ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+     }
+     ];
 }
 
 @end
