@@ -12,13 +12,18 @@
 #define CharToNs(ch) [[NSString alloc] initWithUTF8String:(ch)]
 #define NsToChar(ns) [(ns) UTF8String]
 
+#include "cocos2d.h"
+
+
+using namespace cocos2d;
+class GameUI_MainTitle;
+
 class IOS_Helper
 {
 public:
     static IOS_Helper* sharedInstance();
 public:
     void ShowAlert(const char* str);
-    void FacebookLogin();
 };
 
 #endif /* defined(__Chess__IOS_Helper__) */

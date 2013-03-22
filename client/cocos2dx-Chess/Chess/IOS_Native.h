@@ -18,6 +18,5 @@
 + (void)applicationWillTerminate:(UIApplication *)application;
 
 +(void) ShowAlert:(NSString*)message;
-+(void) FacebookLogin;
 
 @end

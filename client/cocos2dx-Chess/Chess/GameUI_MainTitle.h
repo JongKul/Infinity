@@ -11,13 +11,14 @@
 
 #include "cocos2d.h"
 #include "CCTableView.h"
+#include "Facebook_Manager.h"
 
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
 class GameLayer_MainTitle;
 
-class GameUI_MainTitle : public CCNode, public cocos2d::extension::CCTableViewDataSource, public cocos2d::extension::CCTableViewDelegate
+class GameUI_MainTitle : public CCNode, public cocos2d::extension::CCTableViewDataSource, public cocos2d::extension::CCTableViewDelegate, public Facebook_Callback
 {
 private:
     GameLayer_MainTitle* gameLayer;
@@ -26,6 +27,7 @@ public:
     CREATE_FUNC(GameUI_MainTitle);
 public:
     void ButtonDelegate_Start(CCObject* sender);
+    void ButtonDelegate_Post(CCObject* sender);
 
     void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {}
     void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}
@@ -35,6 +37,8 @@ public:
     unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
 public:
     void SetGameLayer(GameLayer_MainTitle* layer){ gameLayer = layer; }
+    virtual void fb_Callback_Login (bool);
+    virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture);
 };
 
 #endif /* defined(__Chess__GameUI_MainTitle__) */

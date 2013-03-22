@@ -24,4 +24,8 @@
 -(void)Facebook_MyAccount;
 -(void)Callback_MyAccount:(FBRequestConnection*)con user : (NSDictionary<FBGraphUser>*)user error :(NSError*)error;
 
+-(void)Facebook_Friends;
+-(void)Facebook_Picture:(NSString*) fbID;
+-(void)Facebook_Post;
+
 @end

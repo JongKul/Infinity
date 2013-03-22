@@ -59,10 +59,4 @@
     [alertDialog show];
     [alertDialog release];
 }
-
-+(void) FacebookLogin
-{
-    [[IOS_Facebook shared] Facebook_Login];
-}
-
 @end
