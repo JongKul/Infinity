@@ -22,6 +22,7 @@ Facebook_Manager::Facebook_Manager()
     fbBinder = NULL;
     friendList = CCArray::createWithCapacity(100);
     friendList->retain();
+    
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         fbBinder = new Facebook_Binder_IOS();
     #endif  

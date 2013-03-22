@@ -9,6 +9,7 @@
 #ifndef __Chess__Facebook_Binder_IOS__
 #define __Chess__Facebook_Binder_IOS__
 
+
 #include "Facebook_Binder_Base.h"
 
 class Facebook_Binder_IOS : public Facebook_Binder_Base

@@ -225,7 +225,7 @@
 		6FCEDDF016F1A18500F0AB06 /* 200px-Chess_rlt45_svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCEDDE416F1A18500F0AB06 /* 200px-Chess_rlt45_svg.png */; };
 		6FCEDDF516F1A28400F0AB06 /* Unit_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEDDF316F1A28400F0AB06 /* Unit_Base.cpp */; };
 		6FCEDDF816F1A34D00F0AB06 /* Unit_Bishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCEDDF616F1A34D00F0AB06 /* Unit_Bishop.cpp */; };
-		6FCFC77416F9A31A00CA8BBD /* IOS_Helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC77216F9A31A00CA8BBD /* IOS_Helper.cpp */; };
+		6FCFC77416F9A31A00CA8BBD /* IOS_Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC77216F9A31A00CA8BBD /* IOS_Helper.mm */; };
 		6FCFC77716F9A3DF00CA8BBD /* IOS_Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC77616F9A3DF00CA8BBD /* IOS_Native.m */; };
 		6FCFC77916F9AC4300CA8BBD /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC77816F9AC4300CA8BBD /* FacebookSDK.framework */; };
 		6FCFC77B16F9AC6800CA8BBD /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFC77A16F9AC6800CA8BBD /* FacebookSDKResources.bundle */; };
@@ -233,7 +233,7 @@
 		6FCFC77F16F9AC8E00CA8BBD /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC77E16F9AC8E00CA8BBD /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6FCFC78116F9B51A00CA8BBD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FCFC78016F9B51A00CA8BBD /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6FCFC78516F9BC6D00CA8BBD /* IOS_Facebook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */; };
-		6FCFC78816FB138E00CA8BBD /* IOS_Facebook_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.cpp */; };
+		6FCFC78816FB138E00CA8BBD /* IOS_Facebook_Manager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.mm */; };
 		6FCFC78D16FB20BD00CA8BBD /* Facebook_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC78B16FB20BD00CA8BBD /* Facebook_Manager.cpp */; };
 		6FCFC79416FB215800CA8BBD /* Facebook_Binder_IOS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFC79216FB215800CA8BBD /* Facebook_Binder_IOS.cpp */; };
 		6FD4804C16F7F16C007BE1ED /* GameScene_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FD4804A16F7F16C007BE1ED /* GameScene_MainTitle.cpp */; };
@@ -702,7 +702,7 @@
 		6FCEDDF416F1A28400F0AB06 /* Unit_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Base.h; sourceTree = "<group>"; };
 		6FCEDDF616F1A34D00F0AB06 /* Unit_Bishop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Unit_Bishop.cpp; sourceTree = "<group>"; };
 		6FCEDDF716F1A34D00F0AB06 /* Unit_Bishop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Bishop.h; sourceTree = "<group>"; };
-		6FCFC77216F9A31A00CA8BBD /* IOS_Helper.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Helper.cpp; sourceTree = "<group>"; };
+		6FCFC77216F9A31A00CA8BBD /* IOS_Helper.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Helper.mm; sourceTree = "<group>"; };
 		6FCFC77316F9A31A00CA8BBD /* IOS_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Helper.h; sourceTree = "<group>"; };
 		6FCFC77516F9A3DF00CA8BBD /* IOS_Native.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Native.h; sourceTree = "<group>"; };
 		6FCFC77616F9A3DF00CA8BBD /* IOS_Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOS_Native.m; sourceTree = "<group>"; };
@@ -713,7 +713,7 @@
 		6FCFC78016F9B51A00CA8BBD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		6FCFC78316F9BC6D00CA8BBD /* IOS_Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Facebook.h; sourceTree = "<group>"; };
 		6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Facebook.mm; sourceTree = "<group>"; };
-		6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Facebook_Manager.cpp; sourceTree = "<group>"; };
+		6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = IOS_Facebook_Manager.mm; sourceTree = "<group>"; };
 		6FCFC78716FB138E00CA8BBD /* IOS_Facebook_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOS_Facebook_Manager.h; sourceTree = "<group>"; };
 		6FCFC78B16FB20BD00CA8BBD /* Facebook_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Facebook_Manager.cpp; sourceTree = "<group>"; };
 		6FCFC78C16FB20BD00CA8BBD /* Facebook_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook_Manager.h; sourceTree = "<group>"; };
@@ -1740,7 +1740,7 @@
 			isa = PBXGroup;
 			children = (
 				6FCFC78216F9BC5200CA8BBD /* Facebook */,
-				6FCFC77216F9A31A00CA8BBD /* IOS_Helper.cpp */,
+				6FCFC77216F9A31A00CA8BBD /* IOS_Helper.mm */,
 				6FCFC77316F9A31A00CA8BBD /* IOS_Helper.h */,
 				6FCFC77516F9A3DF00CA8BBD /* IOS_Native.h */,
 				6FCFC77616F9A3DF00CA8BBD /* IOS_Native.m */,
@@ -1753,7 +1753,7 @@
 			children = (
 				6FCFC78316F9BC6D00CA8BBD /* IOS_Facebook.h */,
 				6FCFC78416F9BC6D00CA8BBD /* IOS_Facebook.mm */,
-				6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.cpp */,
+				6FCFC78616FB138E00CA8BBD /* IOS_Facebook_Manager.mm */,
 				6FCFC78716FB138E00CA8BBD /* IOS_Facebook_Manager.h */,
 			);
 			name = Facebook;
@@ -2090,10 +2090,10 @@
 				6FF3074016F227CC00A3F63C /* Unit_King.cpp in Sources */,
 				6FD4804C16F7F16C007BE1ED /* GameScene_MainTitle.cpp in Sources */,
 				6FD4806516F80A19007BE1ED /* GameUI_MainTitle.cpp in Sources */,
-				6FCFC77416F9A31A00CA8BBD /* IOS_Helper.cpp in Sources */,
+				6FCFC77416F9A31A00CA8BBD /* IOS_Helper.mm in Sources */,
 				6FCFC77716F9A3DF00CA8BBD /* IOS_Native.m in Sources */,
 				6FCFC78516F9BC6D00CA8BBD /* IOS_Facebook.mm in Sources */,
-				6FCFC78816FB138E00CA8BBD /* IOS_Facebook_Manager.cpp in Sources */,
+				6FCFC78816FB138E00CA8BBD /* IOS_Facebook_Manager.mm in Sources */,
 				6FCFC78D16FB20BD00CA8BBD /* Facebook_Manager.cpp in Sources */,
 				6FCFC79416FB215800CA8BBD /* Facebook_Binder_IOS.cpp in Sources */,
 			);
