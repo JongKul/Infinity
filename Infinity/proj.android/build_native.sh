@@ -65,6 +65,9 @@ if [ -f "$file" ]; then
 fi
 done
 
+echo "chmod +rw -R $APP_ANDROID_ROOT/assets"
+chmod +rw -R $APP_ANDROID_ROOT/assets
+
 # run ndk-build
 if [[ "$buildexternalsfromsource" ]]; then
     echo "Building external dependencies from source"
@@ -75,3 +78,5 @@ else
     "$NDK_ROOT"/ndk-build -C "$APP_ANDROID_ROOT" $* \
         "NDK_MODULE_PATH=${COCOS2DX_ROOT}:${COCOS2DX_ROOT}/cocos2dx/platform/third_party/android/prebuilt"
 fi
+echo "chmod 644 obj/local/armeabi/*.a"
+chmod 644 obj/local/armeabi/*.a

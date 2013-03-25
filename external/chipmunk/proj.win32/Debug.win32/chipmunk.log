@@ -1,72 +1,77 @@
-﻿Build started 2013-03-25 오후 10:11:27.
+﻿Build started 2013-03-26 오전 12:32:44.
      1>Project "D:\project\github\Infinity\external\chipmunk\proj.win32\chipmunk.vcxproj" on node 4 (build target(s)).
      1>InitializeBuildStatus:
          Touching "Debug.win32\libchipmunk.unsuccessfulbuild".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include" /I..\include\chipmunk /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t- /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4068 /wd4996 /analyze- /errorReport:prompt ..\src\chipmunk.c ..\src\cpArbiter.c ..\src\cpArray.c ..\src\cpBB.c ..\src\cpBBTree.c ..\src\cpBody.c ..\src\cpCollision.c ..\src\cpHashSet.c ..\src\cpPolyShape.c ..\src\cpShape.c ..\src\cpSpace.c ..\src\cpSpaceComponent.c ..\src\cpSpaceHash.c ..\src\cpSpaceQuery.c ..\src\cpSpaceStep.c ..\src\cpSpatialIndex.c ..\src\cpSweep1D.c ..\src\cpVect.c ..\src\constraints\cpConstraint.c ..\src\constraints\cpDampedRotarySpring.c ..\src\constraints\cpDampedSpring.c ..\src\constraints\cpGearJoint.c ..\src\constraints\cpGrooveJoint.c ..\src\constraints\cpPinJoint.c ..\src\constraints\cpPivotJoint.c ..\src\constraints\cpRatchetJoint.c ..\src\constraints\cpRotaryLimitJoint.c ..\src\constraints\cpSimpleMotor.c ..\src\constraints\cpSlideJoint.c
-         cpSlideJoint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpSimpleMotor.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpRotaryLimitJoint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpRatchetJoint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpPivotJoint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpPinJoint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpGrooveJoint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpGearJoint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpDampedSpring.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpDampedRotarySpring.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpConstraint.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include" /I..\include\chipmunk /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t- /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4068 /wd4996 /analyze- /errorReport:prompt ..\src\chipmunk.c ..\src\constraints\cpConstraint.c ..\src\constraints\cpDampedRotarySpring.c ..\src\constraints\cpDampedSpring.c ..\src\constraints\cpGearJoint.c ..\src\constraints\cpGrooveJoint.c ..\src\constraints\cpPinJoint.c ..\src\constraints\cpPivotJoint.c ..\src\constraints\cpRatchetJoint.c ..\src\constraints\cpRotaryLimitJoint.c ..\src\constraints\cpSimpleMotor.c ..\src\constraints\cpSlideJoint.c ..\src\cpArbiter.c ..\src\cpArray.c ..\src\cpBB.c ..\src\cpBBTree.c ..\src\cpBody.c ..\src\cpCollision.c ..\src\cpHashSet.c ..\src\cpPolyShape.c ..\src\cpShape.c ..\src\cpSpace.c ..\src\cpSpaceComponent.c ..\src\cpSpaceHash.c ..\src\cpSpaceQuery.c ..\src\cpSpaceStep.c ..\src\cpSpatialIndex.c ..\src\cpSweep1D.c ..\src\cpVect.c
          cpVect.c
-     1>d:\project\github\infinity\external\chipmunk\src\cpvect.c(22): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
          cpSweep1D.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
          cpSpatialIndex.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
          cpSpaceStep.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
          cpSpaceQuery.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
          cpSpaceHash.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
          cpSpaceComponent.c
-     1>d:\project\github\infinity\external\chipmunk\src\cpspacecomponent.c(22): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
          cpSpace.c
-     1>d:\project\github\infinity\external\chipmunk\src\cpspace.c(22): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
          cpShape.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
+         cpPolyShape.c
+         cpHashSet.c
+         cpCollision.c
+         cpBody.c
+         cpBBTree.c
+         cpBB.c
+         cpArray.c
+         cpArbiter.c
+         cpSlideJoint.c
+         cpSimpleMotor.c
+         cpRotaryLimitJoint.c
          Generating Code...
          Compiling...
-         cpPolyShape.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpHashSet.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpCollision.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpBody.c
-     1>d:\project\github\infinity\external\chipmunk\src\cpbody.c(22): fatal error C1083: Cannot open include file: 'float.h': No such file or directory
-         cpBBTree.c
-     1>d:\project\github\infinity\external\chipmunk\src\cpbbtree.c(22): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpBB.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
-         cpArray.c
-     1>d:\project\github\infinity\external\chipmunk\src\cparray.c(22): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
-         cpArbiter.c
-     1>d:\project\github\infinity\external\chipmunk\include\chipmunk\chipmunk.h(25): fatal error C1083: Cannot open include file: 'stdlib.h': No such file or directory
+         cpRatchetJoint.c
+         cpPivotJoint.c
+         cpPinJoint.c
+         cpGrooveJoint.c
+         cpGearJoint.c
+         cpDampedSpring.c
+         cpDampedRotarySpring.c
+         cpConstraint.c
          chipmunk.c
-     1>d:\project\github\infinity\external\chipmunk\src\chipmunk.c(22): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
          Generating Code...
-     1>Done Building Project "D:\project\github\Infinity\external\chipmunk\proj.win32\chipmunk.vcxproj" (build target(s)) -- FAILED.
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"D:\project\github\Infinity\Infinity\proj.win32\Debug.win32\libchipmunk.lib" /NOLOGO Debug.win32\chipmunk.obj
+         Debug.win32\cpArbiter.obj
+         Debug.win32\cpArray.obj
+         Debug.win32\cpBB.obj
+         Debug.win32\cpBBTree.obj
+         Debug.win32\cpBody.obj
+         Debug.win32\cpCollision.obj
+         Debug.win32\cpHashSet.obj
+         Debug.win32\cpPolyShape.obj
+         Debug.win32\cpShape.obj
+         Debug.win32\cpSpace.obj
+         Debug.win32\cpSpaceComponent.obj
+         Debug.win32\cpSpaceHash.obj
+         Debug.win32\cpSpaceQuery.obj
+         Debug.win32\cpSpaceStep.obj
+         Debug.win32\cpSpatialIndex.obj
+         Debug.win32\cpSweep1D.obj
+         Debug.win32\cpVect.obj
+         Debug.win32\cpConstraint.obj
+         Debug.win32\cpDampedRotarySpring.obj
+         Debug.win32\cpDampedSpring.obj
+         Debug.win32\cpGearJoint.obj
+         Debug.win32\cpGrooveJoint.obj
+         Debug.win32\cpPinJoint.obj
+         Debug.win32\cpPivotJoint.obj
+         Debug.win32\cpRatchetJoint.obj
+         Debug.win32\cpRotaryLimitJoint.obj
+         Debug.win32\cpSimpleMotor.obj
+         Debug.win32\cpSlideJoint.obj
+         chipmunk.vcxproj -> D:\project\github\Infinity\Infinity\proj.win32\Debug.win32\libchipmunk.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug.win32\libchipmunk.unsuccessfulbuild".
+         Touching "Debug.win32\libchipmunk.lastbuildstate".
+     1>Done Building Project "D:\project\github\Infinity\external\chipmunk\proj.win32\chipmunk.vcxproj" (build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.80
+Time Elapsed 00:00:02.21
