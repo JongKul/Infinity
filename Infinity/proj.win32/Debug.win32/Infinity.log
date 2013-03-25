@@ -1,0 +1,18 @@
+﻿Build started 2013-03-25 오후 10:11:31.
+     1>Project "D:\project\github\Infinity\Infinity\proj.win32\Infinity.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug.win32\Infinity.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ID:\project\github\Infinity\Infinity\proj.win32\..\..\cocos2dx /ID:\project\github\Infinity\Infinity\proj.win32\..\..\cocos2dx\include /ID:\project\github\Infinity\Infinity\proj.win32\..\..\cocos2dx\kazmath\include /ID:\project\github\Infinity\Infinity\proj.win32\..\..\cocos2dx\platform\win32 /ID:\project\github\Infinity\Infinity\proj.win32\..\..\cocos2dx\platform\third_party\win32 /ID:\project\github\Infinity\Infinity\proj.win32\..\..\cocos2dx\platform\third_party\win32\OGLES /ID:\project\github\Infinity\Infinity\proj.win32\..\..\external /ID:\project\github\Infinity\Infinity\proj.win32\..\..\external\chipmunk\include\chipmunk /ID:\project\github\Infinity\Infinity\proj.win32\..\..\CocosDenshion\include /ID:\project\github\Infinity\Infinity\proj.win32\..\..\extensions /I..\Classes /I.. /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USE_MATH_DEFINES /D GL_GLEXT_PROTOTYPES /D CC_ENABLE_CHIPMUNK_INTEGRATION=1 /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\Classes\AppDelegate.cpp ..\Classes\HelloWorldScene.cpp main.cpp
+         main.cpp
+     1>c:\program files (x86)\microsoft sdks\windows\v7.0a\include\windows.h(151): fatal error C1083: Cannot open include file: 'excpt.h': No such file or directory
+         HelloWorldScene.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         AppDelegate.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "D:\project\github\Infinity\Infinity\proj.win32\Infinity.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.19

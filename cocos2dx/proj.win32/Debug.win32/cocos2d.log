@@ -1,0 +1,242 @@
+﻿Build started 2013-03-25 오후 10:11:27.
+     1>Project "D:\project\github\Infinity\cocos2dx\proj.win32\cocos2d.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug.win32\libcocos2d.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\include" /ID:\project\github\Infinity\cocos2dx\proj.win32\.. /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\win32 /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\iconv /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\zlib /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\libpng /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\libjpeg /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\libtiff /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\libwebp /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\pthread /ID:\project\github\Infinity\cocos2dx\proj.win32\..\platform\third_party\win32\OGLES /I..\include /ID:\project\github\Infinity\cocos2dx\proj.win32\..\kazmath\include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D COCOS2DXWIN32_EXPORTS /D GL_GLEXT_PROTOTYPES /D COCOS2D_DEBUG=1 /D _CRT_SECURE_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug.win32\\" /Fd"Debug.win32\vc100.pdb" /Gd /TP /wd4267 /wd4251 /wd4244 /analyze- /errorReport:prompt ..\base_nodes\CCAtlasNode.cpp ..\base_nodes\CCNode.cpp ..\cocoa\CCAffineTransform.cpp ..\cocoa\CCArray.cpp ..\cocoa\CCAutoreleasePool.cpp ..\cocoa\CCDictionary.cpp ..\cocoa\CCGeometry.cpp ..\cocoa\CCNS.cpp ..\cocoa\CCObject.cpp ..\cocoa\CCSet.cpp ..\cocoa\CCString.cpp ..\cocoa\CCZone.cpp ..\draw_nodes\CCDrawingPrimitives.cpp ..\draw_nodes\CCDrawNode.cpp ..\effects\CCGrabber.cpp ..\effects\CCGrid.cpp ..\actions\CCAction.cpp ..\actions\CCActionCamera.cpp ..\actions\CCActionCatmullRom.cpp ..\actions\CCActionEase.cpp ..\actions\CCActionGrid.cpp ..\actions\CCActionGrid3D.cpp ..\actions\CCActionInstant.cpp ..\actions\CCActionInterval.cpp ..\actions\CCActionManager.cpp ..\actions\CCActionPageTurn3D.cpp ..\actions\CCActionProgressTimer.cpp ..\actions\CCActionTiledGrid.cpp ..\actions\CCActionTween.cpp ..\label_nodes\CCLabelAtlas.cpp ..\label_nodes\CCLabelBMFont.cpp ..\label_nodes\CCLabelTTF.cpp ..\layers_scenes_transitions_nodes\CCLayer.cpp ..\layers_scenes_transitions_nodes\CCScene.cpp ..\layers_scenes_transitions_nodes\CCTransition.cpp ..\layers_scenes_transitions_nodes\CCTransitionPageTurn.cpp ..\layers_scenes_transitions_nodes\CCTransitionProgress.cpp ..\menu_nodes\CCMenu.cpp ..\menu_nodes\CCMenuItem.cpp ..\misc_nodes\CCClippingNode.cpp ..\misc_nodes\CCMotionStreak.cpp ..\misc_nodes\CCProgressTimer.cpp ..\misc_nodes\CCRenderTexture.cpp ..\particle_nodes\CCParticleBatchNode.cpp ..\particle_nodes\CCParticleExamples.cpp ..\particle_nodes\CCParticleSystem.cpp ..\particle_nodes\CCParticleSystemQuad.cpp ..\platform\CCEGLViewProtocol.cpp ..\platform\CCFileUtils.cpp ..\platform\CCImageCommonWebp.cpp ..\platform\CCSAXParser.cpp ..\platform\CCThread.cpp ..\platform\platform.cpp ..\platform\win32\CCAccelerometer.cpp ..\platform\win32\CCApplication.cpp ..\platform\win32\CCCommon.cpp ..\platform\win32\CCDevice.cpp ..\platform\win32\CCEGLView.cpp ..\platform\win32\CCFileUtilsWin32.cpp ..\platform\win32\CCImage.cpp ..\platform\win32\CCStdC.cpp ..\shaders\CCGLProgram.cpp ..\shaders\ccGLStateCache.cpp ..\shaders\CCShaderCache.cpp ..\shaders\ccShaders.cpp ..\sprite_nodes\CCAnimation.cpp ..\sprite_nodes\CCAnimationCache.cpp ..\sprite_nodes\CCSprite.cpp ..\sprite_nodes\CCSpriteBatchNode.cpp ..\sprite_nodes\CCSpriteFrame.cpp ..\sprite_nodes\CCSpriteFrameCache.cpp ..\support\base64.cpp ..\support\CCNotificationCenter.cpp ..\support\CCPointExtension.cpp ..\support\CCProfiling.cpp ..\support\ccUTF8.cpp ..\support\ccUtils.cpp ..\support\CCVertex.cpp ..\support\tinyxml2\tinyxml2.cpp ..\support\TransformUtils.cpp ..\support\data_support\ccCArray.cpp ..\support\image_support\TGAlib.cpp ..\support\user_default\CCUserDefault.cpp ..\support\zip_support\ioapi.cpp ..\support\zip_support\unzip.cpp ..\support\zip_support\ZipUtils.cpp ..\textures\CCTexture2D.cpp ..\textures\CCTextureAtlas.cpp ..\textures\CCTextureCache.cpp ..\textures\CCTexturePVR.cpp ..\tileMap_parallax_nodes\CCParallaxNode.cpp ..\tileMap_parallax_nodes\CCTileMapAtlas.cpp ..\tileMap_parallax_nodes\CCTMXLayer.cpp ..\tileMap_parallax_nodes\CCTMXObjectGroup.cpp ..\tileMap_parallax_nodes\CCTMXTiledMap.cpp ..\tileMap_parallax_nodes\CCTMXXMLParser.cpp ..\touch_dispatcher\CCTouch.cpp ..\touch_dispatcher\CCTouchDispatcher.cpp ..\touch_dispatcher\CCTouchHandler.cpp ..\keypad_dispatcher\CCKeypadDelegate.cpp ..\keypad_dispatcher\CCKeypadDispatcher.cpp ..\text_input_node\CCIMEDispatcher.cpp ..\text_input_node\CCTextFieldTTF.cpp ..\script_support\CCScriptSupport.cpp ..\CCCamera.cpp ..\CCConfiguration.cpp ..\CCDirector.cpp ..\CCScheduler.cpp ..\cocos2d.cpp
+         cocos2d.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCScheduler.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCDirector.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCConfiguration.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCCamera.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCScriptSupport.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTextFieldTTF.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCIMEDispatcher.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCKeypadDispatcher.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCKeypadDelegate.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTouchHandler.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTouchDispatcher.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTouch.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTMXXMLParser.cpp
+     1>d:\project\github\infinity\cocos2dx\tilemap_parallax_nodes\cctmxxmlparser.cpp : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+     1>d:\project\github\infinity\cocos2dx\tilemap_parallax_nodes\cctmxxmlparser.cpp(28): fatal error C1083: Cannot open include file: 'map': No such file or directory
+         CCTMXTiledMap.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTMXObjectGroup.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTMXLayer.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTileMapAtlas.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCParallaxNode.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTexturePVR.cpp
+     1>d:\project\github\infinity\cocos2dx\textures\cctexture2d.h(29): fatal error C1083: Cannot open include file: 'string': No such file or directory
+         Generating Code...
+         Compiling...
+         CCTextureCache.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTextureAtlas.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTexture2D.cpp
+     1>d:\project\github\infinity\cocos2dx\textures\cctexture2d.h(29): fatal error C1083: Cannot open include file: 'string': No such file or directory
+         ZipUtils.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\third_party\win32\zlib\zconf.h(364): fatal error C1083: Cannot open include file: 'sys/types.h': No such file or directory
+         unzip.cpp
+     1>d:\project\github\infinity\cocos2dx\support\zip_support\unzip.cpp(67): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
+         ioapi.cpp
+     1>d:\project\github\infinity\cocos2dx\support\zip_support\ioapi.h(45): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
+         CCUserDefault.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         TGAlib.cpp
+     1>d:\project\github\infinity\cocos2dx\support\image_support\tgalib.cpp(25): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+         ccCArray.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         TransformUtils.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         tinyxml2.cpp
+     1>d:\project\github\infinity\cocos2dx\support\tinyxml2\tinyxml2.h(37): fatal error C1083: Cannot open include file: 'cctype': No such file or directory
+         CCVertex.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         ccUtils.cpp
+         ccUTF8.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCProfiling.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCPointExtension.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCNotificationCenter.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         base64.cpp
+     1>d:\project\github\infinity\cocos2dx\support\base64.cpp(25): fatal error C1083: Cannot open include file: 'stdio.h': No such file or directory
+         CCSpriteFrameCache.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCSpriteFrame.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         Generating Code...
+         Compiling...
+         CCSpriteBatchNode.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCSprite.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCAnimationCache.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCAnimation.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         ccShaders.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCShaderCache.cpp
+     1>d:\project\github\infinity\cocos2dx\support\data_support\uthash.h(27): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+         ccGLStateCache.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCGLProgram.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCStdC.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCImage.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCFileUtilsWin32.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\ccfileutils.h(27): fatal error C1083: Cannot open include file: 'string': No such file or directory
+         CCEGLView.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCDevice.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCCommon.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCApplication.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCAccelerometer.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         platform.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCThread.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCSAXParser.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\ccsaxparser.cpp : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+     1>d:\project\github\infinity\cocos2dx\platform\ccsaxparser.h : warning C4819: The file contains a character that cannot be represented in the current code page (949). Save the file in Unicode format to prevent data loss
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCImageCommonWebp.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         Generating Code...
+         Compiling...
+         CCFileUtils.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\ccfileutils.h(27): fatal error C1083: Cannot open include file: 'string': No such file or directory
+         CCEGLViewProtocol.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCParticleSystemQuad.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCParticleSystem.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCParticleExamples.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCParticleBatchNode.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCRenderTexture.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCProgressTimer.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCMotionStreak.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCClippingNode.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCMenuItem.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCMenu.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTransitionProgress.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTransitionPageTurn.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCTransition.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCScene.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCLayer.cpp
+     1>d:\project\github\infinity\cocos2dx\layers_scenes_transitions_nodes\cclayer.cpp(27): fatal error C1083: Cannot open include file: 'stdarg.h': No such file or directory
+         CCLabelTTF.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCLabelBMFont.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCLabelAtlas.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         Generating Code...
+         Compiling...
+         CCActionTween.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionTiledGrid.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionProgressTimer.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionPageTurn3D.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionManager.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionInterval.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionInstant.cpp
+     1>d:\project\github\infinity\cocos2dx\actions\ccactioninstant.h(30): fatal error C1083: Cannot open include file: 'string': No such file or directory
+         CCActionGrid3D.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionGrid.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionEase.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionCatmullRom.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCActionCamera.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCAction.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCGrid.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCGrabber.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCDrawNode.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCDrawingPrimitives.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCZone.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCString.cpp
+     1>d:\project\github\infinity\cocos2dx\cocoa\ccstring.h(28): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+         CCSet.cpp
+     1>d:\project\github\infinity\cocos2dx\cocoa\ccset.h(28): fatal error C1083: Cannot open include file: 'set': No such file or directory
+         Generating Code...
+         Compiling...
+         CCObject.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCNS.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCGeometry.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCDictionary.cpp
+     1>d:\project\github\infinity\cocos2dx\support\data_support\uthash.h(27): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+         CCAutoreleasePool.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCArray.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCAffineTransform.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         CCNode.cpp
+     1>d:\project\github\infinity\cocos2dx\cocoa\ccstring.h(28): fatal error C1083: Cannot open include file: 'string.h': No such file or directory
+         CCAtlasNode.cpp
+     1>d:\project\github\infinity\cocos2dx\platform\win32\ccplatformdefine.h(11): fatal error C1083: Cannot open include file: 'assert.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "D:\project\github\Infinity\cocos2dx\proj.win32\cocos2d.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.60
