@@ -11,6 +11,7 @@
 #import "cocos2d.h"
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "IOS_Native.h"
 
 @implementation AppController
 
@@ -70,6 +71,7 @@ static AppDelegate s_sharedApplication;
      Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
      */
     cocos2d::CCDirector::sharedDirector()->pause();
+    [IOS_Native applicationWillResignActive:application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -77,6 +79,7 @@ static AppDelegate s_sharedApplication;
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
     cocos2d::CCDirector::sharedDirector()->resume();
+    [IOS_Native applicationDidBecomeActive];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -85,6 +88,7 @@ static AppDelegate s_sharedApplication;
      If your application supports background execution, called instead of applicationWillTerminate: when the user quits.
      */
     cocos2d::CCApplication::sharedApplication()->applicationDidEnterBackground();
+    [IOS_Native applicationDidEnterBackground:application];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -92,6 +96,14 @@ static AppDelegate s_sharedApplication;
      Called as part of  transition from the background to the inactive state: here you can undo many of the changes made on entering the background.
      */
     cocos2d::CCApplication::sharedApplication()->applicationWillEnterForeground();
+    [IOS_Native applicationWillEnterForeground:application];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    [IOS_Native application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
+    return YES;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -99,6 +111,7 @@ static AppDelegate s_sharedApplication;
      Called when the application is about to terminate.
      See also applicationDidEnterBackground:.
      */
+    [IOS_Native applicationWillTerminate:application];
 }
 
 
