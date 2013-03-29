@@ -13,7 +13,7 @@
 #include "Facebook_Manager.h"
 #include "HttpClient.h"
 #include "json.h"
-
+#include "WebCommunication.h"
 using namespace cocos2d::extension;
 
 Facebook_Manager* Facebook_Manager::sharedInstance()
@@ -28,6 +28,8 @@ Facebook_Manager::Facebook_Manager()
     fbBinder = NULL;
     friendList = CCArray::createWithCapacity(100);
     friendList->retain();
+    
+    cache_Picture = CCDictionary::create();
     
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         fbBinder = new Facebook_Binder_IOS();
@@ -87,26 +89,7 @@ void Facebook_Manager::Callback_Login(bool ret)
     CCLog("Facebook_Manager Callback_Login");
     CCLog("SetMyAccount name : %s, id : %s", myAccount->name->getCString(), myAccount->fbID->getCString());
     
-    CCHttpRequest* request = new CCHttpRequest();
-    request->setUrl("http://leejk86-JKInfinity.rhcloud.com/login");
-    request->setRequestType(CCHttpRequest::kHttpPost);
-    std::vector<std::string> headers;
-    headers.push_back("Content-Type: application/json; charset=utf-8");
-    request->setHeaders(headers);
-    request->setResponseCallback(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted));
-    
-    // write the post data
-    Json::Value root;
-    root["id"] = myAccount->fbID->getCString();
-    root["nick"] = myAccount->name->getCString();
-    Json::StyledWriter writer;
-    std::string str =  writer.write(root);
-    CCLOG("Json : %s", str.c_str());
-    request->setRequestData(str.c_str(), strlen(str.c_str()));
-    
-    request->setTag("POST test2");
-    CCHttpClient::getInstance()->send(request);
-    request->release();
+    WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString());
     
     if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(ret);
     delegate_Login = NULL;
@@ -114,53 +97,35 @@ void Facebook_Manager::Callback_Login(bool ret)
 
 void Facebook_Manager::onHttpRequestCompleted(cocos2d::CCNode *sender, void *data)
 {
-    CCHttpResponse *response = (CCHttpResponse*)data;
-    
-    if (!response)
-    {
-        return;
-    }
-    
-    // You can get original request type from: response->request->reqType
-    if (0 != strlen(response->getHttpRequest()->getTag()))
-    {
-        CCLog("%s completed", response->getHttpRequest()->getTag());
-    }
-    
-    int statusCode = response->getResponseCode();
-    char statusString[64] = {};
-    sprintf(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
-    CCLog("response code: %d", statusCode);
-    
-    if (!response->isSucceed())
-    {
-        CCLog("response failed");
-        CCLog("error buffer: %s", response->getErrorBuffer());
-        return;
-    }
-    
-    // dump data
-    std::vector<char> *buffer = response->getResponseData();
     Json::Value root;
-    Json::Reader reader;
-    std::string str;
-    str = &((*buffer)[0]);
-    
-    bool parsingSuccessful = reader.parse( str, root );
-    if(parsingSuccessful == true)
+    if(WebResponse_Common(sender, data, root) == false)
     {
-        CCLog("Http Test, dump data: %s", str.c_str());
-        CCLog("index : %d", root["user_index"].asInt());
+        CCLOG("onHttpRequestCompleted = false!!");
+        return;
     }
+    
+    CCLog("index : %d", root["user_index"].asInt());
 }
 
 void Facebook_Manager::GetPicture(cocos2d::CCString *fbID, Facebook_Callback* del)
 {
+    CCSprite* cachedPicture = (CCSprite*)cache_Picture->objectForKey(fbID->getCString());
+    if(cachedPicture != NULL)
+    {
+        if(del != NULL)
+        {
+            del->fb_Callback_Picture(fbID, cachedPicture);
+            return;
+        }
+    }
+    
     delegate_Picture = del;
     fbBinder->GetPicture(fbID);
 }
 void Facebook_Manager::Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCSprite *picture)
 {
+    cache_Picture->setObject(picture, fbID->getCString());
+    
     if(delegate_Picture != NULL) delegate_Picture->fb_Callback_Picture(fbID, picture);
 }
 

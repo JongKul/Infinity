@@ -166,6 +166,7 @@
 		6F7F6D18170546C6004F61BB /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D0F170546C6004F61BB /* json_value.cpp */; };
 		6F7F6D19170546C6004F61BB /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F6D10170546C6004F61BB /* json_valueiterator.inl */; };
 		6F7F6D1A170546C6004F61BB /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D11170546C6004F61BB /* json_writer.cpp */; };
+		6F7F6D2017059EB9004F61BB /* WebCommunication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D1E17059EB9004F61BB /* WebCommunication.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -513,6 +514,8 @@
 		6F7F6D12170546C6004F61BB /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
 		6F7F6D13170546C6004F61BB /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
 		6F7F6D14170546C6004F61BB /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
+		6F7F6D1E17059EB9004F61BB /* WebCommunication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebCommunication.cpp; sourceTree = "<group>"; };
+		6F7F6D1F17059EB9004F61BB /* WebCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCommunication.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1198,6 +1201,7 @@
 		6F7F6D03170546C6004F61BB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				6F7F6D1C17059E20004F61BB /* Web */,
 				6F7F6D04170546C6004F61BB /* Json */,
 			);
 			name = Network;
@@ -1225,6 +1229,15 @@
 				6F7F6D14170546C6004F61BB /* writer.h */,
 			);
 			path = Json;
+			sourceTree = "<group>";
+		};
+		6F7F6D1C17059E20004F61BB /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				6F7F6D1E17059EB9004F61BB /* WebCommunication.cpp */,
+				6F7F6D1F17059EB9004F61BB /* WebCommunication.h */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
@@ -1481,6 +1494,7 @@
 				6F7F6D17170546C6004F61BB /* json_reader.cpp in Sources */,
 				6F7F6D18170546C6004F61BB /* json_value.cpp in Sources */,
 				6F7F6D1A170546C6004F61BB /* json_writer.cpp in Sources */,
+				6F7F6D2017059EB9004F61BB /* WebCommunication.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
