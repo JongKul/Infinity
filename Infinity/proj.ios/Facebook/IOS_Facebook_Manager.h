@@ -25,6 +25,7 @@ public:
     
 public:
     void GetPicture(CCString* fbID);
+    void Invite(CCString* fbID);
     void Callback_Picture(const char* fbID, void* picture);
     
 public:

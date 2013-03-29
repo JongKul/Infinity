@@ -26,6 +26,7 @@
 
 -(void)Facebook_Friends;
 -(void)Facebook_Picture:(NSString*) fbID;
+-(void)Facebook_Invite:(NSString*) fbID;
 -(void)Facebook_Post;
 
 @end

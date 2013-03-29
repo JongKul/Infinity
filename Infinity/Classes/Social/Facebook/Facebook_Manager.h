@@ -21,7 +21,7 @@ public:
     virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture) = 0;
 };
 
-class Facebook_Manager
+class Facebook_Manager:public CCNode
 {
 public:
     static Facebook_Manager* sharedInstance();
@@ -50,6 +50,12 @@ public:
     
 public:
     void Post();
+    
+public:
+    void Invtie(CCString* fbID);
+    
+private:
+    void onHttpRequestCompleted(cocos2d::CCNode *sender, void *data);
 };
 
 #endif /* defined(__Chess__Facebook_Manager__) */

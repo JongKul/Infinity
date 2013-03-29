@@ -15,16 +15,12 @@ bool GameUI_MainTitle::init()
     gameLayer = NULL;
 
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    
-    CCSprite* title = CCSprite::create("HelloWorld.png");
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     
-    title->setPosition(ccp(size.width/2,size.height/2));
-    this->addChild(title);
+    CCSprite* bg = CCSprite::create("bg.png");
+    bg->setPosition(ccp(size.width/2,size.height/2));
+    this->addChild(bg);
     
-    CCSprite* test = CCSprite::create("Icon-144.png");
-    test->setPosition(ccp(size.width/2,size.height/2));
-    this->addChild(test);
     
     CCTableView* tableView = CCTableView::create(this, CCSizeMake(200, 500));
 	tableView->setDirection(kCCScrollViewDirectionVertical);
@@ -68,8 +64,11 @@ void GameUI_MainTitle::fb_Callback_Login(bool ret)
         {
             Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(i);
             Facebook_Manager::sharedInstance()->GetPicture(fri->fbID, this);
+            //CCLOG("name : %s, id : %s", fri->name->getCString(), fri->fbID->getCString());
         }
-        Native_ShowAlert("Native Test");
+        //Native_ShowAlert("Native Test");
+        CCString* id = CCString::create("100001756203467");
+        Facebook_Manager::sharedInstance()->Invtie(id);
     }
     else
     {

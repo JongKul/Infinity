@@ -21,6 +21,11 @@ void Facebook_Binder_IOS::GetPicture(cocos2d::CCString *fbID)
     IOS_Facebook_Manager::sharedInstance()->GetPicture(fbID);
 }
 
+void Facebook_Binder_IOS::Invtie(cocos2d::CCString *fbID)
+{
+    IOS_Facebook_Manager::sharedInstance()->Invite(fbID);
+}
+
 void Facebook_Binder_IOS::Post()
 {
     IOS_Facebook_Manager::sharedInstance()->Post();

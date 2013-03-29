@@ -137,6 +137,16 @@
                    });
 }
 
+-(void)Facebook_Invite:(NSString *)fbID
+{
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   @"Othello Friends Invite", @"title",
+                                   @"Come check out my app", @"message",
+                                   fbID, @"to", nil];
+    
+    [FBWebDialogs presentDialogModallyWithSession:[FBSession activeSession] dialog:@"apprequests" parameters:params handler:nil];
+}
+
 -(void)Facebook_Post
 {
     NSMutableDictionary *params =

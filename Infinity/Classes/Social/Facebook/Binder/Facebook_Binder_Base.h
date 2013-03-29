@@ -18,6 +18,7 @@ public:
     virtual ~Facebook_Binder_Base(){}
     virtual void Login() = 0;
     virtual void GetPicture(cocos2d::CCString *fbID) = 0;
+    virtual void Invtie(cocos2d::CCString *fbID) = 0;
     virtual void Post() = 0;
 };
 

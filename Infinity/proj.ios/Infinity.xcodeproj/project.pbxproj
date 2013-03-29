@@ -159,6 +159,13 @@
 		6F7F6CF91704B642004F61BB /* IOS_Helper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CF61704B642004F61BB /* IOS_Helper.mm */; };
 		6F7F6CFA1704B642004F61BB /* IOS_Native.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CF81704B642004F61BB /* IOS_Native.m */; };
 		6F7F6CFE1704B68A004F61BB /* Native_Helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CFC1704B68A004F61BB /* Native_Helper.cpp */; };
+		6F7F6D0117053C18004F61BB /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F6D0017053C18004F61BB /* bg.png */; };
+		6F7F6D15170546C6004F61BB /* json_internalarray.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F6D0B170546C6004F61BB /* json_internalarray.inl */; };
+		6F7F6D16170546C6004F61BB /* json_internalmap.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F6D0C170546C6004F61BB /* json_internalmap.inl */; };
+		6F7F6D17170546C6004F61BB /* json_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D0D170546C6004F61BB /* json_reader.cpp */; };
+		6F7F6D18170546C6004F61BB /* json_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D0F170546C6004F61BB /* json_value.cpp */; };
+		6F7F6D19170546C6004F61BB /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F6D10170546C6004F61BB /* json_valueiterator.inl */; };
+		6F7F6D1A170546C6004F61BB /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D11170546C6004F61BB /* json_writer.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -489,6 +496,23 @@
 		6F7F6CF81704B642004F61BB /* IOS_Native.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOS_Native.m; path = Facebook/IOS_Native.m; sourceTree = SOURCE_ROOT; };
 		6F7F6CFC1704B68A004F61BB /* Native_Helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Native_Helper.cpp; sourceTree = "<group>"; };
 		6F7F6CFD1704B68A004F61BB /* Native_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Native_Helper.h; sourceTree = "<group>"; };
+		6F7F6D0017053C18004F61BB /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		6F7F6D05170546C6004F61BB /* autolink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = autolink.h; sourceTree = "<group>"; };
+		6F7F6D06170546C6004F61BB /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		6F7F6D07170546C6004F61BB /* features.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = features.h; sourceTree = "<group>"; };
+		6F7F6D08170546C6004F61BB /* forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forwards.h; sourceTree = "<group>"; };
+		6F7F6D09170546C6004F61BB /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		6F7F6D0A170546C6004F61BB /* json_batchallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_batchallocator.h; sourceTree = "<group>"; };
+		6F7F6D0B170546C6004F61BB /* json_internalarray.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalarray.inl; sourceTree = "<group>"; };
+		6F7F6D0C170546C6004F61BB /* json_internalmap.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_internalmap.inl; sourceTree = "<group>"; };
+		6F7F6D0D170546C6004F61BB /* json_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_reader.cpp; sourceTree = "<group>"; };
+		6F7F6D0E170546C6004F61BB /* json_tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json_tool.h; sourceTree = "<group>"; };
+		6F7F6D0F170546C6004F61BB /* json_value.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_value.cpp; sourceTree = "<group>"; };
+		6F7F6D10170546C6004F61BB /* json_valueiterator.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json_valueiterator.inl; sourceTree = "<group>"; };
+		6F7F6D11170546C6004F61BB /* json_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = json_writer.cpp; sourceTree = "<group>"; };
+		6F7F6D12170546C6004F61BB /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
+		6F7F6D13170546C6004F61BB /* value.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = value.h; sourceTree = "<group>"; };
+		6F7F6D14170546C6004F61BB /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1017,6 +1041,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6F7F6D03170546C6004F61BB /* Network */,
 				6F7F6CFB1704B66E004F61BB /* Native */,
 				6F7F6CD81704AE91004F61BB /* Social */,
 				6F7F6CC11704AC4D004F61BB /* Game */,
@@ -1170,9 +1195,42 @@
 			path = ../Classes/Native;
 			sourceTree = "<group>";
 		};
+		6F7F6D03170546C6004F61BB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				6F7F6D04170546C6004F61BB /* Json */,
+			);
+			name = Network;
+			path = ../Classes/Network;
+			sourceTree = "<group>";
+		};
+		6F7F6D04170546C6004F61BB /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				6F7F6D05170546C6004F61BB /* autolink.h */,
+				6F7F6D06170546C6004F61BB /* config.h */,
+				6F7F6D07170546C6004F61BB /* features.h */,
+				6F7F6D08170546C6004F61BB /* forwards.h */,
+				6F7F6D09170546C6004F61BB /* json.h */,
+				6F7F6D0A170546C6004F61BB /* json_batchallocator.h */,
+				6F7F6D0B170546C6004F61BB /* json_internalarray.inl */,
+				6F7F6D0C170546C6004F61BB /* json_internalmap.inl */,
+				6F7F6D0D170546C6004F61BB /* json_reader.cpp */,
+				6F7F6D0E170546C6004F61BB /* json_tool.h */,
+				6F7F6D0F170546C6004F61BB /* json_value.cpp */,
+				6F7F6D10170546C6004F61BB /* json_valueiterator.inl */,
+				6F7F6D11170546C6004F61BB /* json_writer.cpp */,
+				6F7F6D12170546C6004F61BB /* reader.h */,
+				6F7F6D13170546C6004F61BB /* value.h */,
+				6F7F6D14170546C6004F61BB /* writer.h */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6F7F6D0017053C18004F61BB /* bg.png */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -1268,6 +1326,10 @@
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				6F7F6CE61704B0A3004F61BB /* FacebookSDKResources.bundle in Resources */,
+				6F7F6D0117053C18004F61BB /* bg.png in Resources */,
+				6F7F6D15170546C6004F61BB /* json_internalarray.inl in Resources */,
+				6F7F6D16170546C6004F61BB /* json_internalmap.inl in Resources */,
+				6F7F6D19170546C6004F61BB /* json_valueiterator.inl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1416,6 +1478,9 @@
 				6F7F6CF91704B642004F61BB /* IOS_Helper.mm in Sources */,
 				6F7F6CFA1704B642004F61BB /* IOS_Native.m in Sources */,
 				6F7F6CFE1704B68A004F61BB /* Native_Helper.cpp in Sources */,
+				6F7F6D17170546C6004F61BB /* json_reader.cpp in Sources */,
+				6F7F6D18170546C6004F61BB /* json_value.cpp in Sources */,
+				6F7F6D1A170546C6004F61BB /* json_writer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1457,6 +1522,7 @@
 					"\"$(SRCROOT)/../../cocos2dx/platform/third_party/ios\"",
 					"\"$(SRCROOT)/../../cocos2dx/platform/ios\"",
 					"\"$(SRCROOT)/../../cocos2dx/platform/ios/Simulation\"",
+					"\"$(SRCROOT)/../Classes/Network/Json\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
@@ -1511,6 +1577,7 @@
 					"\"$(SRCROOT)/../../cocos2dx/platform/third_party/ios\"",
 					"\"$(SRCROOT)/../../cocos2dx/platform/ios\"",
 					"\"$(SRCROOT)/../../cocos2dx/platform/ios/Simulation\"",
+					"\"$(SRCROOT)/../Classes/Network/Json\"",
 				);
 				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;

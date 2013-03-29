@@ -18,6 +18,7 @@ class Facebook_Binder_IOS : public Facebook_Binder_Base
 public:
     virtual void Login();
     virtual void GetPicture(cocos2d::CCString *fbID);
+    virtual void Invtie(cocos2d::CCString *fbID);
     virtual void Post();
 };
 

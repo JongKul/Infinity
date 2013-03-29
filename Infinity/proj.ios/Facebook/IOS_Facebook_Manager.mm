@@ -53,6 +53,11 @@ void IOS_Facebook_Manager::GetPicture(cocos2d::CCString *fbID)
     [[IOS_Facebook shared] Facebook_Picture: CharToNs(fbID->getCString())];
 }
 
+void IOS_Facebook_Manager::Invite(cocos2d::CCString *fbID)
+{
+    [[IOS_Facebook shared] Facebook_Invite: CharToNs(fbID->getCString())];
+}
+
 void IOS_Facebook_Manager::Callback_Picture(const char *fbID, void *picture)
 {
     UIImage* native = (UIImage*)picture;
