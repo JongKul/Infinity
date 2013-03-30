@@ -30,6 +30,7 @@ Facebook_Manager::Facebook_Manager()
     friendList->retain();
     
     cache_Picture = CCDictionary::create();
+    cache_Picture->retain();
     
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         fbBinder = new Facebook_Binder_IOS();
@@ -81,7 +82,10 @@ void Facebook_Manager::AddFriend(cocos2d::CCString *name, cocos2d::CCString *fbI
     
     Facebook_Account* fri = Facebook_Account::create();
     fri->name = name;
+    fri->name->retain();
     fri->fbID = fbID;
+    fri->fbID->retain();
+    fri->retain();
     friendList->addObject(fri);
 }
 void Facebook_Manager::Callback_Login(bool ret)
@@ -109,11 +113,12 @@ void Facebook_Manager::onHttpRequestCompleted(cocos2d::CCNode *sender, void *dat
 
 void Facebook_Manager::GetPicture(cocos2d::CCString *fbID, Facebook_Callback* del)
 {
-    CCSprite* cachedPicture = (CCSprite*)cache_Picture->objectForKey(fbID->getCString());
+    CCSprite* cachedPicture = (CCSprite*)cache_Picture->objectForKey(fbID->m_sString);
     if(cachedPicture != NULL)
     {
         if(del != NULL)
         {
+            CCLOG("Picure Cached ID : %s", fbID->getCString());
             del->fb_Callback_Picture(fbID, cachedPicture);
             return;
         }
@@ -124,7 +129,7 @@ void Facebook_Manager::GetPicture(cocos2d::CCString *fbID, Facebook_Callback* de
 }
 void Facebook_Manager::Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCSprite *picture)
 {
-    cache_Picture->setObject(picture, fbID->getCString());
+    cache_Picture->setObject(picture, fbID->m_sString);
     
     if(delegate_Picture != NULL) delegate_Picture->fb_Callback_Picture(fbID, picture);
 }

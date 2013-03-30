@@ -22,6 +22,7 @@ class GameUI_MainTitle : public CCNode, public cocos2d::extension::CCTableViewDa
 {
 private:
     GameLayer_MainTitle* gameLayer;
+    CCTableView* tableView;
 public:
     virtual bool init();
     CREATE_FUNC(GameUI_MainTitle);
