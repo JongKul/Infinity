@@ -46,6 +46,7 @@ private:
     Facebook_Callback* delegate_Picture;
 public:
     void GetPicture(CCString* fbID, Facebook_Callback* del);
+    CCSprite* GetPicture_FromCache(CCString* fbID);
     void Callback_Picture(CCString* fbID, CCSprite* picture);
     
 public:
@@ -56,6 +57,9 @@ public:
     
 private:
     void onHttpRequestCompleted(cocos2d::CCNode *sender, void *data);
+    
+public:
+    int Get_FriendListIndex(CCString* fbID);
 };
 
 #endif /* defined(__Chess__Facebook_Manager__) */

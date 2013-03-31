@@ -40,6 +40,8 @@ public:
     void SetGameLayer(GameLayer_MainTitle* layer){ gameLayer = layer; }
     virtual void fb_Callback_Login (bool);
     virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture);
+private:
+    void AddPicture(CCNode* parent, CCSprite* picture, CCPoint anchor, CCPoint pos, int tag, float width, float height);
 };
 
 #endif /* defined(__Chess__GameUI_MainTitle__) */

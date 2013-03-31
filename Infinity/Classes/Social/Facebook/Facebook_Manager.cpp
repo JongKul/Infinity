@@ -119,6 +119,7 @@ void Facebook_Manager::GetPicture(cocos2d::CCString *fbID, Facebook_Callback* de
         if(del != NULL)
         {
             CCLOG("Picure Cached ID : %s", fbID->getCString());
+            cachedPicture->setParent(NULL);
             del->fb_Callback_Picture(fbID, cachedPicture);
             return;
         }
@@ -127,8 +128,18 @@ void Facebook_Manager::GetPicture(cocos2d::CCString *fbID, Facebook_Callback* de
     delegate_Picture = del;
     fbBinder->GetPicture(fbID);
 }
+
+CCSprite* Facebook_Manager::GetPicture_FromCache(cocos2d::CCString *fbID)
+{
+    CCSprite* cachedPicture = (CCSprite*)cache_Picture->objectForKey(fbID->m_sString);
+    if(cachedPicture != NULL)cachedPicture->setParent(NULL);
+    
+    return cachedPicture;
+}
+
 void Facebook_Manager::Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCSprite *picture)
 {
+    picture->retain();
     cache_Picture->setObject(picture, fbID->m_sString);
     
     if(delegate_Picture != NULL) delegate_Picture->fb_Callback_Picture(fbID, picture);
@@ -142,4 +153,18 @@ void Facebook_Manager::Post()
 void Facebook_Manager::Invtie(cocos2d::CCString *fbID)
 {
     fbBinder->Invtie(fbID);
+}
+
+int Facebook_Manager::Get_FriendListIndex(CCString* fbID)
+{
+    int index = 0;
+    CCArray* friList = Facebook_Manager::sharedInstance()->getFriendList();
+    for(index=0; index<friList->count(); ++index)
+    {
+        Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(index);
+        if(fri != NULL && fri->fbID->isEqual(fbID) == true)break;
+    }
+    
+    if(index >= friList->count())return -1;
+    else return index;
 }
