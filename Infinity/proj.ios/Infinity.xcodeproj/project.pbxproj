@@ -180,6 +180,7 @@
 		6FCFF74817099F6200BB3476 /* Unit_White.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF74617099F6200BB3476 /* Unit_White.cpp */; };
 		6FCFF74B17099F6E00BB3476 /* Unit_Black.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF74917099F6E00BB3476 /* Unit_Black.cpp */; };
 		6FCFF74F1709A81E00BB3476 /* Othello_Logic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF74D1709A81E00BB3476 /* Othello_Logic.cpp */; };
+		6FCFF7531709C0E300BB3476 /* Facebook_Binder_Android.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF7511709C0E300BB3476 /* Facebook_Binder_Android.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -551,6 +552,8 @@
 		6FCFF74A17099F6E00BB3476 /* Unit_Black.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Black.h; sourceTree = "<group>"; };
 		6FCFF74D1709A81E00BB3476 /* Othello_Logic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Othello_Logic.cpp; sourceTree = "<group>"; };
 		6FCFF74E1709A81E00BB3476 /* Othello_Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Othello_Logic.h; sourceTree = "<group>"; };
+		6FCFF7511709C0E300BB3476 /* Facebook_Binder_Android.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Facebook_Binder_Android.cpp; sourceTree = "<group>"; };
+		6FCFF7521709C0E300BB3476 /* Facebook_Binder_Android.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook_Binder_Android.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1219,6 +1222,8 @@
 			isa = PBXGroup;
 			children = (
 				6F7F6CDB1704AE91004F61BB /* Facebook_Binder_Base.h */,
+				6FCFF7511709C0E300BB3476 /* Facebook_Binder_Android.cpp */,
+				6FCFF7521709C0E300BB3476 /* Facebook_Binder_Android.h */,
 				6F7F6CDC1704AE91004F61BB /* Facebook_Binder_IOS.cpp */,
 				6F7F6CDD1704AE91004F61BB /* Facebook_Binder_IOS.h */,
 			);
@@ -1645,6 +1650,7 @@
 				6FCFF74817099F6200BB3476 /* Unit_White.cpp in Sources */,
 				6FCFF74B17099F6E00BB3476 /* Unit_Black.cpp in Sources */,
 				6FCFF74F1709A81E00BB3476 /* Othello_Logic.cpp in Sources */,
+				6FCFF7531709C0E300BB3476 /* Facebook_Binder_Android.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
