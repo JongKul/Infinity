@@ -2,12 +2,14 @@
 //  Facebook_Binder_IOS.h
 //  Chess
 //
-//  Created by 정 기호 on 13. 3. 21..
+//  Created by ��湲고샇 on 13. 3. 21..
 //
 //
 
 #ifndef __Chess__Facebook_Binder_IOS__
 #define __Chess__Facebook_Binder_IOS__
+
+#include "cocos2d.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 

@@ -6,10 +6,56 @@ LOCAL_MODULE := cocos2dcpp_shared
 
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
-FILE_LIST := $(wildcard $(LOCAL_PATH)/../../Classes/*.cpp)
-LOCAL_SRC_FILES := hellocpp/main.cpp  $(FILE_LIST:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES  = hellocpp/main.cpp
+# [[[cog
+# import list_classes
+# cpps, includes = list_classes.listCppPaths()
+#
+# #### Write list of C++ files found
+#
+# cog.outl()
+# for f in cpps:
+#   cog.outl('LOCAL_SRC_FILES += %s' % f)
+#
+# #### Write list of subdirectories with source files found
+#
+# cog.outl()
+# cog.outl('LOCAL_C_INCLUDES  = $(LOCAL_PATH)/../../Classes')
+#
+# #### Delete next 2 lines of code if you don't need list of subdirectories
+#
+# for d in includes:
+#  cog.outl('LOCAL_C_INCLUDES += $(LOCAL_PATH)/%s' % d)
+#
+# cog.outl()
+# ]]]
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_SRC_FILES += ../../Classes/AppDelegate.cpp
+LOCAL_SRC_FILES += ../../Classes/Game/Scene/MainTitle/GameScene_MainTitle.cpp
+LOCAL_SRC_FILES += ../../Classes/Game/Scene/MainTitle/UI/GameUI_MainTitle.cpp
+LOCAL_SRC_FILES += ../../Classes/Native/Native_Helper.cpp
+LOCAL_SRC_FILES += ../../Classes/Network/Json/json_reader.cpp
+LOCAL_SRC_FILES += ../../Classes/Network/Json/json_value.cpp
+LOCAL_SRC_FILES += ../../Classes/Network/Json/json_writer.cpp
+LOCAL_SRC_FILES += ../../Classes/Network/Web/WebCommunication.cpp
+LOCAL_SRC_FILES += ../../Classes/Social/Facebook/Binder/Facebook_Binder_Android.cpp
+LOCAL_SRC_FILES += ../../Classes/Social/Facebook/Binder/Facebook_Binder_IOS.cpp
+LOCAL_SRC_FILES += ../../Classes/Social/Facebook/Facebook_Manager.cpp
+
+LOCAL_C_INCLUDES  = $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Game
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Game/Scene
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Game/Scene/MainTitle
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Game/Scene/MainTitle/UI
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Native
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Network
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Network/Json
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Network/Web
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Social
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Social/Facebook
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../Classes/Social/Facebook/Binder
+
+# [[[end]]]
 
 LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static

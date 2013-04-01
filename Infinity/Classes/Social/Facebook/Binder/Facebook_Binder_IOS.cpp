@@ -2,13 +2,13 @@
 //  Facebook_Binder_IOS.cpp
 //  Chess
 //
-//  Created by 정 기호 on 13. 3. 21..
+//  Created by ��湲고샇 on 13. 3. 21..
 //
 //
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 
 #include "Facebook_Binder_IOS.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+
 #include "IOS_Facebook_Manager.h"
 
 void Facebook_Binder_IOS::Login()
