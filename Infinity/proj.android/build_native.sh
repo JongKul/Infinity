@@ -68,6 +68,11 @@ done
 echo "chmod +rw -R $APP_ANDROID_ROOT/assets"
 chmod +rw -R $APP_ANDROID_ROOT/assets
 
+cd ./jni
+./update-androidmk.sh
+cd ..
+
+
 # run ndk-build
 if [[ "$buildexternalsfromsource" ]]; then
     echo "Building external dependencies from source"

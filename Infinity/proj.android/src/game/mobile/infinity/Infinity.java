@@ -26,12 +26,15 @@ package game.mobile.infinity;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 public class Infinity extends Cocos2dxActivity{
+	public static Activity INFINITY;
 	
     protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);	
+		INFINITY = this;
 	}
 
     public Cocos2dxGLSurfaceView onCreateView() {
