@@ -18,6 +18,8 @@ class GameScene_MainTitle : public CCScene
 public:
     virtual bool init();
     CREATE_FUNC(GameScene_MainTitle);
+public:
+    static void ChangeScene();
 };
 
 class GameLayer_MainTitle : public CCLayer
@@ -26,10 +28,6 @@ class GameLayer_MainTitle : public CCLayer
 public:
     virtual bool init();
     CREATE_FUNC(GameLayer_MainTitle);
-public:
-    virtual void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
-public:
-    void ChangeScene();
 };
 
 #endif /* defined(__Chess__GameScene_MainTitle__) */

@@ -28,6 +28,12 @@ bool GameUI_MainTitle::init()
     menu->setPosition(ccp(winSize.width * 0.8f, winSize.height * 0.2f));
     this->addChild(menu);
     
+    if(Facebook_Manager::sharedInstance()->IsLogin() == true)
+    {
+        CCLog("IS Login");
+        fb_Callback_Login(true);
+    }
+    
     return true;
 }
 
@@ -37,14 +43,18 @@ void GameUI_MainTitle::ButtonDelegate_Start(cocos2d::CCObject *sender)
     //IOS_Helper::sharedInstance()->ShowAlert();
     //IOS_Helper::sharedInstance()->FacebookLogin();
     //gameLayer->ChangeScene();
+    if(Facebook_Manager::sharedInstance()->IsLogin() == true)
+    {
+        CCLog("IS Login");
+        return;
+    }
     Facebook_Manager::sharedInstance()->Login(this);
 }
 
 void GameUI_MainTitle::ButtonDelegate_Post(cocos2d::CCObject *sender)
 {
     //Facebook_Manager::sharedInstance()->Post();
-    Facebook_Manager::sharedInstance()->GetPicture(CCString::create("100001756203467"), this);
-    
+    GameScene_MainTitle::ChangeScene();
 }
 
 
@@ -58,7 +68,6 @@ void GameUI_MainTitle::fb_Callback_Login(bool ret)
         
         CCSize winSize = CCDirector::sharedDirector()->getWinSize();
         tableView = CCTableView::create(this, CCSizeMake(344, 144*3));
-        CCLog("login %d", tableView);
         tableView->setDirection(kCCScrollViewDirectionVertical);
         tableView->setPosition(ccp(50,winSize.height/2-120));
         tableView->setDelegate(this);
@@ -136,7 +145,7 @@ CCTableViewCell* GameUI_MainTitle::tableCellAtIndex(cocos2d::extension::CCTableV
     }
     else
     {
-        CCLog("tableCellAtIndex Not NULL idx : %i, name : %s", idx, fri->name->getCString());
+        //CCLog("tableCellAtIndex Not NULL idx : %i, name : %s", idx, fri->name->getCString());
         CCNode *picture = cell->getChildByTag(10);
         if(picture == NULL)
         {
@@ -152,7 +161,7 @@ void GameUI_MainTitle::AddPicture(cocos2d::CCNode *parent, cocos2d::CCSprite *pi
 {
     if(parent == NULL || picture == NULL)
     {
-        CCLog("AddPicture NULL");
+        //CCLog("AddPicture NULL");
         return;
     }
     

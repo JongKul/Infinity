@@ -168,3 +168,14 @@ int Facebook_Manager::Get_FriendListIndex(CCString* fbID)
     if(index >= friList->count())return -1;
     else return index;
 }
+
+bool  Facebook_Manager::IsLogin()
+{
+    return myAccount != NULL;
+}
+
+void Facebook_Manager::SetNullDelegate()
+{
+    delegate_Login = NULL;
+    delegate_Picture = NULL;
+}

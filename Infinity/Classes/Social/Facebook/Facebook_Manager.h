@@ -60,6 +60,8 @@ private:
     
 public:
     int Get_FriendListIndex(CCString* fbID);
+    bool IsLogin();
+    void SetNullDelegate();
 };
 
 #endif /* defined(__Chess__Facebook_Manager__) */

@@ -167,6 +167,19 @@
 		6F7F6D19170546C6004F61BB /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F6D10170546C6004F61BB /* json_valueiterator.inl */; };
 		6F7F6D1A170546C6004F61BB /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D11170546C6004F61BB /* json_writer.cpp */; };
 		6F7F6D2017059EB9004F61BB /* WebCommunication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D1E17059EB9004F61BB /* WebCommunication.cpp */; };
+		6FCFF72717098E7000BB3476 /* GameScene_Match.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF72517098E7000BB3476 /* GameScene_Match.cpp */; };
+		6FCFF72A17098F4600BB3476 /* GameLayer_Match_UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF72817098F4600BB3476 /* GameLayer_Match_UI.cpp */; };
+		6FCFF72E1709918C00BB3476 /* Scene_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF72C1709918C00BB3476 /* Scene_Manager.cpp */; };
+		6FCFF737170995D700BB3476 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFF732170995D700BB3476 /* black.png */; };
+		6FCFF738170995D700BB3476 /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFF733170995D700BB3476 /* white.png */; };
+		6FCFF739170995D700BB3476 /* Unit_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFF735170995D700BB3476 /* Unit_Black.png */; };
+		6FCFF73A170995D700BB3476 /* Unit_White.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFF736170995D700BB3476 /* Unit_White.png */; };
+		6FCFF73E1709961200BB3476 /* Match_Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF73C1709961200BB3476 /* Match_Map.cpp */; };
+		6FCFF741170996C300BB3476 /* GameLayer_Match_Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF73F170996C300BB3476 /* GameLayer_Match_Main.cpp */; };
+		6FCFF74517099E8200BB3476 /* Unit_Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF74317099E8200BB3476 /* Unit_Base.cpp */; };
+		6FCFF74817099F6200BB3476 /* Unit_White.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF74617099F6200BB3476 /* Unit_White.cpp */; };
+		6FCFF74B17099F6E00BB3476 /* Unit_Black.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF74917099F6E00BB3476 /* Unit_Black.cpp */; };
+		6FCFF74F1709A81E00BB3476 /* Othello_Logic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF74D1709A81E00BB3476 /* Othello_Logic.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -516,6 +529,28 @@
 		6F7F6D14170546C6004F61BB /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		6F7F6D1E17059EB9004F61BB /* WebCommunication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebCommunication.cpp; sourceTree = "<group>"; };
 		6F7F6D1F17059EB9004F61BB /* WebCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCommunication.h; sourceTree = "<group>"; };
+		6FCFF72517098E7000BB3476 /* GameScene_Match.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene_Match.cpp; sourceTree = "<group>"; };
+		6FCFF72617098E7000BB3476 /* GameScene_Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_Match.h; sourceTree = "<group>"; };
+		6FCFF72817098F4600BB3476 /* GameLayer_Match_UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer_Match_UI.cpp; sourceTree = "<group>"; };
+		6FCFF72917098F4600BB3476 /* GameLayer_Match_UI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer_Match_UI.h; sourceTree = "<group>"; };
+		6FCFF72C1709918C00BB3476 /* Scene_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene_Manager.cpp; sourceTree = "<group>"; };
+		6FCFF72D1709918C00BB3476 /* Scene_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene_Manager.h; sourceTree = "<group>"; };
+		6FCFF732170995D700BB3476 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
+		6FCFF733170995D700BB3476 /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
+		6FCFF735170995D700BB3476 /* Unit_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unit_Black.png; sourceTree = "<group>"; };
+		6FCFF736170995D700BB3476 /* Unit_White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unit_White.png; sourceTree = "<group>"; };
+		6FCFF73C1709961200BB3476 /* Match_Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Match_Map.cpp; sourceTree = "<group>"; };
+		6FCFF73D1709961200BB3476 /* Match_Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Match_Map.h; sourceTree = "<group>"; };
+		6FCFF73F170996C300BB3476 /* GameLayer_Match_Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer_Match_Main.cpp; sourceTree = "<group>"; };
+		6FCFF740170996C300BB3476 /* GameLayer_Match_Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer_Match_Main.h; sourceTree = "<group>"; };
+		6FCFF74317099E8200BB3476 /* Unit_Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Unit_Base.cpp; sourceTree = "<group>"; };
+		6FCFF74417099E8200BB3476 /* Unit_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Base.h; sourceTree = "<group>"; };
+		6FCFF74617099F6200BB3476 /* Unit_White.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Unit_White.cpp; sourceTree = "<group>"; };
+		6FCFF74717099F6200BB3476 /* Unit_White.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_White.h; sourceTree = "<group>"; };
+		6FCFF74917099F6E00BB3476 /* Unit_Black.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Unit_Black.cpp; sourceTree = "<group>"; };
+		6FCFF74A17099F6E00BB3476 /* Unit_Black.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit_Black.h; sourceTree = "<group>"; };
+		6FCFF74D1709A81E00BB3476 /* Othello_Logic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Othello_Logic.cpp; sourceTree = "<group>"; };
+		6FCFF74E1709A81E00BB3476 /* Othello_Logic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Othello_Logic.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1114,6 +1149,7 @@
 		6F7F6CC11704AC4D004F61BB /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				6FCFF72B1709917A00BB3476 /* Manager */,
 				6F7F6CC21704AC4D004F61BB /* Scene */,
 			);
 			name = Game;
@@ -1123,6 +1159,7 @@
 		6F7F6CC21704AC4D004F61BB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6FCFF72217098E4C00BB3476 /* Match */,
 				6F7F6CC31704AC4D004F61BB /* MainTitle */,
 			);
 			path = Scene;
@@ -1240,9 +1277,109 @@
 			path = Web;
 			sourceTree = "<group>";
 		};
+		6FCFF72217098E4C00BB3476 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF74C1709A81200BB3476 /* Othello */,
+				6FCFF74217099E8200BB3476 /* Unit */,
+				6FCFF73B1709961200BB3476 /* Map */,
+				6FCFF72317098E4C00BB3476 /* Layer */,
+				6FCFF72517098E7000BB3476 /* GameScene_Match.cpp */,
+				6FCFF72617098E7000BB3476 /* GameScene_Match.h */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
+		6FCFF72317098E4C00BB3476 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF72817098F4600BB3476 /* GameLayer_Match_UI.cpp */,
+				6FCFF72917098F4600BB3476 /* GameLayer_Match_UI.h */,
+				6FCFF73F170996C300BB3476 /* GameLayer_Match_Main.cpp */,
+				6FCFF740170996C300BB3476 /* GameLayer_Match_Main.h */,
+			);
+			path = Layer;
+			sourceTree = "<group>";
+		};
+		6FCFF72B1709917A00BB3476 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF72C1709918C00BB3476 /* Scene_Manager.cpp */,
+				6FCFF72D1709918C00BB3476 /* Scene_Manager.h */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		6FCFF72F170995D700BB3476 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF730170995D700BB3476 /* Match */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		6FCFF730170995D700BB3476 /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF731170995D700BB3476 /* Map */,
+				6FCFF734170995D700BB3476 /* Unit */,
+			);
+			path = Match;
+			sourceTree = "<group>";
+		};
+		6FCFF731170995D700BB3476 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF732170995D700BB3476 /* black.png */,
+				6FCFF733170995D700BB3476 /* white.png */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		6FCFF734170995D700BB3476 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF735170995D700BB3476 /* Unit_Black.png */,
+				6FCFF736170995D700BB3476 /* Unit_White.png */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		6FCFF73B1709961200BB3476 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF73C1709961200BB3476 /* Match_Map.cpp */,
+				6FCFF73D1709961200BB3476 /* Match_Map.h */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		6FCFF74217099E8200BB3476 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF74317099E8200BB3476 /* Unit_Base.cpp */,
+				6FCFF74417099E8200BB3476 /* Unit_Base.h */,
+				6FCFF74617099F6200BB3476 /* Unit_White.cpp */,
+				6FCFF74717099F6200BB3476 /* Unit_White.h */,
+				6FCFF74917099F6E00BB3476 /* Unit_Black.cpp */,
+				6FCFF74A17099F6E00BB3476 /* Unit_Black.h */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		6FCFF74C1709A81200BB3476 /* Othello */ = {
+			isa = PBXGroup;
+			children = (
+				6FCFF74D1709A81E00BB3476 /* Othello_Logic.cpp */,
+				6FCFF74E1709A81E00BB3476 /* Othello_Logic.h */,
+			);
+			path = Othello;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6FCFF72F170995D700BB3476 /* Game */,
 				6F7F6D0017053C18004F61BB /* bg.png */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
@@ -1343,6 +1480,10 @@
 				6F7F6D15170546C6004F61BB /* json_internalarray.inl in Resources */,
 				6F7F6D16170546C6004F61BB /* json_internalmap.inl in Resources */,
 				6F7F6D19170546C6004F61BB /* json_valueiterator.inl in Resources */,
+				6FCFF737170995D700BB3476 /* black.png in Resources */,
+				6FCFF738170995D700BB3476 /* white.png in Resources */,
+				6FCFF739170995D700BB3476 /* Unit_Black.png in Resources */,
+				6FCFF73A170995D700BB3476 /* Unit_White.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1495,6 +1636,15 @@
 				6F7F6D18170546C6004F61BB /* json_value.cpp in Sources */,
 				6F7F6D1A170546C6004F61BB /* json_writer.cpp in Sources */,
 				6F7F6D2017059EB9004F61BB /* WebCommunication.cpp in Sources */,
+				6FCFF72717098E7000BB3476 /* GameScene_Match.cpp in Sources */,
+				6FCFF72A17098F4600BB3476 /* GameLayer_Match_UI.cpp in Sources */,
+				6FCFF72E1709918C00BB3476 /* Scene_Manager.cpp in Sources */,
+				6FCFF73E1709961200BB3476 /* Match_Map.cpp in Sources */,
+				6FCFF741170996C300BB3476 /* GameLayer_Match_Main.cpp in Sources */,
+				6FCFF74517099E8200BB3476 /* Unit_Base.cpp in Sources */,
+				6FCFF74817099F6200BB3476 /* Unit_White.cpp in Sources */,
+				6FCFF74B17099F6E00BB3476 /* Unit_Black.cpp in Sources */,
+				6FCFF74F1709A81E00BB3476 /* Othello_Logic.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
