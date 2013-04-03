@@ -71,16 +71,12 @@ bool Othello_Logic::Logic_CheckInterUnit_Hori_Right(Match_Map* cur_Map, int inde
     for(int i = index_X + 1; i < cur_Map->GetTileCount_Width(); ++i)
     {
         int tileTag = cur_Map->GetTileTag(i, index_Y);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", i, index_Y);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(i, index_Y));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(i, index_Y));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_Hori_Left(Match_Map* cur_Map, int index_X, int index_Y, int tag)
@@ -90,16 +86,12 @@ bool Othello_Logic::Logic_CheckInterUnit_Hori_Left(Match_Map* cur_Map, int index
     for(int i = index_X - 1; i >= 0; --i)
     {
         int tileTag = cur_Map->GetTileTag(i, index_Y);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", i, index_Y);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(i, index_Y));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(i, index_Y));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_Verti_Up(Match_Map* cur_Map, int index_X, int index_Y, int tag)
@@ -109,16 +101,12 @@ bool Othello_Logic::Logic_CheckInterUnit_Verti_Up(Match_Map* cur_Map, int index_
     for(int i = index_Y + 1; i < cur_Map->GetTileCount_Height(); ++i)
     {
         int tileTag = cur_Map->GetTileTag(index_X, i);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", index_X, i);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(index_X, i));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(index_X, i));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_Verti_Down(Match_Map* cur_Map, int index_X, int index_Y, int tag)
@@ -128,16 +116,12 @@ bool Othello_Logic::Logic_CheckInterUnit_Verti_Down(Match_Map* cur_Map, int inde
     for(int i = index_Y - 1; i >= 0; --i)
     {
         int tileTag = cur_Map->GetTileTag(index_X, i);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", index_X, i);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(index_X, i));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(index_X, i));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_DirLR_Up(Match_Map* cur_Map, int index_X, int index_Y, int tag) //대각선 \방향임.
@@ -153,16 +137,12 @@ bool Othello_Logic::Logic_CheckInterUnit_DirLR_Up(Match_Map* cur_Map, int index_
         if(y >= cur_Map->GetTileCount_Height()) return false;
         
         int tileTag = cur_Map->GetTileTag(x, y);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", index_X, i);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_DirLR_Down(Match_Map* cur_Map, int index_X, int index_Y, int tag) //대각선 \방향임.
@@ -178,16 +158,12 @@ bool Othello_Logic::Logic_CheckInterUnit_DirLR_Down(Match_Map* cur_Map, int inde
         if(x >= cur_Map->GetTileCount_Width()) return false;
         
         int tileTag = cur_Map->GetTileTag(x, y);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", index_X, i);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_DirRL_Up(Match_Map* cur_Map, int index_X, int index_Y, int tag) //대각선 /방향임.
@@ -203,16 +179,12 @@ bool Othello_Logic::Logic_CheckInterUnit_DirRL_Up(Match_Map* cur_Map, int index_
         if(y >= cur_Map->GetTileCount_Height()) return false;
         
         int tileTag = cur_Map->GetTileTag(x, y);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", index_X, i);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_DirRL_Down(Match_Map* cur_Map, int index_X, int index_Y, int tag) //대각선 /방향임.
@@ -230,12 +202,8 @@ bool Othello_Logic::Logic_CheckInterUnit_DirRL_Down(Match_Map* cur_Map, int inde
         int tileTag = cur_Map->GetTileTag(x, y);
         if(tileTag == tag) break;
         else if(tileTag == -1) return false;
-        else
-        {
-            //CCLOG("x : %d, y : %d", index_X, i);
-            list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
-        }
+        else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
     }
     
-    return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
+    return false;
 }
