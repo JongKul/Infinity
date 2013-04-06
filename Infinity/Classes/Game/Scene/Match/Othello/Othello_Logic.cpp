@@ -200,7 +200,7 @@ bool Othello_Logic::Logic_CheckInterUnit_DirRL_Down(Match_Map* cur_Map, int inde
         if(y < 0) return false;
         
         int tileTag = cur_Map->GetTileTag(x, y);
-        if(tileTag == tag) break;
+        if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
         else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(x, y));
     }

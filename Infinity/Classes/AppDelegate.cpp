@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "GameScene_MainTitle.h"
+#include "GameScene_Match.h"
 
 USING_NS_CC;
 
