@@ -18,7 +18,7 @@
     if(instance == nil)
     {
         instance = [[self alloc] init];
-        [[FBSession activeSession]closeAndClearTokenInformation];
+        //[[FBSession activeSession]closeAndClearTokenInformation];
     }
     
     return instance;

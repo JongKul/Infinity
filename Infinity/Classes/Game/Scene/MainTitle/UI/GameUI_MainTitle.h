@@ -29,6 +29,8 @@ public:
 public:
     void ButtonDelegate_Start(CCObject* sender);
     void ButtonDelegate_Post(CCObject* sender);
+    void ButtonDelegate_ChangeScene(CCObject* sender);
+    void ButtonDelegate_Picture(CCObject* sender);
 
     void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {}
     void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}

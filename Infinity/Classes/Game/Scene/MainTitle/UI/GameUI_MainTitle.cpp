@@ -22,9 +22,11 @@ bool GameUI_MainTitle::init()
     this->addChild(bg);
     
     CCMenuItemImage* start_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_Start));
+    CCMenuItemImage* change_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_ChangeScene));
     CCMenuItemImage* post_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_Post));
-    post_Button->setPosition(ccp(0,100));
-    CCMenu* menu = CCMenu::create(start_Button, post_Button, NULL);
+    change_Button->setPosition(ccp(0,100));
+    post_Button->setPosition(ccp(0,200));
+    CCMenu* menu = CCMenu::create(start_Button, change_Button, post_Button, NULL);
     menu->setPosition(ccp(winSize.width * 0.8f, winSize.height * 0.2f));
     this->addChild(menu);
     
@@ -53,8 +55,21 @@ void GameUI_MainTitle::ButtonDelegate_Start(cocos2d::CCObject *sender)
 
 void GameUI_MainTitle::ButtonDelegate_Post(cocos2d::CCObject *sender)
 {
-    //Facebook_Manager::sharedInstance()->Post();
+    Facebook_Manager::sharedInstance()->Post();
+}
+
+void GameUI_MainTitle::ButtonDelegate_ChangeScene(cocos2d::CCObject *sender)
+{
     GameScene_MainTitle::ChangeScene();
+}
+
+void GameUI_MainTitle::ButtonDelegate_Picture(cocos2d::CCObject *sender)
+{
+    CCNode* node = (CCNode*)sender;
+    CCLOG("ButtonDelegate_Picture : %d", node->getTag());
+    CCArray* friList = Facebook_Manager::sharedInstance()->getFriendList();
+    Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(node->getTag());
+    Facebook_Manager::sharedInstance()->Invtie(fri->fbID);
 }
 
 
@@ -81,8 +96,6 @@ void GameUI_MainTitle::fb_Callback_Login(bool ret)
             Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(i);
             Facebook_Manager::sharedInstance()->GetPicture(fri->fbID, this);
         }
-        //CCString* id = CCString::create("100001756203467");
-        //Facebook_Manager::sharedInstance()->Invtie(id);
     }
     else
     {
@@ -122,7 +135,7 @@ CCTableViewCell* GameUI_MainTitle::tableCellAtIndex(cocos2d::extension::CCTableV
 
     tableView = table;
     
-    if (!cell)
+    if (cell == NULL)
     {
         //CCLog("tableCellAtIndex NULL idx : %d, name : %s", idx, fri->name->getCString());
         
@@ -139,6 +152,13 @@ CCTableViewCell* GameUI_MainTitle::tableCellAtIndex(cocos2d::extension::CCTableV
 		label->setAnchorPoint(CCPointZero);
         label->setTag(123);
         cell->addChild(label, 10);
+        
+        CCMenuItemImage* button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_Picture));
+        button->setTag(idx);
+        CCMenu* menu = CCMenu::create(button, NULL);
+        menu->setPosition(ccp(170,75));
+		menu->setAnchorPoint(CCPointZero);
+        cell->addChild(menu);
         
         CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
         AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
