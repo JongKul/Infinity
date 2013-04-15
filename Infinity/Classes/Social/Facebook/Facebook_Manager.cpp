@@ -90,11 +90,13 @@ void Facebook_Manager::AddFriend(cocos2d::CCString *name, cocos2d::CCString *fbI
 }
 void Facebook_Manager::Callback_Login(bool ret)
 {
-    CCLog("Facebook_Manager Callback_Login");
-    CCLog("SetMyAccount name : %s, id : %s", myAccount->name->getCString(), myAccount->fbID->getCString());
+    if(ret == true)
+    {
+        CCLog("Facebook_Manager Callback_Login");
+        CCLog("SetMyAccount name : %s, id : %s", myAccount->name->getCString(), myAccount->fbID->getCString());
     
-    WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString());
-    
+        WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString());
+    }
     if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(ret);
     delegate_Login = NULL;
 }
