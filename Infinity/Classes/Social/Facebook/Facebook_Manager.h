@@ -56,11 +56,9 @@ public:
     void Invtie(CCString* fbID);
     
 private:
-    void onHttpRequestCompleted(cocos2d::CCNode *sender, void *data);
+    void onHttpRequestCompleted_Login(cocos2d::CCNode *sender, void *data);
     void onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sender, void *data);
     void onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data);
-    void onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void *data);
-    void onHttpRequestCompleted_Turn(cocos2d::CCNode *sender, void *data);
 public:
     int Get_FriendListIndex(CCString* fbID);
     bool IsLogin();

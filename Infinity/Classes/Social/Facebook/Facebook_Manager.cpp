@@ -14,6 +14,7 @@
 #include "HttpClient.h"
 #include "json.h"
 #include "WebCommunication.h"
+#include "Room_Manager.h"
 using namespace cocos2d::extension;
 
 Facebook_Manager* Facebook_Manager::sharedInstance()
@@ -95,22 +96,28 @@ void Facebook_Manager::Callback_Login(bool ret)
         CCLog("Facebook_Manager Callback_Login");
         CCLog("SetMyAccount name : %s, id : %s", myAccount->name->getCString(), myAccount->fbID->getCString());
     
-        WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString());
-        WebRequest_SyncFriends(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_SyncFriends), "Post SyncFriends", myAccount->fbID->getCString(), friendList);
+        WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_Login), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString());
     }
-    if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(ret);
-    delegate_Login = NULL;
+    else
+    {
+        if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(false);
+        delegate_Login = NULL;
+    }
 }
 
-void Facebook_Manager::onHttpRequestCompleted(cocos2d::CCNode *sender, void *data)
+void Facebook_Manager::onHttpRequestCompleted_Login(cocos2d::CCNode *sender, void *data)
 {
     Json::Value root;
     if(WebResponse_Common(sender, data, root) == false)
     {
+        if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(false);
+        delegate_Login = NULL;
         CCLOG("onHttpRequestCompleted = false!!");
         return;
     }
     
+    WebRequest_SyncFriends(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_SyncFriends), "Post SyncFriends", myAccount->fbID->getCString(), friendList);
+    CCLOG(root.toStyledString().c_str());
     CCLog("index : %d", root["user_index"].asInt());
 }
 
@@ -121,6 +128,8 @@ void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sende
     Json::Value root;
     if(WebResponse_Common(sender, data, root) == false)
     {
+        if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(false);
+        delegate_Login = NULL;
         CCLOG("onHttpRequestCompleted_SyncFriends = false!!");
         return;
     }
@@ -136,42 +145,18 @@ void Facebook_Manager::onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, 
     Json::Value root;
     if(WebResponse_Common(sender, data, root) == false)
     {
+        if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(false);
+        delegate_Login = NULL;
         CCLOG("onHttpRequestCompleted_RoomList = false!!");
         return;
     }
     
     CCLOG(root.toStyledString().c_str());
-    WebRequest_RoomInfo(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_RoomInfo), "Post RoomInfo", myAccount->fbID->getCString(), "568652209", 1);
+    Room_Manager::sharedInstance()->Init_RoomList(root);
+    if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(true);
+    delegate_Login = NULL;
 }
-void Facebook_Manager::onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void *data)
-{
-    CCLOG("onHttpRequestCompleted_RoomInfo!!");
-    
-    Json::Value root;
-    if(WebResponse_Common(sender, data, root) == false)
-    {
-        CCLOG("onHttpRequestCompleted_RoomInfo = false!!");
-        return;
-    }
-    
-    CCLOG(root.toStyledString().c_str());
-    WebRequest_Turn(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_Turn), "Post Turn", myAccount->fbID->getCString(),
-                    1, 1, 1);
-}
-void Facebook_Manager::onHttpRequestCompleted_Turn(cocos2d::CCNode *sender, void *data)
-{
-    CCLOG("onHttpRequestCompleted_Turn!!");
-    
-    Json::Value root;
-    if(WebResponse_Common(sender, data, root) == false)
-    {
-        CCLOG("onHttpRequestCompleted_Turn = false!!");
-        return;
-    }
-    
-    CCLOG(root.toStyledString().c_str());
-    
-}
+
 
 void Facebook_Manager::GetPicture(cocos2d::CCString *fbID, Facebook_Callback* del)
 {

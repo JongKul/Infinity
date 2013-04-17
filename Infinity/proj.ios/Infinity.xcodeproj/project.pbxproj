@@ -167,6 +167,7 @@
 		6F7F6D19170546C6004F61BB /* json_valueiterator.inl in Resources */ = {isa = PBXBuildFile; fileRef = 6F7F6D10170546C6004F61BB /* json_valueiterator.inl */; };
 		6F7F6D1A170546C6004F61BB /* json_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D11170546C6004F61BB /* json_writer.cpp */; };
 		6F7F6D2017059EB9004F61BB /* WebCommunication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6D1E17059EB9004F61BB /* WebCommunication.cpp */; };
+		6FCD75BC171E85F900FDE202 /* Room_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCD75BA171E85F900FDE202 /* Room_Manager.cpp */; };
 		6FCFF72717098E7000BB3476 /* GameScene_Match.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF72517098E7000BB3476 /* GameScene_Match.cpp */; };
 		6FCFF72A17098F4600BB3476 /* GameLayer_Match_UI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF72817098F4600BB3476 /* GameLayer_Match_UI.cpp */; };
 		6FCFF72E1709918C00BB3476 /* Scene_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFF72C1709918C00BB3476 /* Scene_Manager.cpp */; };
@@ -530,6 +531,9 @@
 		6F7F6D14170546C6004F61BB /* writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = writer.h; sourceTree = "<group>"; };
 		6F7F6D1E17059EB9004F61BB /* WebCommunication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebCommunication.cpp; sourceTree = "<group>"; };
 		6F7F6D1F17059EB9004F61BB /* WebCommunication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCommunication.h; sourceTree = "<group>"; };
+		6FCD75BA171E85F900FDE202 /* Room_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Room_Manager.cpp; sourceTree = "<group>"; };
+		6FCD75BB171E85F900FDE202 /* Room_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room_Manager.h; sourceTree = "<group>"; };
+		6FCD75BE171E8BAE00FDE202 /* Room_List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room_List.h; sourceTree = "<group>"; };
 		6FCFF72517098E7000BB3476 /* GameScene_Match.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene_Match.cpp; sourceTree = "<group>"; };
 		6FCFF72617098E7000BB3476 /* GameScene_Match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_Match.h; sourceTree = "<group>"; };
 		6FCFF72817098F4600BB3476 /* GameLayer_Match_UI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer_Match_UI.cpp; sourceTree = "<group>"; };
@@ -1243,6 +1247,7 @@
 		6F7F6D03170546C6004F61BB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				6FCD75B8171E85E300FDE202 /* Room */,
 				6F7F6D1C17059E20004F61BB /* Web */,
 				6F7F6D04170546C6004F61BB /* Json */,
 			);
@@ -1280,6 +1285,16 @@
 				6F7F6D1F17059EB9004F61BB /* WebCommunication.h */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		6FCD75B8171E85E300FDE202 /* Room */ = {
+			isa = PBXGroup;
+			children = (
+				6FCD75BA171E85F900FDE202 /* Room_Manager.cpp */,
+				6FCD75BB171E85F900FDE202 /* Room_Manager.h */,
+				6FCD75BE171E8BAE00FDE202 /* Room_List.h */,
+			);
+			name = Room;
 			sourceTree = "<group>";
 		};
 		6FCFF72217098E4C00BB3476 /* Match */ = {
@@ -1651,6 +1666,7 @@
 				6FCFF74B17099F6E00BB3476 /* Unit_Black.cpp in Sources */,
 				6FCFF74F1709A81E00BB3476 /* Othello_Logic.cpp in Sources */,
 				6FCFF7531709C0E300BB3476 /* Facebook_Binder_Android.cpp in Sources */,
+				6FCD75BC171E85F900FDE202 /* Room_Manager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
