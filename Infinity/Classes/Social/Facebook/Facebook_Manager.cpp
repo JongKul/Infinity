@@ -96,6 +96,7 @@ void Facebook_Manager::Callback_Login(bool ret)
         CCLog("SetMyAccount name : %s, id : %s", myAccount->name->getCString(), myAccount->fbID->getCString());
     
         WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString());
+        WebRequest_SyncFriends(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_SyncFriends), "Post SyncFriends", myAccount->fbID->getCString(), friendList);
     }
     if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(ret);
     delegate_Login = NULL;
@@ -111,6 +112,65 @@ void Facebook_Manager::onHttpRequestCompleted(cocos2d::CCNode *sender, void *dat
     }
     
     CCLog("index : %d", root["user_index"].asInt());
+}
+
+void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sender, void *data)
+{
+    CCLOG("onHttpRequestCompleted_SyncFriends!!");
+    
+    Json::Value root;
+    if(WebResponse_Common(sender, data, root) == false)
+    {
+        CCLOG("onHttpRequestCompleted_SyncFriends = false!!");
+        return;
+    }
+    
+    CCLOG(root.toStyledString().c_str());
+    WebRequest_RoomList(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_RoomList), "Post RoomList", myAccount->fbID->getCString());
+}
+
+void Facebook_Manager::onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data)
+{
+    CCLOG("onHttpRequestCompleted_RoomList!!");
+    
+    Json::Value root;
+    if(WebResponse_Common(sender, data, root) == false)
+    {
+        CCLOG("onHttpRequestCompleted_RoomList = false!!");
+        return;
+    }
+    
+    CCLOG(root.toStyledString().c_str());
+    WebRequest_RoomInfo(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_RoomInfo), "Post RoomInfo", myAccount->fbID->getCString(), "568652209", 1);
+}
+void Facebook_Manager::onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void *data)
+{
+    CCLOG("onHttpRequestCompleted_RoomInfo!!");
+    
+    Json::Value root;
+    if(WebResponse_Common(sender, data, root) == false)
+    {
+        CCLOG("onHttpRequestCompleted_RoomInfo = false!!");
+        return;
+    }
+    
+    CCLOG(root.toStyledString().c_str());
+    WebRequest_Turn(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_Turn), "Post Turn", myAccount->fbID->getCString(),
+                    1, 1, 1);
+}
+void Facebook_Manager::onHttpRequestCompleted_Turn(cocos2d::CCNode *sender, void *data)
+{
+    CCLOG("onHttpRequestCompleted_Turn!!");
+    
+    Json::Value root;
+    if(WebResponse_Common(sender, data, root) == false)
+    {
+        CCLOG("onHttpRequestCompleted_Turn = false!!");
+        return;
+    }
+    
+    CCLOG(root.toStyledString().c_str());
+    
 }
 
 void Facebook_Manager::GetPicture(cocos2d::CCString *fbID, Facebook_Callback* del)
