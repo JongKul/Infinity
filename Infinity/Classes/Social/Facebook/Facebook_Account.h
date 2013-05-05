@@ -19,11 +19,16 @@ public:
     bool init()
     {
         name = fbID = NULL;
+        win = lose = 0;
+        isPlayGame = false;
         return true;
     }
 public:
     CCString* name;
     CCString* fbID;
+    int win;
+    int lose;
+    bool isPlayGame;
 };
 
 #endif /* defined(__Chess__Facebook_Account__) */

@@ -33,7 +33,7 @@ private:
     CCDictionary* cache_Picture;
     CC_PROPERTY_READONLY(Facebook_Account*, myAccount, MyAccount);
     CC_PROPERTY_READONLY(CCArray*, friendList, FriendList);
-    
+    CC_PROPERTY_READONLY(CCArray*, gameFriendList, GameFriendList);
 private:
     Facebook_Callback* delegate_Login;
 public:
@@ -60,7 +60,7 @@ private:
     void onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sender, void *data);
     void onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data);
 public:
-    int Get_FriendListIndex(CCString* fbID);
+    int Get_FriendListIndex(CCString* fbID, bool isGameFriend);
     bool IsLogin();
     void SetNullDelegate();
 };

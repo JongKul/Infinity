@@ -26,7 +26,7 @@ void Room_Manager::Init_RoomList(Json::Value &root)
     {
         Json::Value item = array[i];
         Room_List* room = Room_List::create();
-        room->SetData("568652209", item["nick"].asString(), item["room_index"].asInt(), item["turn"].asInt());
+        room->SetData(item["id"].asString(), item["nick"].asString(), item["room_index"].asInt(), item["turn"].asInt());
         room_List.push_back(room);
     }
     
@@ -50,6 +50,10 @@ void Room_Manager::onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void
     }
     
     CCLOG(root.toStyledString().c_str());
+    for(int i=0; i<room_List.size(); ++i)
+    {
+        room_List[i]->Log();
+    }
     WebRequest_Turn(this, callfuncND_selector(Room_Manager::onHttpRequestCompleted_Turn), "Post Turn", Facebook_Manager::sharedInstance()->getMyAccount()->fbID->getCString(),1, 1, 1);
 }
 
@@ -65,5 +69,8 @@ void Room_Manager::onHttpRequestCompleted_Turn(cocos2d::CCNode *sender, void *da
     }
     
     CCLOG(root.toStyledString().c_str());
-    
+    for(int i=0; i<room_List.size(); ++i)
+    {
+        room_List[i]->Log();
+    }
 }

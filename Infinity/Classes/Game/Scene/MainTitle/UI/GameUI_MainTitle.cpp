@@ -67,7 +67,7 @@ void GameUI_MainTitle::ButtonDelegate_Picture(cocos2d::CCObject *sender)
 {
     CCNode* node = (CCNode*)sender;
     CCLOG("ButtonDelegate_Picture : %d", node->getTag());
-    CCArray* friList = Facebook_Manager::sharedInstance()->getFriendList();
+    CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
     Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(node->getTag());
     Facebook_Manager::sharedInstance()->Invtie(fri->fbID);
 }
@@ -79,7 +79,7 @@ void GameUI_MainTitle::fb_Callback_Login(bool ret)
     
     if(ret == true)
     {
-        CCArray* friList = Facebook_Manager::sharedInstance()->getFriendList();
+        CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
         
         CCSize winSize = CCDirector::sharedDirector()->getWinSize();
         tableView = CCTableView::create(this, CCSizeMake(344, 144*3));
@@ -111,7 +111,7 @@ void GameUI_MainTitle::fb_Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCS
         return;
     }
     
-    int index = Facebook_Manager::sharedInstance()->Get_FriendListIndex(fbID);
+    int index = Facebook_Manager::sharedInstance()->Get_FriendListIndex(fbID, true);
     if(index == -1)return;
     
     AddPicture(tableView->cellAtIndex(index), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
@@ -129,7 +129,7 @@ CCSize GameUI_MainTitle::cellSizeForTable(cocos2d::extension::CCTableView *table
 }
 CCTableViewCell* GameUI_MainTitle::tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx)
 {
-    CCArray* friList = Facebook_Manager::sharedInstance()->getFriendList();
+    CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
     Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(idx);
     CCTableViewCell *cell = table->cellAtIndex(idx);//table->dequeueCell();
 
@@ -147,7 +147,8 @@ CCTableViewCell* GameUI_MainTitle::tableCellAtIndex(cocos2d::extension::CCTableV
 		item->setAnchorPoint(CCPointZero);
         cell->addChild(item);
 
-        CCLabelTTF *label = CCLabelTTF::create(fri->name->getCString(), "Helvetica", 30.0);
+        CCString* str = CCString::createWithFormat("%s w:%d l:%d", fri->name->getCString(), fri->win, fri->lose);
+        CCLabelTTF *label = CCLabelTTF::create(str->getCString(), "Helvetica", 30.0);
         label->setPosition(CCPointZero);
 		label->setAnchorPoint(CCPointZero);
         label->setTag(123);
@@ -197,5 +198,5 @@ void GameUI_MainTitle::AddPicture(cocos2d::CCNode *parent, cocos2d::CCSprite *pi
 
 unsigned int GameUI_MainTitle::numberOfCellsInTableView(cocos2d::extension::CCTableView *table)
 {
-    return Facebook_Manager::sharedInstance()->getFriendList()->count();
+    return Facebook_Manager::sharedInstance()->getGameFriendList()->count();
 }

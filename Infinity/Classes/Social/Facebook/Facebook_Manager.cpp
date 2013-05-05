@@ -27,8 +27,12 @@ Facebook_Manager::Facebook_Manager()
 {
     myAccount = NULL;
     fbBinder = NULL;
+    
     friendList = CCArray::createWithCapacity(100);
     friendList->retain();
+    
+    gameFriendList = CCArray::createWithCapacity(100);
+    gameFriendList->retain();
     
     cache_Picture = CCDictionary::create();
     cache_Picture->retain();
@@ -47,6 +51,7 @@ Facebook_Manager::~Facebook_Manager()
 
 Facebook_Account* Facebook_Manager::getMyAccount(){ return myAccount; }
 CCArray* Facebook_Manager::getFriendList(){ return friendList; }
+CCArray* Facebook_Manager::getGameFriendList(){ return gameFriendList;}
 
 void Facebook_Manager::Login(Facebook_Callback* del)
 {
@@ -134,6 +139,25 @@ void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sende
         return;
     }
     
+    Json::Value array = root["array"];
+    for(int i=0; i<array.size(); ++i)
+    {
+        Json::Value item = array[i];
+        if(item["login_flag"].asBool() == true)
+        {
+            Facebook_Account* fri = Facebook_Account::create();
+            fri->name = CCString::create(item["nick"].asString()) ;
+            fri->name->retain();
+            fri->fbID = CCString::create(item["id"].asString());
+            fri->fbID->retain();
+            fri->win = item["win"].asInt();
+            fri->lose = item["lose"].asInt();
+            fri->isPlayGame = true;
+            fri->retain();
+            gameFriendList->addObject(fri);
+        }
+    }
+    
     CCLOG(root.toStyledString().c_str());
     WebRequest_RoomList(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_RoomList), "Post RoomList", myAccount->fbID->getCString());
 }
@@ -202,10 +226,16 @@ void Facebook_Manager::Invtie(cocos2d::CCString *fbID)
     fbBinder->Invtie(fbID);
 }
 
-int Facebook_Manager::Get_FriendListIndex(CCString* fbID)
+int Facebook_Manager::Get_FriendListIndex(CCString* fbID, bool isGameFriend)
 {
     int index = 0;
-    CCArray* friList = Facebook_Manager::sharedInstance()->getFriendList();
+    CCArray* friList;
+    
+    if(isGameFriend == false)
+        friList= Facebook_Manager::sharedInstance()->getFriendList();
+    else
+        friList = Facebook_Manager::sharedInstance()->getGameFriendList();
+    
     for(index=0; index<friList->count(); ++index)
     {
         Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(index);
