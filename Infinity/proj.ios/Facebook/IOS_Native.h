@@ -6,6 +6,8 @@
 //
 //
 
+#import <UIKit/UIKit.h>
+
 @interface IOS_Native : NSObject
 
 +(void) applicationDidBecomeActive;
