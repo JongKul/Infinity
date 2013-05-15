@@ -1160,6 +1160,7 @@ Value::get( ArrayIndex index,
    const Value *value = &((*this)[index]);
    return value == &null ? defaultValue : *value;
 }
+        
 
 
 bool 

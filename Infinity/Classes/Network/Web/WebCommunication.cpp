@@ -13,60 +13,62 @@ using namespace cocos2d::extension;
 void WebRequest_Login(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* nick)
 {
     Json::Value root;
-    root["id"] = fbID;
-    root["nick"] = nick;
+    root["user_id"] = fbID;
+    root["user_name"] = nick;
     
-    WebRequest_Common(pTarget, pSelector, root, tag, "http://leejk86-JKInfinity.rhcloud.com/login");
+    WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/login");
 }
 
 void WebRequest_SyncFriends(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, CCArray* friend_List)
 {
     Json::Value root, array;
-    root["id"] = fbID;
+    //root["id"] = fbID;
     
     for(int i=0; i<friend_List->count(); ++i)
     {
         Facebook_Account* fri = (Facebook_Account*)friend_List->objectAtIndex(i);
-        Json::Value item;
-        item["id"]  = fri->fbID->getCString();
-        item["nick"] = fri->name->getCString();
-        array.append(item);
+        //Json::Value item;
+        //item["user_id"]  = fri->fbID->getCString();
+        //item["user_nick"] = fri->name->getCString();
+        //array.append(item);
+        array.append(fri->fbID->getCString());
     }
     
     root["array"] = array;
     
     //CCLOG(root.toStyledString().c_str());
     
-    WebRequest_Common(pTarget, pSelector, root, tag, "http://leejk86-JKInfinity.rhcloud.com/sync_friend_list");
+    WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/sync_friend_list");
 }
 
 void WebRequest_RoomList(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID)
 {
     Json::Value root;
-    root["id"] = fbID;
+    root["user_id"] = fbID;
     
-    WebRequest_Common(pTarget, pSelector, root, tag, "http://leejk86-JKInfinity.rhcloud.com/room_list");
+    WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/room_list");
 }
 
 void WebRequest_RoomInfo(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* other_fbID, int roomIndex)
 {
     Json::Value root;
-    root["id"] = fbID;
-    root["other_id"] = other_fbID;
+    root["user_id"] = fbID;
+    root["other_user_id"] = other_fbID;
     if(roomIndex >= 0) root["room_index"] = roomIndex;
     
-    WebRequest_Common(pTarget, pSelector, root, tag, "http://leejk86-JKInfinity.rhcloud.com/room_info");
+    WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/room_info");
 }
 
-void WebRequest_Turn(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, int roomIndex, int x, int y)
+void WebRequest_Turn(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* other_fbID, int roomIndex, int x, int y)
 {
     Json::Value root;
-    root["id"] = fbID;
+    root["user_id"] = fbID;
+    root["other_user_id"] = other_fbID;
     root["room_index"] = roomIndex;
     root["x"] = x;
     root["y"] = y;
     
-    WebRequest_Common(pTarget, pSelector, root, tag, "http://leejk86-JKInfinity.rhcloud.com/turn");
+    WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/room_turn");
 }
 
 void WebRequest_Common(CCObject* pTarget, SEL_CallFuncND pSelector, const Json::Value& root, const char* tag, const char* url)

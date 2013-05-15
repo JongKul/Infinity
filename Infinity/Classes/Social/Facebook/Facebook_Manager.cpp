@@ -123,7 +123,7 @@ void Facebook_Manager::onHttpRequestCompleted_Login(cocos2d::CCNode *sender, voi
     
     WebRequest_SyncFriends(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_SyncFriends), "Post SyncFriends", myAccount->fbID->getCString(), friendList);
     CCLOG(root.toStyledString().c_str());
-    CCLog("index : %d", root["user_index"].asInt());
+    CCLog("win : %d, lose : %d", root["win"].asInt(), root["lose"].asInt());
 }
 
 void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sender, void *data)
@@ -143,19 +143,17 @@ void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sende
     for(int i=0; i<array.size(); ++i)
     {
         Json::Value item = array[i];
-        if(item["login_flag"].asBool() == true)
-        {
-            Facebook_Account* fri = Facebook_Account::create();
-            fri->name = CCString::create(item["nick"].asString()) ;
-            fri->name->retain();
-            fri->fbID = CCString::create(item["id"].asString());
-            fri->fbID->retain();
-            fri->win = item["win"].asInt();
-            fri->lose = item["lose"].asInt();
-            fri->isPlayGame = true;
-            fri->retain();
-            gameFriendList->addObject(fri);
-        }
+      
+        Facebook_Account* fri = Facebook_Account::create();
+        fri->name = CCString::create(item["user_name"].asString()) ;
+        fri->name->retain();
+        fri->fbID = CCString::create(item["user_id"].asString());
+        fri->fbID->retain();
+        fri->win = item["win"].asInt();
+        fri->lose = item["lose"].asInt();
+        fri->isPlayGame = true;
+        fri->retain();
+        gameFriendList->addObject(fri);
     }
     
     CCLOG(root.toStyledString().c_str());
@@ -176,6 +174,7 @@ void Facebook_Manager::onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, 
     }
     
     CCLOG(root.toStyledString().c_str());
+
     Room_Manager::sharedInstance()->Init_RoomList(root);
     if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(true);
     delegate_Login = NULL;
