@@ -37,6 +37,7 @@ void Unit_Base::setPosition(const cocos2d::CCPoint &var)
 {
     if(sprite != NULL)
     {
+        //sprite->setPosition((ccp(0,0)));
         sprite->setPosition(var);
     }
 }

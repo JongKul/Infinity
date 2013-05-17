@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "GameScene_MainTitle.h"
 #include "GameScene_Match.h"
+#include "Input_Manager.h"
 
 USING_NS_CC;
 
@@ -22,11 +23,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pEGLView->setDesignResolutionSize(720, 1280, kResolutionExactFit);
 	
     // turn on display FPS
-    pDirector->setDisplayStats(true);
+    pDirector->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
-
+    
+    Input_Manager::SetInputEnable(true);
+   
     // create a scene. it's an autorelease object
     CCScene *pScene = GameScene_MainTitle::create();
 

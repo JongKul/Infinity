@@ -13,7 +13,8 @@ bool Unit_Black::init()
 {
     Unit_Base::init();
     
-    sprite = CCSprite::create("Unit_Black.png");
+    sprite = CCSprite::create("c_b.png");
+    sprite->setAnchorPoint(ccp(0.5, 0.5));
     
     this->setTag(0);
     

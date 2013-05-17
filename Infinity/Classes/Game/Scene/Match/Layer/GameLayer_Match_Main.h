@@ -13,6 +13,7 @@
 using namespace cocos2d;
 
 class Match_Map;
+class GameScene_Match;
 
 class GameLayer_Match_Main : public CCLayer
 {
@@ -23,6 +24,10 @@ public:
 private:
     Match_Map* cur_Map;
     int curTurn;
+public:
+    GameScene_Match* matchScene;
+public:
+    Match_Map* GetMatchMap();
 };
 
 #endif /* defined(__Infinity__GameLayer_Match_Main__) */

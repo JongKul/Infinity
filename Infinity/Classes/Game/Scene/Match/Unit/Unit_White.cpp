@@ -12,7 +12,8 @@ bool Unit_White::init()
 {
     Unit_Base::init();
     
-    sprite = CCSprite::create("Unit_White.png");
+    sprite = CCSprite::create("c_w.png");
+    sprite->setAnchorPoint(ccp(0.5, 0.5));
     
     this->setTag(1);
     

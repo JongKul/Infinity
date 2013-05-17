@@ -7,14 +7,22 @@
 //
 
 #include "GameLayer_Match_Main.h"
+#include "GameScene_Match.h"
 #include "Match_Map.h"
 #include "Unit_Black.h"
 #include "Unit_White.h"
 #include "Othello_Logic.h"
+#include "Input_Manager.h"
 
 bool GameLayer_Match_Main::init()
 {
     CCLayer::init();
+    
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    CCSprite* bg = CCSprite::create("background.png");
+    
+    bg->setPosition(ccp(winSize.width/2,winSize.height/2));
+    this->addChild(bg);
     
     cur_Map = Match_Map::create();
     this->addChild(cur_Map);
@@ -38,6 +46,8 @@ bool GameLayer_Match_Main::init()
 
 void GameLayer_Match_Main::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
+    ReturnInput();
+    
     CCTouch* touch = (CCTouch*)pTouches->anyObject();
     CCPoint touch_Pos = touch->getLocation();
     
@@ -47,10 +57,17 @@ void GameLayer_Match_Main::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
     {
         //CCLOG("Success Logic_AddUnit");
         
+        matchScene->UpdateUnitCount();
+        
         if(curTurn == 0) curTurn = 1;
         else curTurn = 0;
     }
     //else CCLOG("Fail Logic_AddUnit");
     
     //CCLOG("curTurn : %d", curTurn);
+}
+
+Match_Map* GameLayer_Match_Main::GetMatchMap()
+{
+    return cur_Map;
 }

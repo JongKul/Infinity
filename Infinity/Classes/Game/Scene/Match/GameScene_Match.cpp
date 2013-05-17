@@ -9,18 +9,20 @@
 #include "GameScene_Match.h"
 #include "GameLayer_Match_Main.h"
 #include "GameLayer_Match_UI.h"
+#include "Match_Map.h"
 #include "Scene_Manager.h"
 
 bool GameScene_Match::init()
 {
     CCScene::init();
     
-    CCLayer* main = GameLayer_Match_Main::create();
-    this->addChild(main);
+    mainLayer = GameLayer_Match_Main::create();
+    this->addChild(mainLayer);
     
-    CCLayer* ui = GameLayer_Match_UI::create();
-    this->addChild(ui);
+    uiLayer = GameLayer_Match_UI::create();
+    this->addChild(uiLayer);
     
+    mainLayer->matchScene = uiLayer->matchScene = this;
     
     return true;
 }
@@ -28,4 +30,14 @@ bool GameScene_Match::init()
 void GameScene_Match::ChangeScene()
 {
     Scene_Manager::ChangeScene_MainTitle();
+}
+
+void GameScene_Match::UpdateUnitCount()
+{
+    uiLayer->UpdateUnitCount();
+}
+
+Match_Map* GameScene_Match::GetMatchMap()
+{
+    return mainLayer->GetMatchMap();
 }

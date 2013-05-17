@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 using namespace cocos2d;
 
+class GameScene_Match;
+
 class GameLayer_Match_UI : public CCLayer
 {
 public:
@@ -19,6 +21,15 @@ public:
     virtual bool init();
 private:
     void ButtonDelegate_ChangeScene(CCObject* sender);
+    CCSprite* AddSprite(const cocos2d::CCPoint &pos);
+private:
+    CCSprite *bCountX, *bCount1, *bCount2;
+    CCSprite *wCountX, *wCount1, *wCount2;
+    
+public:
+    void UpdateUnitCount();
+public:
+    GameScene_Match* matchScene;
 };
 
 #endif /* defined(__Infinity__GameLayer_Match_UI__) */

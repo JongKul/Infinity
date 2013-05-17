@@ -13,6 +13,10 @@
 
 using namespace cocos2d;
 
+class GameLayer_Match_UI;
+class GameLayer_Match_Main;
+class Match_Map;
+
 class GameScene_Match : public CCScene
 {
 public:
@@ -20,6 +24,12 @@ public:
     virtual bool init();
 public:
     static void ChangeScene();
+public:
+    void UpdateUnitCount();
+    Match_Map* GetMatchMap();
+private:
+    GameLayer_Match_UI* uiLayer;
+    GameLayer_Match_Main* mainLayer;
 };
 
 #endif /* defined(__Infinity__GameScene_MainTitle__) */
