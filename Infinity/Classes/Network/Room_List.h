@@ -72,7 +72,7 @@ public:
         for(int i=0; i<roomData.size(); ++i) //서버는 좌상단이 0,0 이다.
         {
             room_data.push_back(roomData[i].asInt());
-            CCLOG("data : %d", room_data[i]);
+            //CCLOG("data : %d", room_data[i]);
         }
     }
     void Log()

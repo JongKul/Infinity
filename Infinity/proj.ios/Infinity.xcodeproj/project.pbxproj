@@ -146,6 +146,10 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		6F15FD551701C2C700714D9B /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F15FD521701C11600714D9B /* libcocos2dx.a */; };
 		6F55236F1746900500179042 /* Input_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F55236D1746900500179042 /* Input_Manager.cpp */; };
+		6F55237617470F3100179042 /* UILayer_WaitBlack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F55237417470F3100179042 /* UILayer_WaitBlack.cpp */; };
+		6F55237917471CAD00179042 /* Loading_API.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F55237717471CAD00179042 /* Loading_API.png */; };
+		6F55237A17471CAD00179042 /* Loading_Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F55237817471CAD00179042 /* Loading_Black.png */; };
+		6F55237D174722A200179042 /* GameUI_MainTitle_RoomList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F55237B174722A200179042 /* GameUI_MainTitle_RoomList.cpp */; };
 		6F7F6CC91704AC4D004F61BB /* GameScene_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CC41704AC4D004F61BB /* GameScene_MainTitle.cpp */; };
 		6F7F6CCA1704AC4D004F61BB /* GameUI_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CC71704AC4D004F61BB /* GameUI_MainTitle.cpp */; };
 		6F7F6CD41704AE35004F61BB /* IOS_Facebook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CCD1704AE35004F61BB /* IOS_Facebook.mm */; };
@@ -513,6 +517,12 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		6F55236D1746900500179042 /* Input_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input_Manager.cpp; sourceTree = "<group>"; };
 		6F55236E1746900500179042 /* Input_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input_Manager.h; sourceTree = "<group>"; };
+		6F55237417470F3100179042 /* UILayer_WaitBlack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILayer_WaitBlack.cpp; sourceTree = "<group>"; };
+		6F55237517470F3100179042 /* UILayer_WaitBlack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILayer_WaitBlack.h; sourceTree = "<group>"; };
+		6F55237717471CAD00179042 /* Loading_API.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Loading_API.png; sourceTree = "<group>"; };
+		6F55237817471CAD00179042 /* Loading_Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Loading_Black.png; sourceTree = "<group>"; };
+		6F55237B174722A200179042 /* GameUI_MainTitle_RoomList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI_MainTitle_RoomList.cpp; sourceTree = "<group>"; };
+		6F55237C174722A200179042 /* GameUI_MainTitle_RoomList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUI_MainTitle_RoomList.h; sourceTree = "<group>"; };
 		6F7F6CC41704AC4D004F61BB /* GameScene_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene_MainTitle.cpp; sourceTree = "<group>"; };
 		6F7F6CC51704AC4D004F61BB /* GameScene_MainTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_MainTitle.h; sourceTree = "<group>"; };
 		6F7F6CC71704AC4D004F61BB /* GameUI_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI_MainTitle.cpp; sourceTree = "<group>"; };
@@ -1202,9 +1212,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6F55237217470DB400179042 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6F55237417470F3100179042 /* UILayer_WaitBlack.cpp */,
+				6F55237517470F3100179042 /* UILayer_WaitBlack.h */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		6F7F6CC11704AC4D004F61BB /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				6F55237217470DB400179042 /* UI */,
 				6FCFF72B1709917A00BB3476 /* Manager */,
 				6F7F6CC21704AC4D004F61BB /* Scene */,
 			);
@@ -1236,6 +1256,8 @@
 			children = (
 				6F7F6CC71704AC4D004F61BB /* GameUI_MainTitle.cpp */,
 				6F7F6CC81704AC4D004F61BB /* GameUI_MainTitle.h */,
+				6F55237B174722A200179042 /* GameUI_MainTitle_RoomList.cpp */,
+				6F55237C174722A200179042 /* GameUI_MainTitle_RoomList.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1450,6 +1472,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6F55237717471CAD00179042 /* Loading_API.png */,
+				6F55237817471CAD00179042 /* Loading_Black.png */,
 				6FD784EA174680610093AB63 /* b0.png */,
 				6FD784EB174680610093AB63 /* b1.png */,
 				6FD784EC174680610093AB63 /* b2.png */,
@@ -1601,6 +1625,8 @@
 				6FD78515174680610093AB63 /* w7.png in Resources */,
 				6FD78516174680610093AB63 /* w8.png in Resources */,
 				6FD78517174680610093AB63 /* w9.png in Resources */,
+				6F55237917471CAD00179042 /* Loading_API.png in Resources */,
+				6F55237A17471CAD00179042 /* Loading_Black.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1765,6 +1791,8 @@
 				6FCFF7531709C0E300BB3476 /* Facebook_Binder_Android.cpp in Sources */,
 				6FCD75BC171E85F900FDE202 /* Room_Manager.cpp in Sources */,
 				6F55236F1746900500179042 /* Input_Manager.cpp in Sources */,
+				6F55237617470F3100179042 /* UILayer_WaitBlack.cpp in Sources */,
+				6F55237D174722A200179042 /* GameUI_MainTitle_RoomList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

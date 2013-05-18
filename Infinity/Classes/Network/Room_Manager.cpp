@@ -36,13 +36,14 @@ void Room_Manager::Init_RoomList(Json::Value &root)
     
     for(int i=0; i<room_List.size(); ++i)
     {
-        room_List[i]->Log();
+        //room_List[i]->Log();
     }
     //void WebRequest_RoomInfo(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* other_fbID, int roomIndex)
-    WebRequest_RoomInfo(this, callfuncND_selector(Room_Manager::onHttpRequestCompleted_RoomInfo),
-                        "Post RoomInfo", room_List[0]->user_ID->getCString(), room_List[0]->other_user_ID->getCString(), room_List[0]->room_Index);
-    
-    CCLOG("WebRequest_RoomInfo");
+    if(room_List.size() > 0)
+    {
+        //WebRequest_RoomInfo(this, callfuncND_selector(Room_Manager::onHttpRequestCompleted_RoomInfo), "Post RoomInfo",
+        //                    room_List[0]->user_ID->getCString(), room_List[0]->other_user_ID->getCString(), room_List[0]->room_Index);
+    }
 }
 
 void Room_Manager::onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void *data)
@@ -56,14 +57,14 @@ void Room_Manager::onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void
         return;
     }
     
-    CCLOG(root.toStyledString().c_str());
+    //CCLOG(root.toStyledString().c_str());
                     
     int roomIndex = root["room_index"].asInt();
     for(int i=0; i<room_List.size(); ++i)
     {
         if(room_List[i]->room_Index == roomIndex)
         {
-            room_List[i]->Log();
+            //room_List[i]->Log();
             
             std::string winner = "";
             if(root["winner"].isNull() == false) winner = root["winner"].asString();
@@ -74,8 +75,8 @@ void Room_Manager::onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void
     }
  
     //void WebRequest_Turn(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, int roomIndex, int x, int y)
-    WebRequest_Turn(this, callfuncND_selector(Room_Manager::onHttpRequestCompleted_Turn),
-                    "Post Turn", room_List[0]->user_ID->getCString(), room_List[0]->other_user_ID->getCString(), room_List[0]->room_Index, 4, 2);
+    //WebRequest_Turn(this, callfuncND_selector(Room_Manager::onHttpRequestCompleted_Turn),
+    //                "Post Turn", room_List[0]->user_ID->getCString(), room_List[0]->other_user_ID->getCString(), room_List[0]->room_Index, 4, 2);
 }
 
 void Room_Manager::onHttpRequestCompleted_Turn(cocos2d::CCNode *sender, void *data)
@@ -89,14 +90,14 @@ void Room_Manager::onHttpRequestCompleted_Turn(cocos2d::CCNode *sender, void *da
         return;
     }
     
-    CCLOG(root.toStyledString().c_str());
+    //CCLOG(root.toStyledString().c_str());
     
     int roomIndex = root["room_index"].asInt();
     for(int i=0; i<room_List.size(); ++i)
     {
         if(room_List[i]->room_Index == roomIndex)
         {
-            room_List[i]->Log();
+            //room_List[i]->Log();
         }
     }
 }

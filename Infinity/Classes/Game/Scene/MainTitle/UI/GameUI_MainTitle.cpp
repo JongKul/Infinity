@@ -9,6 +9,9 @@
 #include "GameUI_MainTitle.h"
 #include "GameScene_MainTitle.h"
 #include "Native_Helper.h"
+#include "UILayer_WaitBlack.h"
+#include "Input_Manager.h"
+#include "GameUI_MainTitle_RoomList.h"
 
 bool GameUI_MainTitle::init()
 {
@@ -28,6 +31,7 @@ bool GameUI_MainTitle::init()
     post_Button->setPosition(ccp(0,200));
     CCMenu* menu = CCMenu::create(start_Button, change_Button, post_Button, NULL);
     menu->setPosition(ccp(winSize.width * 0.8f, winSize.height * 0.2f));
+   
     this->addChild(menu);
     
     if(Facebook_Manager::sharedInstance()->IsLogin() == true)
@@ -42,6 +46,7 @@ bool GameUI_MainTitle::init()
 
 void GameUI_MainTitle::ButtonDelegate_Start(cocos2d::CCObject *sender)
 {
+    ReturnInput();
     //IOS_Helper::sharedInstance()->ShowAlert();
     //IOS_Helper::sharedInstance()->FacebookLogin();
     //gameLayer->ChangeScene();
@@ -50,28 +55,33 @@ void GameUI_MainTitle::ButtonDelegate_Start(cocos2d::CCObject *sender)
         CCLog("IS Login");
         return;
     }
+    UILayer_WaitBlack::AddLayer();
     Facebook_Manager::sharedInstance()->Login(this);
 }
 
 void GameUI_MainTitle::ButtonDelegate_Post(cocos2d::CCObject *sender)
 {
+    ReturnInput();
     Facebook_Manager::sharedInstance()->Post();
+    //UILayer_WaitBlack::RemoveLayer();
 }
 
 void GameUI_MainTitle::ButtonDelegate_ChangeScene(cocos2d::CCObject *sender)
 {
+    ReturnInput();
     GameScene_MainTitle::ChangeScene();
+    //UILayer_WaitBlack::AddLayer();
 }
 
 void GameUI_MainTitle::ButtonDelegate_Picture(cocos2d::CCObject *sender)
 {
+    ReturnInput();
     CCNode* node = (CCNode*)sender;
     CCLOG("ButtonDelegate_Picture : %d", node->getTag());
     CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
     Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(node->getTag());
     Facebook_Manager::sharedInstance()->Invtie(fri->fbID);
 }
-
 
 void GameUI_MainTitle::fb_Callback_Login(bool ret)
 {
@@ -90,17 +100,22 @@ void GameUI_MainTitle::fb_Callback_Login(bool ret)
         this->addChild(tableView);
         tableView->reloadData();
         
-        
         for(int i=0; i<friList->count(); ++i)
         {
             Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(i);
             Facebook_Manager::sharedInstance()->GetPicture(fri->fbID, this);
         }
+        
+        GameUI_MainTitle_RoomList* roomList = GameUI_MainTitle_RoomList::create();
+        roomList->SetGameLayer(gameLayer);
+        this->addChild(roomList);
     }
     else
     {
         
     }
+    
+    UILayer_WaitBlack::RemoveLayer();
 }
 
 void GameUI_MainTitle::fb_Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCSprite *picture)

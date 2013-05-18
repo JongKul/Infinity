@@ -24,7 +24,6 @@ class Room_Manager:public CCNode
 {
 public:
     static Room_Manager* sharedInstance();
-private:
     std::vector<Room_List*> room_List;
     
 private:

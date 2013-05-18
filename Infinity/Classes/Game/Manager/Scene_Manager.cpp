@@ -21,6 +21,22 @@ void Scene_Manager::ChangeScene_MainTitle()
     ChangeScene_Common(GameScene_MainTitle::create());
 }
 
+Scene_Manager* Scene_Manager::SharedInstance()
+{
+    static Scene_Manager instance;
+    return &instance;
+}
+
+CCScene* Scene_Manager::GetCurScene()
+{
+    return SharedInstance()->curScene;
+}
+
+void Scene_Manager::SetCurScene(cocos2d::CCScene *scene)
+{
+    SharedInstance()->curScene = scene;
+}
+
 void Scene_Manager::ChangeScene_Common(CCScene* scene)
 {
     Facebook_Manager::sharedInstance()->SetNullDelegate();
@@ -40,5 +56,6 @@ void Scene_Manager::ChangeScene_Common(CCScene* scene)
     //transition = CCTransitionFadeTR::create(3.0f, scene);//대각선방향으로 씬이 점진적으로 나온다.
     //transition = CCTransitionProgressRadialCCW::create(3.0f, scene); //프로그래스바처럼 반시계방향으로 화면이 나온다.
 #pragma endregion
+    SetCurScene(scene);
     CCDirector::sharedDirector()->replaceScene(transition);
 }
