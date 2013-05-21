@@ -61,6 +61,7 @@ private:
     void onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data);
 public:
     int Get_FriendListIndex(CCString* fbID, bool isGameFriend);
+    CCString* Get_FriendName(CCString* fbID);
     bool IsLogin();
     void SetNullDelegate();
 };

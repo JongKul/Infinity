@@ -21,7 +21,7 @@ class Match_Map : public CCNode
 public:
     bool init();
     CREATE_FUNC(Match_Map);
-    Match_Map():tileCount_Width(8),tileCount_Height(8),tile_Width(80),tile_Height(80),tile_X(35),tile_Y(1280-955){}
+    Match_Map():tileCount_Width(8),tileCount_Height(8),tile_Width(80),tile_Height(80),tile_X(40),tile_Y(640 - (720/2) + 40){}
     
 public:
     CCPoint GetPosition_FromIndex(int x, int y);
@@ -37,6 +37,7 @@ public:
     
     void SetUnit_ToMap(Unit_Base* unit, int x, int y);
     void RemoveUnit(int index);
+    void Update_MapData();
 private:
     const int tile_Width, tile_Height;
     const int tileCount_Width, tileCount_Height;
@@ -44,6 +45,7 @@ private:
     std::vector<Unit_Base*> list_MapUnit;
     
 private:
+    void Init_Unit();
     void Init_CreateTile();
 };
 

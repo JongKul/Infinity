@@ -13,11 +13,13 @@
 
 void Scene_Manager::ChangeScene_Match()
 {
+    Facebook_Manager::sharedInstance()->SetNullDelegate();
     ChangeScene_Common(GameScene_Match::create());
 }
 
 void Scene_Manager::ChangeScene_MainTitle()
 {
+    Facebook_Manager::sharedInstance()->SetNullDelegate();
     ChangeScene_Common(GameScene_MainTitle::create());
 }
 
@@ -39,8 +41,6 @@ void Scene_Manager::SetCurScene(cocos2d::CCScene *scene)
 
 void Scene_Manager::ChangeScene_Common(CCScene* scene)
 {
-    Facebook_Manager::sharedInstance()->SetNullDelegate();
-    
     CCTransitionScene *transition;
 #pragma region Transition Effect
     //transition = CCTransitionPageTurn::create(3.0f, scene, false);//책 넘기듯이 페이지를 넘기는 효과.

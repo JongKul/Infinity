@@ -12,206 +12,88 @@
 #include "UILayer_WaitBlack.h"
 #include "Input_Manager.h"
 #include "GameUI_MainTitle_RoomList.h"
+#include "GameUI_MainTitle_Rank.h"
 
 bool GameUI_MainTitle::init()
 {
-    gameLayer = NULL;
-
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    CCNode::init();
     
-    CCSprite* bg = CCSprite::create("bg.png");
-    bg->setPosition(ccp(size.width/2,size.height/2));
-    this->addChild(bg);
+    Init_UISet();
+    Init_Button();
     
-    CCMenuItemImage* start_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_Start));
-    CCMenuItemImage* change_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_ChangeScene));
-    CCMenuItemImage* post_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_Post));
-    change_Button->setPosition(ccp(0,100));
-    post_Button->setPosition(ccp(0,200));
-    CCMenu* menu = CCMenu::create(start_Button, change_Button, post_Button, NULL);
-    menu->setPosition(ccp(winSize.width * 0.8f, winSize.height * 0.2f));
-   
-    this->addChild(menu);
-    
-    if(Facebook_Manager::sharedInstance()->IsLogin() == true)
-    {
-        CCLog("IS Login");
-        fb_Callback_Login(true);
-    }
+    ButtonDelegate_Home(NULL);
     
     return true;
 }
 
-
-void GameUI_MainTitle::ButtonDelegate_Start(cocos2d::CCObject *sender)
+void GameUI_MainTitle::Init_UISet()
 {
-    ReturnInput();
-    //IOS_Helper::sharedInstance()->ShowAlert();
-    //IOS_Helper::sharedInstance()->FacebookLogin();
-    //gameLayer->ChangeScene();
-    if(Facebook_Manager::sharedInstance()->IsLogin() == true)
-    {
-        CCLog("IS Login");
-        return;
-    }
-    UILayer_WaitBlack::AddLayer();
-    Facebook_Manager::sharedInstance()->Login(this);
-}
-
-void GameUI_MainTitle::ButtonDelegate_Post(cocos2d::CCObject *sender)
-{
-    ReturnInput();
-    Facebook_Manager::sharedInstance()->Post();
-    //UILayer_WaitBlack::RemoveLayer();
-}
-
-void GameUI_MainTitle::ButtonDelegate_ChangeScene(cocos2d::CCObject *sender)
-{
-    ReturnInput();
-    GameScene_MainTitle::ChangeScene();
-    //UILayer_WaitBlack::AddLayer();
-}
-
-void GameUI_MainTitle::ButtonDelegate_Picture(cocos2d::CCObject *sender)
-{
-    ReturnInput();
-    CCNode* node = (CCNode*)sender;
-    CCLOG("ButtonDelegate_Picture : %d", node->getTag());
-    CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
-    Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(node->getTag());
-    Facebook_Manager::sharedInstance()->Invtie(fri->fbID);
-}
-
-void GameUI_MainTitle::fb_Callback_Login(bool ret)
-{
-    CCLog("fb_Callback_Login");
+    uiLayer_Rank = GameUI_MainTitle_Rank::create(); uiLayer_Rank->SetGameLayer(this);
+    uiLayer_RoomList = GameUI_MainTitle_RoomList::create(); uiLayer_RoomList->SetGameLayer(this);
     
-    if(ret == true)
-    {
-        CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
-        
-        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-        tableView = CCTableView::create(this, CCSizeMake(344, 144*3));
-        tableView->setDirection(kCCScrollViewDirectionVertical);
-        tableView->setPosition(ccp(50,winSize.height/2-120));
-        tableView->setDelegate(this);
-        tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
-        this->addChild(tableView);
-        tableView->reloadData();
-        
-        for(int i=0; i<friList->count(); ++i)
-        {
-            Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(i);
-            Facebook_Manager::sharedInstance()->GetPicture(fri->fbID, this);
-        }
-        
-        GameUI_MainTitle_RoomList* roomList = GameUI_MainTitle_RoomList::create();
-        roomList->SetGameLayer(gameLayer);
-        this->addChild(roomList);
-    }
-    else
-    {
-        
-    }
-    
-    UILayer_WaitBlack::RemoveLayer();
+    Add_UINode(uiLayer_Rank);
+    Add_UINode(uiLayer_RoomList);
 }
 
-void GameUI_MainTitle::fb_Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCSprite *picture)
+void GameUI_MainTitle::Init_Button()
 {
-    if(picture == NULL || tableView == NULL)
+    button_Home = CCMenuItemImage::create("b_home.png", "b_bhome.png",
+                                                           this,menu_selector(GameUI_MainTitle::ButtonDelegate_Home));
+    button_Playing = CCMenuItemImage::create("b_play.png", "b_bplay.png",
+                                                              this,menu_selector(GameUI_MainTitle::ButtonDelegate_Playing));
+    button_NewGame = CCMenuItemImage::create("b_new.png", "b_bnew.png",
+                                                              this,menu_selector(GameUI_MainTitle::ButtonDelegate_NewGame));
+    button_Home->setPosition(ccp(135,1280 - 1155)); button_Home->setRotation(17);
+    button_Playing->setPosition(ccp(360,1280 - 1155)); button_Playing->setRotation(17);
+    button_NewGame->setPosition(ccp(585,1280 - 1155)); button_NewGame->setRotation(17);
+    CCMenu* menu = CCMenu::create(button_Home, button_Playing, button_NewGame, NULL);
+    menu->setPosition(ccp(0,0));
+    this->addChild(menu);
+}
+
+void GameUI_MainTitle::Add_UINode(cocos2d::CCNode *child)
+{
+    child->setVisible(false);
+    this->addChild(child, 0);
+}
+
+void GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)
+{
+    ReturnInput();
+    
+    if(uiLayer_Rank->isVisible() == true)
     {
-        CCLOG("NULL");
+        CCLOG("Home visible");
         return;
     }
     
-    int index = Facebook_Manager::sharedInstance()->Get_FriendListIndex(fbID, true);
-    if(index == -1)return;
+    button_Home->setNormalImage(CCSprite::create("b_home.png"));
+    button_Playing->setNormalImage(CCSprite::create("b_bplay.png"));
+    button_NewGame->setNormalImage(CCSprite::create("b_bnew.png"));
     
-    AddPicture(tableView->cellAtIndex(index), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+    uiLayer_Rank->setVisible(true);
+    uiLayer_RoomList->setVisible(false);
 }
 
-
-void GameUI_MainTitle::tableCellTouched(cocos2d::extension::CCTableView* table, cocos2d::extension::CCTableViewCell* cell)
+void GameUI_MainTitle::ButtonDelegate_Playing(cocos2d::CCObject *sender)
 {
-    CCLOG("cell touched at index: %i, child : %d", cell->getIdx(), cell->getChildrenCount());
-}
-
-CCSize GameUI_MainTitle::cellSizeForTable(cocos2d::extension::CCTableView *table)
-{
-    return CCSizeMake(344,144);
-}
-CCTableViewCell* GameUI_MainTitle::tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx)
-{
-    CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
-    Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(idx);
-    CCTableViewCell *cell = table->cellAtIndex(idx);//table->dequeueCell();
-
-    tableView = table;
+    ReturnInput();
     
-    if (cell == NULL)
+    if(uiLayer_RoomList->isVisible() == true)
     {
-        //CCLog("tableCellAtIndex NULL idx : %d, name : %s", idx, fri->name->getCString());
-        
-        cell = new CCTableViewCell();
-        cell->autorelease();
-        
-        CCSprite* item = CCSprite::create("Icon-144.png");
-        item->setPosition(CCPointZero);
-		item->setAnchorPoint(CCPointZero);
-        cell->addChild(item);
-
-        CCString* str = CCString::createWithFormat("%s w:%d l:%d", fri->name->getCString(), fri->win, fri->lose);
-        CCLabelTTF *label = CCLabelTTF::create(str->getCString(), "Helvetica", 30.0);
-        label->setPosition(CCPointZero);
-		label->setAnchorPoint(CCPointZero);
-        label->setTag(123);
-        cell->addChild(label, 10);
-        
-        CCMenuItemImage* button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle::ButtonDelegate_Picture));
-        button->setTag(idx);
-        CCMenu* menu = CCMenu::create(button, NULL);
-        menu->setPosition(ccp(170,75));
-		menu->setAnchorPoint(CCPointZero);
-        cell->addChild(menu);
-        
-        CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
-        AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
-    }
-    else
-    {
-        //CCLog("tableCellAtIndex Not NULL idx : %i, name : %s", idx, fri->name->getCString());
-        CCNode *picture = cell->getChildByTag(10);
-        if(picture == NULL)
-        {
-            picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
-            AddPicture(cell, (CCSprite*)picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
-        }
-    }
-    
-    return cell;
-}
-
-void GameUI_MainTitle::AddPicture(cocos2d::CCNode *parent, cocos2d::CCSprite *picture, cocos2d::CCPoint anchor, cocos2d::CCPoint pos, int tag, float width, float height)
-{
-    if(parent == NULL || picture == NULL)
-    {
-        //CCLog("AddPicture NULL");
+        CCLOG("Playing visible");
         return;
     }
     
-    CCSize size = picture->getContentSize();
-    float scale_X = width/ size.width;
-    float scale_Y = height/ size.height;
-    picture->setAnchorPoint(anchor);
-    picture->setPosition(pos);
-    picture->setScaleX(scale_X); picture->setScaleY(scale_Y);
-    picture->setTag(tag);
-    parent->addChild(picture);
+    button_Home->setNormalImage(CCSprite::create("b_bhome.png"));
+    button_Playing->setNormalImage(CCSprite::create("b_play.png"));
+    button_NewGame->setNormalImage(CCSprite::create("b_bnew.png"));
+    
+    uiLayer_Rank->setVisible(false);
+    uiLayer_RoomList->setVisible(true);
 }
 
-unsigned int GameUI_MainTitle::numberOfCellsInTableView(cocos2d::extension::CCTableView *table)
+void GameUI_MainTitle::ButtonDelegate_NewGame(cocos2d::CCObject *sender)
 {
-    return Facebook_Manager::sharedInstance()->getGameFriendList()->count();
+    ReturnInput();
 }

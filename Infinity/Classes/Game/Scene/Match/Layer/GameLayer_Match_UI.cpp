@@ -15,21 +15,20 @@ bool GameLayer_Match_UI::init()
 {
     CCLayer::init();
     
+    bCount1 = AddSprite(ccp(600, 1280 - 1145));
+    bCount2 = AddSprite(ccp(660, 1280 - 1145));
+    
+    wCount1 = AddSprite(ccp(600, 1280 - 155));
+    wCount2 = AddSprite(ccp(660, 1280 - 155));
+    
+    /*
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    
-    bCountX = AddSprite(ccp(483, 1280 - 113));
-    bCount1 = AddSprite(ccp(570, 1280 - 113));
-    bCount2 = AddSprite(ccp(640, 1280 - 113));
-    
-    wCountX = AddSprite(ccp(483, 1280 - 1112));
-    wCount1 = AddSprite(ccp(570, 1280 - 1112));
-    wCount2 = AddSprite(ccp(640, 1280 - 1112));
-    
     CCMenuItemImage* changeScene_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameLayer_Match_UI::ButtonDelegate_ChangeScene));
     changeScene_Button->setPosition(ccp(0,0));
     CCMenu* menu = CCMenu::create(changeScene_Button, NULL);
     menu->setPosition(ccp(winSize.width * 0.8f, winSize.height * 0.9f));
     this->addChild(menu);
+    */
     
     return true;
 }
@@ -58,7 +57,7 @@ void GameLayer_Match_UI::UpdateUnitCount()
     int whiteCount = map->GetUnitCount_White();
     int blackCount = map->GetUnitCount_Black();
     
-    CCLOG("white : %d, black : %d", whiteCount, blackCount);
+    //CCLOG("white : %d, black : %d", whiteCount, blackCount);
 
     char fileName[256];
     

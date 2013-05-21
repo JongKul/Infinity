@@ -1,13 +1,13 @@
 //
-//  GameUI_MainTitle_RoomList.h
+//  GameUI_MainTitle_Rank.h
 //  Infinity
 //
-//  Created by 정 기호 on 13. 5. 18..
+//  Created by 정 기호 on 13. 5. 21..
 //
 //
 
-#ifndef __Infinity__GameUI_MainTitle_RoomList__
-#define __Infinity__GameUI_MainTitle_RoomList__
+#ifndef __Infinity__GameUI_MainTitle_Rank__
+#define __Infinity__GameUI_MainTitle_Rank__
 
 #include "cocos2d.h"
 #include "CCTableView.h"
@@ -18,19 +18,18 @@
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
-class Room_List;
-
-class GameUI_MainTitle_RoomList : public CCNode, public cocos2d::extension::CCTableViewDataSource, public cocos2d::extension::CCTableViewDelegate, public Facebook_Callback, public Room_Callback
+class GameUI_MainTitle_Rank : public CCNode, public cocos2d::extension::CCTableViewDataSource, public cocos2d::extension::CCTableViewDelegate, public Facebook_Callback, public Room_Callback
 {
 private:
     GameUI_MainTitle* uiMain;
-    CCTableView *tableView_MyTurn, *tableView_Waiting;
-    std::vector<Room_List*> list_MyTurn, list_Waiting;
-    int curMakeTable;
+    CCTableView* tableView;
 public:
     virtual bool init();
-    CREATE_FUNC(GameUI_MainTitle_RoomList);
+    CREATE_FUNC(GameUI_MainTitle_Rank);
 public:
+    void ButtonDelegate_Start(CCObject* sender);
+    void ButtonDelegate_Post(CCObject* sender);
+    void ButtonDelegate_ChangeScene(CCObject* sender);
     void ButtonDelegate_Picture(CCObject* sender);
     
     void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {}
@@ -41,14 +40,12 @@ public:
     unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
 public:
     void SetGameLayer(GameUI_MainTitle* main){ uiMain = main; }
-    virtual void fb_Callback_Login (bool){}
+    virtual void fb_Callback_Login (bool);
     virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture);
+public:
+    virtual void Callback_RoomMake(int roomIndex);
 private:
     void AddPicture(CCNode* parent, CCSprite* picture, CCPoint anchor, CCPoint pos, int tag, float width, float height);
-    void AddTableView_MyTurn();
-    void AddTableView_Waiting();
-public:
-    virtual void Callback_RoomInfo(int roomIndex);
 };
 
-#endif /* defined(__Infinity__GameUI_MainTitle_RoomList__) */
+#endif /* defined(__Infinity__GameUI_MainTitle_Rank__) */

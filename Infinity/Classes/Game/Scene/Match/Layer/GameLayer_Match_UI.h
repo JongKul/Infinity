@@ -23,8 +23,8 @@ private:
     void ButtonDelegate_ChangeScene(CCObject* sender);
     CCSprite* AddSprite(const cocos2d::CCPoint &pos);
 private:
-    CCSprite *bCountX, *bCount1, *bCount2;
-    CCSprite *wCountX, *wCount1, *wCount2;
+    CCSprite *bCount1, *bCount2;
+    CCSprite *wCount1, *wCount2;
     
 public:
     void UpdateUnitCount();

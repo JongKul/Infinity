@@ -24,6 +24,8 @@ bool GameScene_Match::init()
     
     mainLayer->matchScene = uiLayer->matchScene = this;
     
+    UpdateUnitCount();
+    
     return true;
 }
 

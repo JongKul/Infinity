@@ -54,7 +54,7 @@ void WebRequest_RoomInfo(CCObject* pTarget, SEL_CallFuncND pSelector, const char
     Json::Value root;
     root["user_id"] = fbID;
     root["other_user_id"] = other_fbID;
-    if(roomIndex >= 0) root["room_index"] = roomIndex;
+    root["room_index"] = roomIndex;
     
     WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/room_info");
 }

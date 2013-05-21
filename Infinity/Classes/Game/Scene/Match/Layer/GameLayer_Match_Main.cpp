@@ -13,13 +13,16 @@
 #include "Unit_White.h"
 #include "Othello_Logic.h"
 #include "Input_Manager.h"
+#include "Facebook_Manager.h"
+#include "Room_Manager.h"
+#include "UILayer_WaitBlack.h"
 
 bool GameLayer_Match_Main::init()
 {
     CCLayer::init();
     
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    CCSprite* bg = CCSprite::create("background.png");
+    CCSprite* bg = CCSprite::create("back_1.png");
     
     bg->setPosition(ccp(winSize.width/2,winSize.height/2));
     this->addChild(bg);
@@ -28,18 +31,19 @@ bool GameLayer_Match_Main::init()
     this->addChild(cur_Map);
     
     setTouchEnabled(true);
+  
+    CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
+    if(Room_Manager::sharedInstance()->curMatchRoom->white->isEqual(myAccount) == true)
+    {
+        myTurnTag = 1;
+    }
+    else
+    {
+        myTurnTag = 0;
+    }
     
-    Unit_Base* black1 = Unit_Black::create();
-    Unit_Base* black2 = Unit_Black::create();
-    Unit_Base* white1 = Unit_White::create();
-    Unit_Base* white2 = Unit_White::create();
-    
-    cur_Map->SetUnit_ToMap(black1, 3, 4);
-    cur_Map->SetUnit_ToMap(black2, 4, 3);
-    cur_Map->SetUnit_ToMap(white1, 4, 4);
-    cur_Map->SetUnit_ToMap(white2, 3, 3);
-    
-    curTurn = 0;
+    isRequestRoomUpdate = false;
+    this->schedule(schedule_selector(GameLayer_Match_Main::Schedule_RoomUpdate), 7.0f);
     
     return  true;
 }
@@ -48,23 +52,80 @@ void GameLayer_Match_Main::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
     ReturnInput();
     
+    CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
+    if(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID->isEqual(myAccount) == false)
+    {
+        CCLOG("No My Turn");
+        return;
+    }
+    
     CCTouch* touch = (CCTouch*)pTouches->anyObject();
     CCPoint touch_Pos = touch->getLocation();
     
     //CCLOG("Touch Pos x : %f, y : %f", touch_Pos.x, touch_Pos.y);
     
-    if(Othello_Logic::Logic_AddUnit(cur_Map, touch_Pos, curTurn) == true)
+    int x,y;
+    if(Othello_Logic::Logic_AddUnit(cur_Map, touch_Pos, x, y, myTurnTag) == true)
     {
-        //CCLOG("Success Logic_AddUnit");
-        
         matchScene->UpdateUnitCount();
         
-        if(curTurn == 0) curTurn = 1;
-        else curTurn = 0;
+        y = (cur_Map->GetTileCount_Height()-1) - y;
+        
+        Room_Manager::sharedInstance()->Request_RoomTurn(Room_Manager::sharedInstance()->curMatchRoom->room_Index, x, y, this);
+        UILayer_WaitBlack::AddLayer();
+        
+        //if(myTurnTag == 0) myTurnTag = 1;
+        //else myTurnTag = 0;
     }
-    //else CCLOG("Fail Logic_AddUnit");
+}
+
+void GameLayer_Match_Main::Schedule_RoomUpdate(float time)
+{
+    CCLOG("Schedule_RoomUpdate");
     
-    //CCLOG("curTurn : %d", curTurn);
+    if(isRequestRoomUpdate == true)
+    {
+        CCLOG("isRequestRoomUpdate = true");
+        return;
+    }
+    
+    CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
+    if(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID->isEqual(myAccount) == true)
+    {
+        CCLOG("Cur My Turn");
+        return;
+    }
+    
+    isRequestRoomUpdate = true;
+    
+    prevCurnID = CCString::create(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID->m_sString);
+    prevCurnID->retain();
+    
+    Room_Manager::sharedInstance()->Request_RoomUpdate(this);
+    
+    UILayer_WaitBlack::AddLayer();
+}
+
+void GameLayer_Match_Main::Callback_RoomTurn(bool ret)
+{
+    UILayer_WaitBlack::RemoveLayer();
+}
+
+void GameLayer_Match_Main::Callback_RoomUpdate()
+{
+    isRequestRoomUpdate = false;
+    
+    UILayer_WaitBlack::RemoveLayer();
+    
+    if(prevCurnID->isEqual(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID) == false)
+    {
+        CCLOG("Update");
+        cur_Map->Update_MapData();
+    }
+    else
+    {
+        CCLOG("No Update");
+    }
 }
 
 Match_Map* GameLayer_Match_Main::GetMatchMap()

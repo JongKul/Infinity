@@ -75,6 +75,21 @@ public:
             //CCLOG("data : %d", room_data[i]);
         }
     }
+    void SetData_RoomTurn(std::string turn, int finish_flag, std::string winnner, Json::Value& roomData)
+    {
+        this->cutTurnID = CCString::create(turn);
+        this->cutTurnID->retain();
+        
+        this->finishFlag = finish_flag;
+        
+        this->winnderID = CCString::create(winnner);
+        this->winnderID->retain();
+        
+        for(int i=0; i<roomData.size(); ++i) //서버는 좌상단이 0,0 이다.
+        {
+            room_data[i] = roomData[i].asInt();
+        }
+    }
     void Log()
     {
         if(user_ID == NULL || other_user_ID == NULL) return;

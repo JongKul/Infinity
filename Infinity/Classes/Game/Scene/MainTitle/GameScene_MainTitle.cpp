@@ -38,7 +38,6 @@ bool GameLayer_MainTitle::init()
     this->setTouchEnabled(true);
     
     GameUI_MainTitle* ui = GameUI_MainTitle::create();
-    ui->SetGameLayer(this);
     this->addChild(ui);
     
     return true;

@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "GameScene_MainTitle.h"
 #include "GameScene_Match.h"
+#include "GameScene_Intro.h"
 #include "Input_Manager.h"
 #include "Scene_Manager.h"
 
@@ -32,7 +33,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     Input_Manager::SetInputEnable(true);
    
     // create a scene. it's an autorelease object
-    CCScene *pScene = GameScene_MainTitle::create();
+    CCScene *pScene = GameScene_Intro::create();
     Scene_Manager::SetCurScene(pScene);
     
     // run

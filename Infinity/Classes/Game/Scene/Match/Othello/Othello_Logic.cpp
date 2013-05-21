@@ -11,9 +11,8 @@
 #include "Unit_Black.h"
 #include "Unit_White.h"
 
-bool Othello_Logic::Logic_AddUnit(Match_Map* cur_Map, const cocos2d::CCPoint &touchPos, int tag)
+bool Othello_Logic::Logic_AddUnit(Match_Map* cur_Map, const cocos2d::CCPoint &touchPos, int& x, int& y, int tag)
 {
-    int x,y;
     if(cur_Map->GetEmptyTile_FromTouch(touchPos, &x, &y) == true)
     {
         //CCLOG("Empty Tile x : %d, y : %d", x, y);
@@ -29,6 +28,8 @@ bool Othello_Logic::Logic_AddUnit(Match_Map* cur_Map, const cocos2d::CCPoint &to
 bool Othello_Logic::Logic_CheckInterUnit(Match_Map *cur_Map, int index_X, int index_Y, int tag)
 {
     bool ret = false;
+    
+    //CCLOG("x : %d, y : %d, tag : %d", index_X, index_Y, tag);
     
     ret = ret | Logic_CheckInterUnit_Hori_Right(cur_Map, index_X, index_Y, tag);
     ret = ret | Logic_CheckInterUnit_Hori_Left(cur_Map, index_X, index_Y, tag);
@@ -61,7 +62,8 @@ bool Othello_Logic::Logic_CheckInterUnit_AfterLogic(Match_Map* cur_Map, vector<i
 Unit_Base* Othello_Logic::CreateUnit(int tag)
 {
     if(tag == 0) return Unit_Black::create();
-    else return Unit_White::create();
+    else if(tag == 1) return Unit_White::create();
+    else return NULL;
 }
 
 bool Othello_Logic::Logic_CheckInterUnit_Hori_Right(Match_Map* cur_Map, int index_X, int index_Y, int tag)
@@ -104,6 +106,8 @@ bool Othello_Logic::Logic_CheckInterUnit_Verti_Up(Match_Map* cur_Map, int index_
         if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
         else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(index_X, i));
+        
+        //CCLOG("index_X : %d, i : %d, tag : %d", index_X, i, tag);
     }
     
     return false;
@@ -116,9 +120,13 @@ bool Othello_Logic::Logic_CheckInterUnit_Verti_Down(Match_Map* cur_Map, int inde
     for(int i = index_Y - 1; i >= 0; --i)
     {
         int tileTag = cur_Map->GetTileTag(index_X, i);
+        //CCLOG("titleTag : %d", tileTag);
+        
         if(tileTag == tag) return Logic_CheckInterUnit_AfterLogic(cur_Map, list_InterUnit, index_X, index_Y, tag);
         else if(tileTag == -1) return false;
         else list_InterUnit.push_back(cur_Map->GetConvertedTileIndex(index_X, i));
+        
+        //CCLOG("index_X : %d, i : %d, tag : %d", index_X, i, tag);
     }
     
     return false;

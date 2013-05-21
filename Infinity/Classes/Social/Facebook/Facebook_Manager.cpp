@@ -55,6 +55,10 @@ CCArray* Facebook_Manager::getGameFriendList(){ return gameFriendList;}
 
 void Facebook_Manager::Login(Facebook_Callback* del)
 {
+    CCLOG("Facebook_Manager::Login");
+    
+    if(delegate_Login != NULL) return;
+    
     delegate_Login = del;
     fbBinder->Login();
 }
@@ -212,7 +216,10 @@ void Facebook_Manager::Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCSpri
     picture->retain();
     cache_Picture->setObject(picture, fbID->m_sString);
     
+    CCLOG("Picture id : %s", fbID->getCString());
+    
     if(delegate_Picture != NULL) delegate_Picture->fb_Callback_Picture(fbID, picture);
+    else CCLOG("delegate_Picture = NULL");
 }
 
 void Facebook_Manager::Post()
@@ -245,6 +252,19 @@ int Facebook_Manager::Get_FriendListIndex(CCString* fbID, bool isGameFriend)
     else return index;
 }
 
+CCString* Facebook_Manager::Get_FriendName(CCString* fbID)
+{
+    CCArray* friList = Facebook_Manager::sharedInstance()->getFriendList();
+    
+    for(int i = 0; i < friList->count(); ++i)
+    {
+        Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(i);
+        if(fri != NULL && fri->fbID->isEqual(fbID) == true) return fri->name;
+    }
+    
+    return NULL;
+}
+
 bool  Facebook_Manager::IsLogin()
 {
     return myAccount != NULL;
@@ -254,4 +274,6 @@ void Facebook_Manager::SetNullDelegate()
 {
     delegate_Login = NULL;
     delegate_Picture = NULL;
+    
+    CCLOG("SetNullDelegate");
 }
