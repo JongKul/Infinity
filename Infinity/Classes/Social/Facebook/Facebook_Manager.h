@@ -17,8 +17,8 @@ using namespace cocos2d;
 class Facebook_Callback
 {
 public:
-    virtual void fb_Callback_Login (bool) = 0;
-    virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture) = 0;
+    virtual void fb_Callback_Login (bool) {}
+    virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture) {}
 };
 
 class Facebook_Manager:public CCNode

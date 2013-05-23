@@ -54,7 +54,8 @@ bool GameLayer_Match_UI::init()
         this->addChild(black);
     }
     
-    
+    Facebook_Manager::sharedInstance()->GetPicture(room->white, this);
+    Facebook_Manager::sharedInstance()->GetPicture(room->black, this);
     
     /*
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
@@ -133,4 +134,40 @@ void GameLayer_Match_UI::UpdateUnitCount()
         
         bCount2->init();
     }
+}
+
+void GameLayer_Match_UI::fb_Callback_Picture (CCString* fbID, CCSprite* picture)
+{
+    if(fbID == NULL || picture == NULL)
+    {
+        CCLOG("fb_Callback_Picture NULL!!!");
+        return;
+    }
+    
+    Room_List* room = Room_Manager::sharedInstance()->curMatchRoom;
+    CCPoint pos;
+    if(room->white->isEqual(fbID) == true) pos = ccp(118, 1280-141);
+    else pos = ccp(118, 1280 - 1142);
+    
+    AddPicture(this, picture, ccp(0.5, 0.5), pos, 10, 160, 160);
+}
+
+void GameLayer_Match_UI::AddPicture(CCNode *parent, CCSprite *picture, CCPoint anchor, CCPoint pos, int tag, float width, float height)
+{
+    if(parent == NULL || picture == NULL)
+    {
+        //CCLog("AddPicture NULL");
+        return;
+    }
+    
+    //CCLOG("Picture tag : %d", tag);
+    
+    CCSize size = picture->getContentSize();
+    float scale_X = width/ size.width;
+    float scale_Y = height/ size.height;
+    picture->setAnchorPoint(anchor);
+    picture->setPosition(pos);
+    picture->setScaleX(scale_X); picture->setScaleY(scale_Y);
+    picture->setTag(tag);
+    parent->addChild(picture);
 }

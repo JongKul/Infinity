@@ -121,6 +121,7 @@ void GameLayer_Match_Main::Callback_RoomUpdate()
     {
         CCLOG("Update");
         cur_Map->Update_MapData();
+        matchScene->UpdateUnitCount();
     }
     else
     {
