@@ -30,6 +30,8 @@ import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -38,13 +40,17 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.KeyEvent;
 
 import com.facebook.Session;
 
 public class Infinity extends Cocos2dxActivity{
 	public static Activity INFINITY;
 	
-    protected void onCreate(Bundle savedInstanceState){
+	
+	
+
+	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);	
 		 Log.d("onCreate:", "onCreate");
 		INFINITY = this;
@@ -76,9 +82,37 @@ public class Infinity extends Cocos2dxActivity{
     	  super.onActivityResult(requestCode, resultCode, data);
     	  Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
     }
-    
 
+    public void onBackPressed() {
+		
+	    	Log.d("onBackPressed","onBackPressed");
+	    	AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+					this);
+			alertDialogBuilder
+			.setMessage("Do you want to exit?")			
+			.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					// if this button is clicked, close
+					// current activity
+					Infinity.this.finish();
+					
+				}
+			  }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog,int id) {
+					// if this button is clicked, close
+					// current activity
+					dialog.cancel();
+				}
+			  });
+			
+				// create alert dialog
+			  AlertDialog alertDialog = alertDialogBuilder.create();
+		
+				// show it
+			  alertDialog.show();
+	    
 
+	}
     static {
         System.loadLibrary("cocos2dcpp");
     }     
