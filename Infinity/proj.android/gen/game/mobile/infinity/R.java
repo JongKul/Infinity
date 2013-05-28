@@ -247,6 +247,7 @@ containing a value of this type.
         public static final int com_facebook_usersettingsfragment=0x7f03000c;
     }
     public static final class string {
+        public static final int app_id=0x7f05001a;
         public static final int app_name=0x7f050019;
         public static final int com_facebook_choose_friends=0x7f05000f;
         public static final int com_facebook_dialogloginactivity_ok_button=0x7f050000;

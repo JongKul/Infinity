@@ -2,7 +2,7 @@
 //  UILayer_WaitBlack.cpp
 //  Infinity
 //
-//  Created by 정 기호 on 13. 5. 18..
+//  Created by ��湲고샇 on 13. 5. 18..
 //
 //
 

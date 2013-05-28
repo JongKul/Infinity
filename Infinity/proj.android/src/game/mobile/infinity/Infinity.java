@@ -23,18 +23,46 @@ THE SOFTWARE.
 ****************************************************************************/
 package game.mobile.infinity;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxGLSurfaceView;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
+
+import com.facebook.Session;
 
 public class Infinity extends Cocos2dxActivity{
 	public static Activity INFINITY;
 	
     protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);	
+		 Log.d("onCreate:", "onCreate");
 		INFINITY = this;
+		try {
+		    PackageInfo info = getPackageManager().getPackageInfo(
+		          "game.mobile.infinity", PackageManager.GET_SIGNATURES);
+		    for (Signature signature : info.signatures) 
+		        {
+		           MessageDigest md = MessageDigest.getInstance("SHA");
+		           md.update(signature.toByteArray());
+		           Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+		        }
+		    
+		
+		} catch (NameNotFoundException ex) {
+		} catch (NoSuchAlgorithmException ex) {
+		}
+		
 	}
 
     public Cocos2dxGLSurfaceView onCreateView() {
@@ -44,6 +72,12 @@ public class Infinity extends Cocos2dxActivity{
     	
     	return glSurfaceView;
     }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	  super.onActivityResult(requestCode, resultCode, data);
+    	  Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+    }
+    
+
 
     static {
         System.loadLibrary("cocos2dcpp");

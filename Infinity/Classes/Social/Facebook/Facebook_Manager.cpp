@@ -2,15 +2,21 @@
 //  Facebook_Manager.cpp
 //  Chess
 //
-//  Created by 정 기호 on 13. 3. 21..
+//  Created by ��湲고샇 on 13. 3. 21..
 //
 //
+
+
+
+#include "Facebook_Manager.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "Facebook_Binder_IOS.h"
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+#include "Facebook_Binder_Android.h"
 #endif
 
-#include "Facebook_Manager.h"
+
 #include "HttpClient.h"
 #include "json.h"
 #include "WebCommunication.h"
@@ -36,11 +42,16 @@ Facebook_Manager::Facebook_Manager()
     
     cache_Picture = CCDictionary::create();
     cache_Picture->retain();
-    
+
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         fbBinder = new Facebook_Binder_IOS();
+	#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        fbBinder = new Facebook_Binder_Android();
     #endif  
     
+    if(fbBinder == NULL)CCLog("fbBinder = NULL!!!!");
+    if(fbBinder == NULL)CCLog("fbBinder = NULL!!!!");
+    if(fbBinder == NULL)CCLog("fbBinder = NULL!!!!");
     if(fbBinder == NULL)CCLog("fbBinder = NULL!!!!");
 }
 

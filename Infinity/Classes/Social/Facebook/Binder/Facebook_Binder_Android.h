@@ -2,7 +2,7 @@
 //  Facebook_Binder_Android.h
 //  Chess
 //
-//  Created by 占쏙옙疫꿸퀬��on 13. 3. 21..
+//  Created by �좎룞�숂뼨轅명�占쏙옙on 13. 3. 21..
 //
 //
 
