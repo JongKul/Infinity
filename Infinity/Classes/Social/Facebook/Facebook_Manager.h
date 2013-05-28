@@ -66,4 +66,12 @@ public:
     void SetNullDelegate();
 };
 
+static int Sort_GameFriends(const CCObject* lhs, const CCObject* rhs)
+{
+    Facebook_Account* accLhs = (Facebook_Account*)lhs;
+    Facebook_Account* accRhs = (Facebook_Account*)rhs;
+    
+    return accLhs->win > accRhs->win;
+}
+
 #endif /* defined(__Chess__Facebook_Manager__) */

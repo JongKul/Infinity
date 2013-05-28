@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Game/Scene/MainTitle/UI/GameUI_MainTitle_RoomList.cpp"
-         timestampString = "390842141.64142"
+         timestampString = "391444052.471807"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "145"
-         endingLineNumber = "145"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
          landmarkName = "GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Game/Scene/MainTitle/UI/GameUI_MainTitle_RoomList.cpp"
-         timestampString = "390842141.64142"
+         timestampString = "391444052.471807"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "162"
-         endingLineNumber = "162"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
          landmarkName = "GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx)"
          landmarkType = "5">
       </FileBreakpoint>

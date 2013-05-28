@@ -22,7 +22,7 @@ bool GameLayer_Match_Main::init()
     CCLayer::init();
     
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    CCSprite* bg = CCSprite::create("back_1.png");
+    CCSprite* bg = CCSprite::create("back_4.png");
     
     bg->setPosition(ccp(winSize.width/2,winSize.height/2));
     this->addChild(bg);
@@ -43,7 +43,7 @@ bool GameLayer_Match_Main::init()
     }
     
     isRequestRoomUpdate = false;
-    this->schedule(schedule_selector(GameLayer_Match_Main::Schedule_RoomUpdate), 7.0f);
+    this->schedule(schedule_selector(GameLayer_Match_Main::Schedule_RoomUpdate), 3.0f);
     
     return  true;
 }
@@ -51,6 +51,8 @@ bool GameLayer_Match_Main::init()
 void GameLayer_Match_Main::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
     ReturnInput();
+    if(Room_Manager::sharedInstance()->curMatchRoom->finishFlag == 1) return;
+    if(isRequestRoomUpdate == true) return;
     
     CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
     if(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID->isEqual(myAccount) == false)
@@ -67,7 +69,7 @@ void GameLayer_Match_Main::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
     int x,y;
     if(Othello_Logic::Logic_AddUnit(cur_Map, touch_Pos, x, y, myTurnTag) == true)
     {
-        matchScene->UpdateUnitCount();
+        //matchScene->UpdateUI_GameInfo();
         
         y = (cur_Map->GetTileCount_Height()-1) - y;
         
@@ -82,6 +84,7 @@ void GameLayer_Match_Main::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 void GameLayer_Match_Main::Schedule_RoomUpdate(float time)
 {
     CCLOG("Schedule_RoomUpdate");
+    if(Room_Manager::sharedInstance()->curMatchRoom->finishFlag == 1) return;
     
     if(isRequestRoomUpdate == true)
     {
@@ -103,25 +106,27 @@ void GameLayer_Match_Main::Schedule_RoomUpdate(float time)
     
     Room_Manager::sharedInstance()->Request_RoomUpdate(this);
     
-    UILayer_WaitBlack::AddLayer();
+    //UILayer_WaitBlack::AddLayer();
 }
 
 void GameLayer_Match_Main::Callback_RoomTurn(bool ret)
 {
     UILayer_WaitBlack::RemoveLayer();
+    matchScene->UpdateUI_GameInfo();
 }
 
 void GameLayer_Match_Main::Callback_RoomUpdate()
 {
     isRequestRoomUpdate = false;
     
-    UILayer_WaitBlack::RemoveLayer();
+    //UILayer_WaitBlack::RemoveLayer();
     
     if(prevCurnID->isEqual(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID) == false)
     {
         CCLOG("Update");
+        
         cur_Map->Update_MapData();
-        matchScene->UpdateUnitCount();
+        matchScene->UpdateUI_GameInfo();
     }
     else
     {

@@ -20,16 +20,13 @@ bool GameUI_MainTitle_RoomList::init()
     back->setPosition(ccp(winSize.width/2, winSize.height/2));
     this->addChild(back);
     
-    curMakeTable = 0;
-    AddTableView_MyTurn();
-    AddTableView_Waiting();
-    curMakeTable = -1;
-    
     return true;
 }
                                 
 void GameUI_MainTitle_RoomList::AddTableView_MyTurn()
 {
+    if(tableView_MyTurn != NULL) return;
+    
     curMakeTable = 0;
     
     CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
@@ -51,9 +48,9 @@ void GameUI_MainTitle_RoomList::AddTableView_MyTurn()
     }
     else CCLOG("list_MyTurn size : %d", list_MyTurn.size());
     
-    tableView_MyTurn = CCTableView::create(this, CCSizeMake(344, 295)); //295
+    tableView_MyTurn = CCTableView::create(this, CCSizeMake(594, 295)); //295
     tableView_MyTurn->setDirection(kCCScrollViewDirectionVertical);
-    tableView_MyTurn->setPosition(ccp(100,1280 - 300 - (295))); //300
+    tableView_MyTurn->setPosition(ccp(62,1280 - 300 - (295))); //300
     tableView_MyTurn->setDelegate(this);
     tableView_MyTurn->setVerticalFillOrder(kCCTableViewFillTopDown);
     this->addChild(tableView_MyTurn);
@@ -63,6 +60,8 @@ void GameUI_MainTitle_RoomList::AddTableView_MyTurn()
 
 void GameUI_MainTitle_RoomList::AddTableView_Waiting()
 {
+    if(tableView_Waiting != NULL) return;
+    
     curMakeTable = 1;
     
     CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
@@ -84,9 +83,9 @@ void GameUI_MainTitle_RoomList::AddTableView_Waiting()
     }
     else CCLOG("list_Waiting size : %d", list_Waiting.size());
     
-    tableView_Waiting = CCTableView::create(this, CCSizeMake(344, 320)); //320
+    tableView_Waiting = CCTableView::create(this, CCSizeMake(594, 320)); //320
     tableView_Waiting->setDirection(kCCScrollViewDirectionVertical);
-    tableView_Waiting->setPosition(ccp(100,1280 - 700 - (320))); // 700
+    tableView_Waiting->setPosition(ccp(62,1280 - 700 - (320))); // 700
     tableView_Waiting->setDelegate(this);
     tableView_Waiting->setVerticalFillOrder(kCCTableViewFillTopDown);
     this->addChild(tableView_Waiting);
@@ -124,10 +123,23 @@ void GameUI_MainTitle_RoomList::fb_Callback_Picture(cocos2d::CCString *fbID, coc
         return;
     }
     
-    int index = Facebook_Manager::sharedInstance()->Get_FriendListIndex(fbID, true);
-    if(index == -1)return;
+    for(int i = 0; i < list_MyTurn.size(); ++i)
+    {
+        if(list_MyTurn[i]->other_user_ID->isEqual(fbID) == true)
+        {
+            AddPicture(tableView_MyTurn->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+            return;
+        }
+    }
     
-    AddPicture(tableView_MyTurn->cellAtIndex(index), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+    for(int i = 0; i < list_Waiting.size(); ++i)
+    {
+        if(list_Waiting[i]->other_user_ID->isEqual(fbID) == true)
+        {
+            AddPicture(tableView_Waiting->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+            return;
+        }
+    }
 }
 
 
@@ -168,6 +180,12 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         cell = new CCTableViewCell();
         cell->autorelease();
         
+        CCSprite* back = CCSprite::create("row.png");
+        
+        back->setPosition(CCPointZero);
+		back->setAnchorPoint(CCPointZero);
+        cell->addChild(back);
+        
         CCSprite* item = CCSprite::create("Icon-144.png");
         item->setPosition(CCPointZero);
 		item->setAnchorPoint(CCPointZero);
@@ -188,8 +206,12 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
 		menu->setAnchorPoint(CCPointZero);
         cell->addChild(menu);
         
-        //CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
-        //AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+        CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(room->other_user_ID);
+        if(picture == NULL)
+        {
+            Facebook_Manager::sharedInstance()->GetPicture(room->other_user_ID, this);
+        }
+        else AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
     }
     else
     {
@@ -197,8 +219,8 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         CCNode *picture = cell->getChildByTag(10);
         if(picture == NULL)
         {
-            //picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
-            //AddPicture(cell, (CCSprite*)picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+            CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(room->other_user_ID);
+            AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
         }
     }
     
@@ -221,6 +243,21 @@ void GameUI_MainTitle_RoomList::AddPicture(cocos2d::CCNode *parent, cocos2d::CCS
     picture->setScaleX(scale_X); picture->setScaleY(scale_Y);
     picture->setTag(tag);
     parent->addChild(picture);
+}
+
+
+void GameUI_MainTitle_RoomList::setVisible(bool visible)
+{
+    CCLOG("setVisible");
+    CCNode::setVisible(visible);
+    
+    if(visible == true)
+    {
+        curMakeTable = 0;
+        AddTableView_MyTurn();
+        AddTableView_Waiting();
+        curMakeTable = -1;
+    }
 }
 
 unsigned int GameUI_MainTitle_RoomList::numberOfCellsInTableView(cocos2d::extension::CCTableView *table)

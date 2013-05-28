@@ -17,24 +17,24 @@ bool GameLayer_Match_UI::init()
 {
     CCLayer::init();
     
-    bCount1 = AddSprite(ccp(600, 1280 - 1145));
-    bCount2 = AddSprite(ccp(660, 1280 - 1145));
+    bCount1 = AddSprite(ccp(600, 1280 - 1180));
+    bCount2 = AddSprite(ccp(660, 1280 - 1180));
     
-    wCount1 = AddSprite(ccp(600, 1280 - 155));
-    wCount2 = AddSprite(ccp(660, 1280 - 155));
+    wCount1 = AddSprite(ccp(600, 1280 - 203));
+    wCount2 = AddSprite(ccp(660, 1280 - 203));
     
     Room_List* room = Room_Manager::sharedInstance()->curMatchRoom;
     CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
     if(room->white->isEqual(myAccount) == false)
     {
         CCLabelTTF *white = CCLabelTTF::create(room->other_user_Name->getCString(), "Helvetica", 30.0);
-        white->setPosition(ccp(250.0f, 1280.0f - 150.0f));
+        white->setPosition(ccp(220.0f, 1280.0f - 183.0f));
         white->setAnchorPoint(ccp(0.0f,0.5f));
         white->setColor(ccBLACK);
         this->addChild(white);
         
         CCLabelTTF *black = CCLabelTTF::create(Facebook_Manager::sharedInstance()->getMyAccount()->name->getCString(), "Helvetica", 30.0);
-        black->setPosition(ccp(250.0f, 200.0f));
+        black->setPosition(ccp(220.0f, 1280.0f - 1165.0f));
         black->setAnchorPoint(ccp(0.0f,0.5f));
         black->setColor(ccBLACK);
         this->addChild(black);
@@ -42,13 +42,13 @@ bool GameLayer_Match_UI::init()
     else
     {
         CCLabelTTF *white = CCLabelTTF::create(Facebook_Manager::sharedInstance()->getMyAccount()->name->getCString(), "Helvetica", 30.0);
-        white->setPosition(ccp(250.0f, 1280.0f - 150.0f));
+        white->setPosition(ccp(220.0f, 1280.0f - 183.0f));
         white->setAnchorPoint(ccp(0.0f,0.5f));
         white->setColor(ccBLACK);
         this->addChild(white);
         
         CCLabelTTF *black = CCLabelTTF::create(room->other_user_Name->getCString(), "Helvetica", 30.0);
-        black->setPosition(ccp(250.0f, 150.0f));
+        black->setPosition(ccp(220.0f, 1280.0f - 1165.0f));
         black->setAnchorPoint(ccp(0.0f,0.5f));
         black->setColor(ccBLACK);
         this->addChild(black);
@@ -83,6 +83,35 @@ void GameLayer_Match_UI::ButtonDelegate_ChangeScene(cocos2d::CCObject *sender)
     ReturnInput();
     
     GameScene_Match::ChangeScene();
+}
+
+void GameLayer_Match_UI::UpdateTurnNoti()
+{
+    if(whiteTurnNoti == NULL)
+    {
+        whiteTurnNoti = CCSprite::create();
+        this->addChild(whiteTurnNoti);
+    }
+    if(blackTurnNoti == NULL)
+    {
+        blackTurnNoti = CCSprite::create();
+        this->addChild(blackTurnNoti);
+    }
+    
+    Room_List* room = Room_Manager::sharedInstance()->curMatchRoom;
+    if(room->cutTurnID->isEqual(room->white) == true)
+    {
+        whiteTurnNoti->initWithFile("turn.png");
+        blackTurnNoti->initWithFile("wait.png");
+    }
+    else
+    {
+        whiteTurnNoti->initWithFile("wait.png");
+        blackTurnNoti->initWithFile("turn.png");
+    }
+    
+    whiteTurnNoti->setPosition(ccp(360, 1280 - 65));
+    blackTurnNoti->setPosition(ccp(360, 1280 - 1045));
 }
 
 void GameLayer_Match_UI::UpdateUnitCount()
@@ -146,8 +175,8 @@ void GameLayer_Match_UI::fb_Callback_Picture (CCString* fbID, CCSprite* picture)
     
     Room_List* room = Room_Manager::sharedInstance()->curMatchRoom;
     CCPoint pos;
-    if(room->white->isEqual(fbID) == true) pos = ccp(118, 1280-141);
-    else pos = ccp(118, 1280 - 1142);
+    if(room->white->isEqual(fbID) == true) pos = ccp(131, 1280-185);
+    else pos = ccp(130, 1280 - 1165);
     
     AddPicture(this, picture, ccp(0.5, 0.5), pos, 10, 160, 160);
 }

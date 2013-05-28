@@ -24,7 +24,7 @@ bool GameScene_Match::init()
     
     mainLayer->matchScene = uiLayer->matchScene = this;
     
-    UpdateUnitCount();
+    UpdateUI_GameInfo();
     
     return true;
 }
@@ -34,9 +34,10 @@ void GameScene_Match::ChangeScene()
     Scene_Manager::ChangeScene_MainTitle();
 }
 
-void GameScene_Match::UpdateUnitCount()
+void GameScene_Match::UpdateUI_GameInfo()
 {
     uiLayer->UpdateUnitCount();
+    uiLayer->UpdateTurnNoti();
 }
 
 Match_Map* GameScene_Match::GetMatchMap()

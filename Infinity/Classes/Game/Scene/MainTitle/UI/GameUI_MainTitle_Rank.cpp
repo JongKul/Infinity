@@ -108,9 +108,9 @@ void GameUI_MainTitle_Rank::fb_Callback_Login(bool ret)
         CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
         
         //CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-        tableView = CCTableView::create(this, CCSizeMake(344, 144*3));
+        tableView = CCTableView::create(this, CCSizeMake(594, 144*3));//344
         tableView->setDirection(kCCScrollViewDirectionVertical);
-        tableView->setPosition(ccp(100,1280 - 540 - (144 * 3)));
+        tableView->setPosition(ccp(62,1280 - 540 - (144 * 3)));//100
         tableView->setDelegate(this);
         tableView->setVerticalFillOrder(kCCTableViewFillTopDown);
         this->addChild(tableView);
@@ -155,7 +155,7 @@ void GameUI_MainTitle_Rank::tableCellTouched(cocos2d::extension::CCTableView* ta
 
 CCSize GameUI_MainTitle_Rank::cellSizeForTable(cocos2d::extension::CCTableView *table)
 {
-    return CCSizeMake(344,144);
+    return CCSizeMake(594,144);
 }
 CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCTableView *table, unsigned int idx)
 {
@@ -172,6 +172,16 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
         cell = new CCTableViewCell();
         cell->autorelease();
         
+        CCSprite* back;
+        CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
+        bool isMe = myAccount->isEqual(fri->fbID);
+        if(isMe == true) back = CCSprite::create("myrank2.png");
+        else back = CCSprite::create("row.png");
+        
+        back->setPosition(CCPointZero);
+		back->setAnchorPoint(CCPointZero);
+        cell->addChild(back);
+        
         CCSprite* item = CCSprite::create("Icon-144.png");
         item->setPosition(CCPointZero);
 		item->setAnchorPoint(CCPointZero);
@@ -185,13 +195,16 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
         label->setTag(123);
         cell->addChild(label, 10);
         
-        CCMenuItemImage* button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png",
-                                                          this,menu_selector(GameUI_MainTitle_Rank::ButtonDelegate_Picture));
-        button->setTag(idx);
-        CCMenu* menu = CCMenu::create(button, NULL);
-        menu->setPosition(ccp(170,75));
-		menu->setAnchorPoint(CCPointZero);
-        cell->addChild(menu);
+        if(isMe == false)
+        {
+            CCMenuItemImage* button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png",
+                                                              this,menu_selector(GameUI_MainTitle_Rank::ButtonDelegate_Picture));
+            button->setTag(idx);
+            CCMenu* menu = CCMenu::create(button, NULL);
+            menu->setPosition(ccp(170,75));
+            menu->setAnchorPoint(CCPointZero);
+            cell->addChild(menu);
+        }
         
         CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
         AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);

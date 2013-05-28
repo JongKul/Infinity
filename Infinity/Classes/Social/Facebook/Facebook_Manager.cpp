@@ -125,6 +125,17 @@ void Facebook_Manager::onHttpRequestCompleted_Login(cocos2d::CCNode *sender, voi
         return;
     }
     
+    Facebook_Account* fri = Facebook_Account::create();
+    fri->name = CCString::create(root["user_name"].asString()) ;
+    fri->name->retain();
+    fri->fbID = CCString::create(root["user_id"].asString());
+    fri->fbID->retain();
+    fri->win = root["win"].asInt();
+    fri->lose = root["lose"].asInt();
+    fri->isPlayGame = true;
+    fri->retain();
+    gameFriendList->addObject(fri);
+    
     WebRequest_SyncFriends(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_SyncFriends), "Post SyncFriends", myAccount->fbID->getCString(), friendList);
     CCLOG(root.toStyledString().c_str());
     CCLog("win : %d, lose : %d", root["win"].asInt(), root["lose"].asInt());
@@ -159,6 +170,8 @@ void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sende
         fri->retain();
         gameFriendList->addObject(fri);
     }
+    
+    std::sort(gameFriendList->data->arr, gameFriendList->data->arr + gameFriendList->data->num, Sort_GameFriends);
     
     CCLOG(root.toStyledString().c_str());
     WebRequest_RoomList(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_RoomList), "Post RoomList", myAccount->fbID->getCString());

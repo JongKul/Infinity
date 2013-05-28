@@ -43,9 +43,9 @@ bool GameLayer_Intro::init()
     tile->setPosition(ccp(winSize.width/2, winSize.height/2));
     this->addChild(tile);
     
-    CCMenuItemImage* button_login = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png",
+    CCMenuItemImage* button_login = CCMenuItemImage::create("f_login2.png", "f_login2.png",
                                                             this,menu_selector(GameLayer_Intro::ButtonDelegate_Login));
-    button_login->setScale(2.5f);
+    //button_login->setScale(2.5f);
     CCMenu* menu = CCMenu::create(button_login, NULL);
     menu->setPosition(ccp(winSize.width/2, winSize.height * 0.2f));
     

@@ -46,10 +46,12 @@ void Match_Map::Init_Unit()
 
 void Match_Map::Init_CreateTile()
 {
+    /*
     CCSprite* mapBack = CCSprite::create("frame2.png");
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     mapBack->setPosition(ccp(winSize.width/2, winSize.height/2));
     this->addChild(mapBack);
+     */
     
     for(int i=0; i<tileCount_Height; ++i)
     {

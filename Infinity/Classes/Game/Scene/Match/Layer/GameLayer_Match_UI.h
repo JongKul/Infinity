@@ -27,9 +27,10 @@ private:
 private:
     CCSprite *bCount1, *bCount2;
     CCSprite *wCount1, *wCount2;
-    
+    CCSprite *whiteTurnNoti, *blackTurnNoti;
 public:
     void UpdateUnitCount();
+    void UpdateTurnNoti();
     virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture);
 public:
     GameScene_Match* matchScene;

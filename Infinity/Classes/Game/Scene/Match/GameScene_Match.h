@@ -25,7 +25,7 @@ public:
 public:
     static void ChangeScene();
 public:
-    void UpdateUnitCount();
+    void UpdateUI_GameInfo();
     Match_Map* GetMatchMap();
 private:
     GameLayer_Match_UI* uiLayer;
