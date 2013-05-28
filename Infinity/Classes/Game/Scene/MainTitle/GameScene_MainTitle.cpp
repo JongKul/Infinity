@@ -16,10 +16,22 @@ bool GameScene_MainTitle::init()
 {
     CCScene::init();
     
+    return true;
+}
+
+void GameScene_MainTitle::onEnter()
+{
+    CCLOG("onEnter");
+    CCNode::onEnter();
+    
     CCLayer* layer = GameLayer_MainTitle::create();
     this->addChild(layer);
-    
-    return true;
+}
+
+void GameScene_MainTitle::onEnterTransitionDidFinish()
+{
+    CCLOG("onEnterTransitionDidFinish");
+    CCNode::onEnterTransitionDidFinish();
 }
 
 void GameScene_MainTitle::ChangeScene()

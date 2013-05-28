@@ -68,6 +68,8 @@ public:
         this->winnderID = CCString::create(winnner);
         this->winnderID->retain();
         
+        CCLOG("winner : %s" , this->winnderID->getCString());
+        
         room_data.clear();
         for(int i=0; i<roomData.size(); ++i) //서버는 좌상단이 0,0 이다.
         {

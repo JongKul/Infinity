@@ -57,5 +57,6 @@ void Scene_Manager::ChangeScene_Common(CCScene* scene)
     //transition = CCTransitionProgressRadialCCW::create(3.0f, scene); //프로그래스바처럼 반시계방향으로 화면이 나온다.
 #pragma endregion
     SetCurScene(scene);
-    CCDirector::sharedDirector()->replaceScene(transition);
+    //CCDirector::sharedDirector()->replaceScene(transition);
+    CCDirector::sharedDirector()->replaceScene(scene);
 }

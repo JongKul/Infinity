@@ -104,6 +104,7 @@ void GameLayer_Match_Main::Schedule_RoomUpdate(float time)
     prevCurnID = CCString::create(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID->m_sString);
     prevCurnID->retain();
     
+    Input_Manager::SharedInstance()->SetInputEnable(false);
     Room_Manager::sharedInstance()->Request_RoomUpdate(this);
     
     //UILayer_WaitBlack::AddLayer();
@@ -119,7 +120,7 @@ void GameLayer_Match_Main::Callback_RoomUpdate()
 {
     isRequestRoomUpdate = false;
     
-    //UILayer_WaitBlack::RemoveLayer();
+    Input_Manager::SharedInstance()->SetInputEnable(true);
     
     if(prevCurnID->isEqual(Room_Manager::sharedInstance()->curMatchRoom->cutTurnID) == false)
     {

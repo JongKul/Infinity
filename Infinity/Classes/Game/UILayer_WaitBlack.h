@@ -20,7 +20,7 @@ public:
     virtual bool init();
     CREATE_FUNC(UILayer_WaitBlack);
 public:
-    static void AddLayer();
+    static void AddLayer(bool loading = true);
     static void RemoveLayer();
 private:
     static UILayer_WaitBlack* GetLayer();

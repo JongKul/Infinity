@@ -27,6 +27,7 @@ public:
 public:
     void UpdateUI_GameInfo();
     Match_Map* GetMatchMap();
+    virtual void onEnterTransitionDidFinish();
 private:
     GameLayer_Match_UI* uiLayer;
     GameLayer_Match_Main* mainLayer;

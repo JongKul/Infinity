@@ -71,6 +71,15 @@ void WebRequest_Turn(CCObject* pTarget, SEL_CallFuncND pSelector, const char* ta
     WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/room_turn");
 }
 
+void WebRequest_RoomEnd(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, int roomIndex)
+{
+    Json::Value root;
+    root["user_id"] = fbID;
+    root["room_index"] = roomIndex;
+    
+    WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/room_end");
+}
+
 void WebRequest_Common(CCObject* pTarget, SEL_CallFuncND pSelector, const Json::Value& root, const char* tag, const char* url)
 {
     CCHttpRequest* request = new CCHttpRequest();
@@ -114,6 +123,8 @@ bool WebResponse_Common(cocos2d::CCNode *sender, void *data, Json::Value& root)
     
     // dump data
     std::vector<char> *buffer = response->getResponseData();
+    if((*buffer).size() <= 0) return true;
+    
     Json::Reader reader;
     std::string str;
     str = &((*buffer)[0]);

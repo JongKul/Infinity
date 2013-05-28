@@ -12,6 +12,7 @@
 #include "Match_Map.h"
 #include "Room_Manager.h"
 #include "Facebook_Manager.h"
+#include "UILayer_WaitBlack.h"
 
 bool GameLayer_Match_UI::init()
 {
@@ -57,16 +58,74 @@ bool GameLayer_Match_UI::init()
     Facebook_Manager::sharedInstance()->GetPicture(room->white, this);
     Facebook_Manager::sharedInstance()->GetPicture(room->black, this);
     
-    /*
-    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-    CCMenuItemImage* changeScene_Button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameLayer_Match_UI::ButtonDelegate_ChangeScene));
+    whiteTurnNoti = CCSprite::create();
+    this->addChild(whiteTurnNoti);
+    blackTurnNoti = CCSprite::create();
+    this->addChild(blackTurnNoti);
+    
+    CCMenuItemImage* changeScene_Button = CCMenuItemImage::create("b_back.png", "b_back.png", this,menu_selector(GameLayer_Match_UI::ButtonDelegate_ChangeScene));
     changeScene_Button->setPosition(ccp(0,0));
     CCMenu* menu = CCMenu::create(changeScene_Button, NULL);
-    menu->setPosition(ccp(winSize.width * 0.8f, winSize.height * 0.9f));
+    menu->setPosition(ccp(720-95, 1280 - 65));
     this->addChild(menu);
-    */
+    
+    
     
     return true;
+}
+
+void GameLayer_Match_UI::UpdateGameFinish()
+{
+    Room_List* room = Room_Manager::sharedInstance()->curMatchRoom;
+    CCString* myAccount = Facebook_Manager::sharedInstance()->getMyAccount()->fbID;
+    
+    if(room->finishFlag == 1)
+    {
+        CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+        
+        CCSprite* black = CCSprite::create("Loading_Black.png");
+        black->setPosition(ccp(winSize.width/2, winSize.height/2));
+        black->setScale(winSize.height);
+        black->setOpacity(170);
+        this->addChild(black);
+        
+        CCSprite* ret = NULL;
+        if(myAccount->isEqual(room->winnderID) == true)
+        {
+            ret = CCSprite::create("result_w.png");
+        }
+        else
+        {
+            ret = CCSprite::create("result_l.png");
+        }
+        
+        ret->setPosition(ccp(winSize.width/2, winSize.height/2));
+        this->addChild(ret);
+        
+        CCMenuItemImage* changeScene_Button = CCMenuItemImage::create("ok.png", "ok.png", this,menu_selector(GameLayer_Match_UI::ButtonDelegate_FinishOk));
+        changeScene_Button->setPosition(ccp(0,0));
+        CCMenu* menu = CCMenu::create(changeScene_Button, NULL);
+        menu->setPosition(ccp(379, 800 - 560));
+        ret->addChild(menu);
+        
+        Input_Manager::SharedInstance()->SetInputEnable(false);
+    }
+}
+
+void GameLayer_Match_UI::ButtonDelegate_FinishOk(CCObject* sender)
+{
+    Room_Manager::sharedInstance()->Request_RoomEnd(Facebook_Manager::sharedInstance()->getMyAccount()->fbID, Room_Manager::sharedInstance()->curMatchRoom->room_Index, this);
+    
+    UILayer_WaitBlack::AddLayer();
+}
+
+void GameLayer_Match_UI::Callback_RoomEnd(bool ret)
+{
+    Input_Manager::SharedInstance()->SetInputEnable(true);
+    UILayer_WaitBlack::RemoveLayer();
+    
+    Room_Manager::sharedInstance()->RemoveRoom( Room_Manager::sharedInstance()->curMatchRoom->room_Index );
+    GameScene_Match::ChangeScene();
 }
 
 CCSprite* GameLayer_Match_UI::AddSprite(const cocos2d::CCPoint &pos)

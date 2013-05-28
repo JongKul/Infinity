@@ -7,10 +7,9 @@
 //
 
 #include "Facebook_Binder_Android.h"
-#include "hellocpp/main.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
 
-
+#include "hellocpp/main.h"
 
 void Facebook_Binder_Android::Login()
 {

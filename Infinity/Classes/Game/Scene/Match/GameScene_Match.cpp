@@ -16,6 +16,15 @@ bool GameScene_Match::init()
 {
     CCScene::init();
     
+    return true;
+}
+
+void GameScene_Match::onEnterTransitionDidFinish()
+{
+    CCLOG("onEnterTransitionDidFinish");
+    
+    CCNode::onEnterTransitionDidFinish();
+    
     mainLayer = GameLayer_Match_Main::create();
     this->addChild(mainLayer);
     
@@ -25,8 +34,6 @@ bool GameScene_Match::init()
     mainLayer->matchScene = uiLayer->matchScene = this;
     
     UpdateUI_GameInfo();
-    
-    return true;
 }
 
 void GameScene_Match::ChangeScene()
@@ -38,6 +45,7 @@ void GameScene_Match::UpdateUI_GameInfo()
 {
     uiLayer->UpdateUnitCount();
     uiLayer->UpdateTurnNoti();
+    uiLayer->UpdateGameFinish();
 }
 
 Match_Map* GameScene_Match::GetMatchMap()

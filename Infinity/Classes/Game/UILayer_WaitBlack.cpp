@@ -55,14 +55,19 @@ void UILayer_WaitBlack::LoadingRotate()
     loading->runAction(repeat);
 }
 
-void UILayer_WaitBlack::AddLayer()
+void UILayer_WaitBlack::AddLayer(bool loading)
 {    
     CCScene* curScene = Scene_Manager::GetCurScene();
     
     if(curScene->getChildByTag(3010) == NULL)
     {
         curScene->addChild(GetLayer());
-        GetLayer()->LoadingRotate();
+        if(loading == true)
+        {
+            GetLayer()->loading->setVisible(true);
+            GetLayer()->LoadingRotate();
+        }
+        else GetLayer()->loading->setVisible(false);
     }
     else
     {

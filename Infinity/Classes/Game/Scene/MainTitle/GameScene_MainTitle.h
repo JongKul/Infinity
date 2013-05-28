@@ -18,6 +18,8 @@ class GameScene_MainTitle : public CCScene
 public:
     virtual bool init();
     CREATE_FUNC(GameScene_MainTitle);
+    virtual void onEnterTransitionDidFinish();
+    virtual void onEnter();
 public:
     static void ChangeScene();
 };

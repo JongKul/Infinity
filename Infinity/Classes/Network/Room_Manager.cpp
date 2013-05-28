@@ -132,7 +132,7 @@ void Room_Manager::onHttpRequestCompleted_RoomInfo(cocos2d::CCNode *sender, void
         return;
     }
     
-    //CCLOG(root.toStyledString().c_str());
+    CCLOG(root.toStyledString().c_str());
                     
     int roomIndex = root["room_index"].asInt();
     for(int i=0; i<room_List.size(); ++i)
@@ -165,6 +165,20 @@ bool Room_Manager::SetMatchRoom(int roomIndex)
     }
     
     return false;
+}
+
+void Room_Manager::RemoveRoom(int roomIndex)
+{
+    for(int i=0; i<room_List.size(); ++i)
+    {
+        if(room_List[i]->room_Index == roomIndex)
+        {
+            //Room_List* room = room_List[i];
+            room_List.erase(room_List.begin() + i);
+            //room->release();
+            return;
+        }
+    }
 }
 
 void Room_Manager::Request_RoomTurn(int roomIndex, int x, int y, Room_Callback* del)
@@ -270,4 +284,26 @@ void Room_Manager::onHttpRequestCompleted_RoomUpdate(cocos2d::CCNode *sender, vo
     }
     
     if(callBack != NULL) callBack->Callback_RoomUpdate();
+}
+
+void Room_Manager::Request_RoomEnd(CCString* myId, int roomIndex, Room_Callback* del)
+{
+    callBack = del;
+    
+    WebRequest_RoomEnd(this, callfuncND_selector(Room_Manager::onHttpRequestCompleted_RoomEnd), "Post RoomEnd", myId->getCString(), roomIndex);
+}
+
+void Room_Manager::onHttpRequestCompleted_RoomEnd(cocos2d::CCNode *sender, void *data)
+{
+    CCLOG("onHttpRequestCompleted_RoomEnd!!");
+    
+    Json::Value root;
+    if(WebResponse_Common(sender, data, root) == false)
+    {
+        CCLOG("onHttpRequestCompleted_RoomEnd = false!!");
+        if(callBack != NULL) callBack->Callback_RoomEnd(false);
+        return;
+    }
+    
+    if(callBack != NULL) callBack->Callback_RoomEnd(true);
 }
