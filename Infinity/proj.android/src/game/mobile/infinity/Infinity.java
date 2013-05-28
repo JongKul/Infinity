@@ -94,7 +94,7 @@ public class Infinity extends Cocos2dxActivity{
 				public void onClick(DialogInterface dialog,int id) {
 					// if this button is clicked, close
 					// current activity
-					Infinity.this.finish();
+					android.os.Process.killProcess(android.os.Process.myPid());
 					
 				}
 			  }).setNegativeButton("No", new DialogInterface.OnClickListener() {

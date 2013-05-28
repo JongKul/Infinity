@@ -19,48 +19,6 @@ using namespace cocos2d;
 extern "C"
 {
 
-static JNIEnv* getJNIEnv(void)
-{
-
-     JavaVM* jvm = cocos2d::JniHelper::getJavaVM();
-     if (NULL == jvm) {
-         LOGD("Failed to get JNIEnv. JniHelper::getJavaVM() is NULL");
-         return NULL;
-     }
-
-     JNIEnv *env = NULL;
-     // get jni environment
-     jint ret = jvm->GetEnv((void**)&env, JNI_VERSION_1_4);
-
-     switch (ret) {
-         case JNI_OK :
-             // Success!
-             return env;
-
-         case JNI_EDETACHED :
-             // Thread not attached
-
-             // TODO : If calling AttachCurrentThread() on a native thread
-             // must call DetachCurrentThread() in future.
-             // see: http://developer.android.com/guide/practices/design/jni.html
-
-             if (jvm->AttachCurrentThread(&env, NULL) < 0)
-             {
-                 LOGD("Failed to get the environment using AttachCurrentThread()");
-                 return NULL;
-             } else {
-                 // Success : Attached and obtained JNIEnv!
-                 return env;
-             }
-
-         case JNI_EVERSION :
-             // Cannot recover from this error
-             LOGD("JNI interface version 1.4 not supported");
-         default :
-             LOGD("Failed to get the environment using GetEnv()");
-             return NULL;
-     }
-}
 
 jint JNI_OnLoad(JavaVM *vm, void *reserved)
 {
@@ -117,13 +75,17 @@ JNIEXPORT void JNICALL Java_game_mobile_infinity_FacebookManager_jniSetMyAccount
 
 JNIEXPORT void JNICALL Java_game_mobile_infinity_FacebookManager_jniAddFriend(JNIEnv*  env, jobject thiz, jstring jname , jstring jid)
 {
-	LOGD("Java_game_mobile_infinity_FacebookManager_jniAddFriend");
+
+
 	const char *name = env->GetStringUTFChars(  jname, 0);
 	const char *id = env->GetStringUTFChars(  jid, 0);
 
-	 CCString* cName = CCString::createWithFormat("%s",name);
-	 CCString* cfbID = CCString::createWithFormat("%s",id);
+
+	 CCString* cName = new CCString(name);
+	 CCString* cfbID =new  CCString(id);
+
 	 Facebook_Manager::sharedInstance()->AddFriend(cName, cfbID);
+
 
 	env->ReleaseStringUTFChars(  jname, name);
 	env->ReleaseStringUTFChars(  jid, id);

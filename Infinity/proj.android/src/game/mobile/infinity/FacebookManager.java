@@ -116,7 +116,16 @@ public class FacebookManager {
 								for(GraphUser user : users ) {
 									String name = user.getName();
 									String id = user.getId();
-									jniAddFriend(name,id);
+									synchronized(this)
+									{
+										try {
+											this.wait(1);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+										jniAddFriend(name,id);
+									}
 								}
 								Log.d("requestFriends","jniCallbackLogin");
 								jniCallbackLogin(true);

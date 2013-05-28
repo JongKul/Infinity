@@ -85,22 +85,28 @@ void Facebook_Manager::SetMyAccount(cocos2d::CCString *name, cocos2d::CCString *
 }
 void Facebook_Manager::AddFriend(cocos2d::CCString *name, cocos2d::CCString *fbID)
 {
+
     if(friendList == NULL)
     {
         CCLog("friendList = NULL");
         return;
     }
-    
+
     for(int i=0; i<friendList->count(); ++i)
     {
+
         Facebook_Account* fri = (Facebook_Account*)friendList->objectAtIndex(i);
+
+
         if(fri->fbID->isEqual(fbID) == true)
         {
             CCLog("AddFriend already exist, id: %s", fbID->getCString());
             return;
         }
+
     }
-    
+
+  //  CCLog("%s %s" ,name->getCString() ,fbID->getCString() );
     Facebook_Account* fri = Facebook_Account::create();
     fri->name = name;
     fri->name->retain();
