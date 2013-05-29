@@ -23,6 +23,7 @@
 #include "Room_Manager.h"
 #include "Native_Helper.h"
 
+
 using namespace cocos2d::extension;
 
 Facebook_Manager* Facebook_Manager::sharedInstance()
@@ -125,7 +126,14 @@ void Facebook_Manager::Callback_Login(bool ret)
         CCString* apnsKey = CCString::create(Native_GetApnsDeviceKey());
         CCLog("SetMyAccount name : %s, id : %s, key : %s", myAccount->name->getCString(), myAccount->fbID->getCString(), apnsKey->getCString());
         
-        WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_Login), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString(), apnsKey->getCString());
+        int osType = 0; //1 - ios, 2 - android.
+        
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        osType = 1;
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        osType = 2;
+#endif
+        WebRequest_Login(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_Login), "POST Login", myAccount->fbID->getCString(), myAccount->name->getCString(), apnsKey->getCString(), osType);
     }
     else
     {

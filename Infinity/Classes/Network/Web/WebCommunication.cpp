@@ -10,12 +10,13 @@
 #include "Facebook_Account.h"
 using namespace cocos2d::extension;
 
-void WebRequest_Login(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* nick, const char* deviceToken)
+void WebRequest_Login(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* nick, const char* deviceToken, int os)
 {
     Json::Value root;
     root["user_id"] = fbID;
     root["user_name"] = nick;
     root["token"] = deviceToken;
+    root["os"] = os;
     
     WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/login");
 }
