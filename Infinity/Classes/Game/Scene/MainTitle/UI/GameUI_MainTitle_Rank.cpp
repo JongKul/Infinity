@@ -35,12 +35,6 @@ bool GameUI_MainTitle_Rank::init()
     menu->setPosition(ccp(winSize.width * 0.8f, winSize.height * 0.2f));
     this->addChild(menu);
     */
-     
-    if(Facebook_Manager::sharedInstance()->IsLogin() == true)
-    {
-        CCLog("IS Login");
-        fb_Callback_Login(true);
-    }
     
     return true;
 }
@@ -99,6 +93,28 @@ void GameUI_MainTitle_Rank::Callback_RoomMake(int roomIndex)
     }
 }
 
+void GameUI_MainTitle_Rank::setVisible(bool visible)
+{
+    if(visible == true)
+    {
+        if(Facebook_Manager::sharedInstance()->IsLogin() == true)
+        {
+            CCLog("IS Login");
+            fb_Callback_Login(true);
+        }
+    }
+    else
+    {
+       if(tableView != NULL)
+       {
+           this->removeChild(tableView);
+           tableView = NULL;
+       }
+    }
+    
+    CCNode::setVisible(visible);
+}
+
 void GameUI_MainTitle_Rank::fb_Callback_Login(bool ret)
 {
     CCLog("fb_Callback_Login");
@@ -144,7 +160,8 @@ void GameUI_MainTitle_Rank::fb_Callback_Picture(cocos2d::CCString *fbID, cocos2d
     CCLOG("Index : %d", index);
     if(index == -1)return;
     
-    AddPicture(tableView->cellAtIndex(index), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+    float x = 130;
+    AddPicture(tableView->cellAtIndex(index), picture, ccp(0,0), ccp(x,0), 10, 144.0f, 144.0f);
 }
 
 
@@ -164,11 +181,13 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
     CCTableViewCell *cell = table->cellAtIndex(idx);//table->dequeueCell();
     
     tableView = table;
-    
+    float x = 130;
+
     if (cell == NULL)
     {
         //CCLog("tableCellAtIndex NULL idx : %d, name : %s", idx, fri->name->getCString());
         
+                
         cell = new CCTableViewCell();
         cell->autorelease();
         
@@ -183,17 +202,46 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
         cell->addChild(back);
         
         CCSprite* item = CCSprite::create("Icon-144.png");
-        item->setPosition(CCPointZero);
+        item->setPosition(ccp(x, 0.0f));
 		item->setAnchorPoint(CCPointZero);
         cell->addChild(item);
         
         CCString* str = CCString::createWithFormat("%s w:%d l:%d", fri->name->getCString(), fri->win, fri->lose);
         CCLabelTTF *label = CCLabelTTF::create(str->getCString(), "Helvetica", 30.0);
-        label->setPosition(ccp(144.0f,0.0f));
+        label->setPosition(ccp(x + 144.0f,0.0f));
 		label->setAnchorPoint(CCPointZero);
         label->setColor(ccBLACK);
         label->setTag(123);
         cell->addChild(label, 10);
+        
+        char fileName[256];
+        
+        int rank = idx + 1;
+        if(rank >= 10)
+        {
+            int count1 = rank / 10;
+            int count2 = rank % (count1 * 10);
+            
+            sprintf(fileName, "w%d.png", count1);
+            CCSprite* rank1 = CCSprite::create(fileName);
+            rank1->setAnchorPoint(ccp(0.5f, 0.0f));
+            rank1->setPosition(ccp(x * 0.5f - 65.0f * 0.5f, (144.0f - 80.0f) * 0.5f));
+            cell->addChild(rank1);
+            
+            sprintf(fileName, "w%d.png", count2);
+            CCSprite* rank2 = CCSprite::create(fileName);
+            rank2->setAnchorPoint(ccp(0.5f, 0.0f));
+            rank2->setPosition(ccp(x * 0.5f + 65.0f * 0.5f, (144.0f - 80.0f) * 0.5f));
+            cell->addChild(rank2);
+        }
+        else
+        {
+            sprintf(fileName, "w%d.png", rank);
+            CCSprite* rank1 = CCSprite::create(fileName);
+            rank1->setAnchorPoint(ccp(0.5f, 0.0f));
+            rank1->setPosition(ccp(x * 0.5f, (144.0f - 80.0f) * 0.5f));
+            cell->addChild(rank1);
+        }
         
         if(isMe == false)
         {
@@ -201,13 +249,13 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
                                                               this,menu_selector(GameUI_MainTitle_Rank::ButtonDelegate_Picture));
             button->setTag(idx);
             CCMenu* menu = CCMenu::create(button, NULL);
-            menu->setPosition(ccp(170,75));
+            menu->setPosition(ccp(x + 170,75));
             menu->setAnchorPoint(CCPointZero);
             cell->addChild(menu);
         }
         
         CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
-        AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+        AddPicture(cell, picture, ccp(0,0), ccp(x,0), 10, 144.0f, 144.0f);
     }
     else
     {
@@ -216,7 +264,7 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
         if(picture == NULL)
         {
             picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(fri->fbID);
-            AddPicture(cell, (CCSprite*)picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+            AddPicture(cell, (CCSprite*)picture, ccp(0,0), ccp(x,0), 10, 144.0f, 144.0f);
         }
     }
     

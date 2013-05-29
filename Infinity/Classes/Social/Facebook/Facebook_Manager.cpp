@@ -201,7 +201,11 @@ void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sende
     
     std::sort(gameFriendList->data->arr, gameFriendList->data->arr + gameFriendList->data->num, Sort_GameFriends);
     
-    CCLOG(root.toStyledString().c_str());
+    if(delegate_Login != NULL)delegate_Login->fb_Callback_Login(true);
+    delegate_Login = NULL;
+    
+    return;
+    
     WebRequest_RoomList(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_RoomList), "Post RoomList", myAccount->fbID->getCString());
 }
 

@@ -11,6 +11,7 @@
 #include "UILayer_WaitBlack.h"
 #include "Input_Manager.h"
 #include "Room_Manager.h"
+#include "WebCommunication.h"
 
 bool GameUI_MainTitle_RoomList::init()
 {
@@ -247,17 +248,54 @@ void GameUI_MainTitle_RoomList::AddPicture(cocos2d::CCNode *parent, cocos2d::CCS
 
 
 void GameUI_MainTitle_RoomList::setVisible(bool visible)
-{
-    CCLOG("setVisible");
-    CCNode::setVisible(visible);
-    
+{ 
     if(visible == true)
     {
-        curMakeTable = 0;
-        AddTableView_MyTurn();
-        AddTableView_Waiting();
-        curMakeTable = -1;
+        UILayer_WaitBlack::AddLayer();
+        Facebook_Account* myAccount = Facebook_Manager::sharedInstance()->getMyAccount();
+        WebRequest_RoomList(this, callfuncND_selector(GameUI_MainTitle_RoomList::onHttpRequestCompleted_RoomList), "Post RoomList", myAccount->fbID->getCString());
     }
+    else
+    {
+        list_MyTurn.clear();
+        list_Waiting.clear();
+        
+        if(tableView_MyTurn != NULL)
+        {
+            this->removeChild(tableView_MyTurn);
+            tableView_MyTurn = NULL;
+        }
+        if(tableView_Waiting != NULL)
+        {
+            this->removeChild(tableView_Waiting);
+            tableView_Waiting = NULL;
+        }
+    }
+    
+    CCNode::setVisible(visible);
+}
+
+void GameUI_MainTitle_RoomList::onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data)
+{
+    CCLOG("onHttpRequestCompleted_RoomList!!");
+    
+    Json::Value root;
+    if(WebResponse_Common(sender, data, root) == false)
+    {
+        CCLOG("onHttpRequestCompleted_RoomList = false!!");
+        return;
+    }
+    
+    CCLOG(root.toStyledString().c_str());
+    
+    Room_Manager::sharedInstance()->Init_RoomList(root);
+    
+    curMakeTable = 0;
+    AddTableView_MyTurn();
+    AddTableView_Waiting();
+    curMakeTable = -1;
+    
+    UILayer_WaitBlack::RemoveLayer();
 }
 
 unsigned int GameUI_MainTitle_RoomList::numberOfCellsInTableView(cocos2d::extension::CCTableView *table)

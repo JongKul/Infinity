@@ -163,6 +163,7 @@
 		6F03FCFE17550E9600E7EB87 /* result_l.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F03FCFB17550E9500E7EB87 /* result_l.png */; };
 		6F03FCFF17550E9600E7EB87 /* result_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F03FCFC17550E9500E7EB87 /* result_w.png */; };
 		6F03FD011755185500E7EB87 /* ok.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F03FD001755185500E7EB87 /* ok.png */; };
+		6F03FD061755E89800E7EB87 /* 1-02-Communicative-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F03FD051755E89700E7EB87 /* 1-02-Communicative-Logo.png */; };
 		6F15FD551701C2C700714D9B /* libcocos2dx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F15FD521701C11600714D9B /* libcocos2dx.a */; };
 		6F55236F1746900500179042 /* Input_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F55236D1746900500179042 /* Input_Manager.cpp */; };
 		6F55237617470F3100179042 /* UILayer_WaitBlack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F55237417470F3100179042 /* UILayer_WaitBlack.cpp */; };
@@ -568,6 +569,7 @@
 		6F03FCFB17550E9500E7EB87 /* result_l.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result_l.png; sourceTree = "<group>"; };
 		6F03FCFC17550E9500E7EB87 /* result_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result_w.png; sourceTree = "<group>"; };
 		6F03FD001755185500E7EB87 /* ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok.png; sourceTree = "<group>"; };
+		6F03FD051755E89700E7EB87 /* 1-02-Communicative-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-02-Communicative-Logo.png"; sourceTree = "<group>"; };
 		6F55236D1746900500179042 /* Input_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Input_Manager.cpp; sourceTree = "<group>"; };
 		6F55236E1746900500179042 /* Input_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Input_Manager.h; sourceTree = "<group>"; };
 		6F55237417470F3100179042 /* UILayer_WaitBlack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UILayer_WaitBlack.cpp; sourceTree = "<group>"; };
@@ -1558,6 +1560,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6F03FD051755E89700E7EB87 /* 1-02-Communicative-Logo.png */,
 				6F03FD001755185500E7EB87 /* ok.png */,
 				6F03FCFA17550E9500E7EB87 /* b_back.png */,
 				6F03FCFB17550E9500E7EB87 /* result_l.png */,
@@ -1773,6 +1776,7 @@
 				6F03FCFE17550E9600E7EB87 /* result_l.png in Resources */,
 				6F03FCFF17550E9600E7EB87 /* result_w.png in Resources */,
 				6F03FD011755185500E7EB87 /* ok.png in Resources */,
+				6F03FD061755E89800E7EB87 /* 1-02-Communicative-Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -51,6 +51,7 @@ private:
     void AddTableView_Waiting();
 public:
     virtual void Callback_RoomInfo(int roomIndex);
+    void onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data);
 };
 
 #endif /* defined(__Infinity__GameUI_MainTitle_RoomList__) */

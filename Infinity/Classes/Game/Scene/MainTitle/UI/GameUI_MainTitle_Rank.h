@@ -40,7 +40,8 @@ public:
     unsigned int numberOfCellsInTableView(cocos2d::extension::CCTableView *table);
 public:
     void SetGameLayer(GameUI_MainTitle* main){ uiMain = main; }
-
+    virtual void setVisible(bool visible);
+    
     virtual void fb_Callback_Login (bool);
     virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture);
 public:
