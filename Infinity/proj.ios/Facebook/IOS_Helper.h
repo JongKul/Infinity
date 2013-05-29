@@ -24,6 +24,7 @@ public:
     static IOS_Helper* sharedInstance();
 public:
     void ShowAlert(const char* str);
+    const char* GetApnsDeviceKey();
 };
 
 #endif /* defined(__Chess__IOS_Helper__) */

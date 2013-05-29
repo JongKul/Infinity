@@ -22,3 +22,14 @@ void Native_ShowAlert(const char* str)
     JNI_ShowAlert(str);
 #endif
 }
+
+const char*  Native_GetApnsDeviceKey()
+{
+    const char* defaultKey = "abc123";
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    return IOS_Helper::sharedInstance()->GetApnsDeviceKey();
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    return defaultKey;
+#endif
+    return defaultKey;
+}

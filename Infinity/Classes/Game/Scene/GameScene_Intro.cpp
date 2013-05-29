@@ -35,6 +35,8 @@ void GameScene_Intro::ChangeScene()
 
 bool GameLayer_Intro::init()
 {
+    CCLOG("Intro init");
+    
     CCLayer::init();
     
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();

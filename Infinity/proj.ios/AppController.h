@@ -14,6 +14,7 @@
     UIWindow *window;
     RootViewController    *viewController;
 }
-
+- (NSString*)deviceToken;
+- (void)setDeviceToken:(NSString*)token;
 @end
 

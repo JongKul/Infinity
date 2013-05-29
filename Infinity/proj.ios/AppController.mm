@@ -18,6 +18,7 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
+
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
 
@@ -59,9 +60,46 @@ static AppDelegate s_sharedApplication;
     
     [[UIApplication sharedApplication] setStatusBarHidden:true];
     
+    // APNS에 디바이스를 등록한다.
+    [self setDeviceToken:@"abc123"];
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert |
+                                                                           UIRemoteNotificationTypeBadge |
+                                                                           UIRemoteNotificationTypeSound)];
+    
     cocos2d::CCApplication::sharedApplication()->run();
 
     return YES;
+}
+
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    NSString *newToken = [deviceToken description];
+	newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+	newToken = [newToken stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+	NSLog(@"My token is: %@", newToken);
+    [self setDeviceToken:newToken];
+}
+
+- (NSString*)deviceToken
+{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"];
+}
+
+- (void)setDeviceToken:(NSString*)token
+{
+	[[NSUserDefaults standardUserDefaults] setObject:token forKey:@"DeviceToken"];
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+{
+	NSLog(@"Failed to get token, error: %@", error);
+}
+
+//push 오면 여기로 들어옴.
+- (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog( @"userInfo Desc: %@", [userInfo description] );
 }
 
 

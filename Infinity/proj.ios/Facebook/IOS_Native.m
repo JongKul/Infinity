@@ -44,6 +44,11 @@
     [[IOS_Facebook shared] applicationWillTerminate];
 }
 
++(NSString*) GetApnsDeviceKey
+{
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"];
+}
+
 
 +(void) ShowAlert:(NSString*)message
 {

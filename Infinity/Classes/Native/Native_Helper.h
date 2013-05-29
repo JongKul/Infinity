@@ -12,5 +12,6 @@
 #include "cocos2d.h"
 
 void Native_ShowAlert(const char* str);
+const char*  Native_GetApnsDeviceKey();
 
 #endif /* defined(__Infinity__Native_Helper__) */

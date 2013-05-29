@@ -20,5 +20,6 @@
 + (void)applicationWillTerminate:(UIApplication *)application;
 
 +(void) ShowAlert:(NSString*)message;
++(NSString*) GetApnsDeviceKey;
 
 @end

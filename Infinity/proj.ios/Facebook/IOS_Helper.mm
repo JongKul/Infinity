@@ -21,3 +21,8 @@ void IOS_Helper::ShowAlert(const char* str)
 {   
     [IOS_Native ShowAlert:CharToNs(str)];
 }
+
+const char* IOS_Helper::GetApnsDeviceKey()
+{
+    return NsToChar([IOS_Native GetApnsDeviceKey]);
+}
