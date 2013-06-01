@@ -11,6 +11,8 @@
 #include "Input_Manager.h"
 #include "Facebook_Manager.h"
 #include "UILayer_WaitBlack.h"
+#include "Room_Manager.h"
+#include "WebCommunication.h"
 
 #pragma region Scene
 
@@ -66,13 +68,36 @@ void GameLayer_Intro::ButtonDelegate_Login(cocos2d::CCObject *sender)
 
 void GameLayer_Intro::fb_Callback_Login (bool ret)
 {
-    UILayer_WaitBlack::RemoveLayer();
-    
     if(ret == true)
     {
-        GameScene_Intro::ChangeScene();
+        Facebook_Account* myAccount = Facebook_Manager::sharedInstance()->getMyAccount();
+        WebRequest_RoomList(this, callfuncND_selector(GameLayer_Intro::onHttpRequestCompleted_RoomList), "Post RoomList", myAccount->fbID->getCString());
+    }
+    else
+    {
+        CCLOG("fb_Callback_Login = False !!!");
+        UILayer_WaitBlack::RemoveLayer();
     }
 }
 
+void GameLayer_Intro::onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data)
+{
+    CCLOG("onHttpRequestCompleted_RoomList!!");
+    
+    Json::Value root;
+    if(WebResponse_Common(sender, data, root) == false)
+    {
+        CCLOG("onHttpRequestCompleted_RoomList = false!!");
+        return;
+    }
+    
+    CCLOG(root.toStyledString().c_str());
+    
+    Room_Manager::sharedInstance()->Init_RoomList(root);
+    
+    UILayer_WaitBlack::RemoveLayer();
+    
+    GameScene_Intro::ChangeScene();
+}
 
 #pragma endregion

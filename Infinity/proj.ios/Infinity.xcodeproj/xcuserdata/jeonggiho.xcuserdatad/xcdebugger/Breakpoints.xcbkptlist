@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../Classes/Game/Scene/MainTitle/UI/GameUI_MainTitle.cpp"
-         timestampString = "390837386.56528"
+         timestampString = "391784608.458758"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "77"
+         endingLineNumber = "77"
          landmarkName = "GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)"
          landmarkType = "5">
       </FileBreakpoint>

@@ -33,6 +33,8 @@ public:
 public:
     virtual void fb_Callback_Login (bool);
     virtual void fb_Callback_Picture (CCString* fbID, CCSprite* picture){}
+public:
+    void onHttpRequestCompleted_RoomList(cocos2d::CCNode *sender, void *data);
 private:
     void ButtonDelegate_Login(cocos2d::CCObject *sender);
 };

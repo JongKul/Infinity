@@ -23,6 +23,8 @@ class GameUI_MainTitle_Rank : public CCNode, public cocos2d::extension::CCTableV
 private:
     GameUI_MainTitle* uiMain;
     CCTableView* tableView;
+    int picture_Width, picture_Height, picture_Pos;
+    float cell_Width, cell_Height;
 public:
     virtual bool init();
     CREATE_FUNC(GameUI_MainTitle_Rank);
@@ -31,6 +33,8 @@ public:
     void ButtonDelegate_Post(CCObject* sender);
     void ButtonDelegate_ChangeScene(CCObject* sender);
     void ButtonDelegate_Picture(CCObject* sender);
+    void ButtonDelegate_RandomMatch(CCObject* sender);
+    void ButtonDelegate_Invite(CCObject* sender);
     
     void scrollViewDidScroll(cocos2d::extension::CCScrollView* view) {}
     void scrollViewDidZoom(cocos2d::extension::CCScrollView* view) {}

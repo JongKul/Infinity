@@ -49,12 +49,25 @@ void GameUI_MainTitle::Init_Button()
     CCMenu* menu = CCMenu::create(button_Home, button_Playing, button_NewGame, NULL);
     menu->setPosition(ccp(0,0));
     this->addChild(menu);
+  
+    CCMenuItem* setting = CCMenuItemImage::create("setting.png", "setting.png",
+                                                      this,menu_selector(GameUI_MainTitle::ButtonDelegate_Setting));
+    setting->setPosition(ccp(605, 1280-120));
+    menu = CCMenu::create(setting, NULL);
+    menu->setPosition(ccp(0,0));
+    this->addChild(menu);
 }
 
 void GameUI_MainTitle::Add_UINode(cocos2d::CCNode *child)
 {
     child->setVisible(false);
     this->addChild(child, 0);
+}
+void GameUI_MainTitle::ButtonDelegate_Setting(CCObject* sender)
+{
+    ReturnInput();
+    
+    CCLOG("ButtonDelegate_Setting");
 }
 
 void GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)

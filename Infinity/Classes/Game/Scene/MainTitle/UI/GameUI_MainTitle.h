@@ -32,6 +32,7 @@ private:
     void ButtonDelegate_Home(CCObject* sender);
     void ButtonDelegate_Playing(CCObject* sender);
     void ButtonDelegate_NewGame(CCObject* sender);
+    void ButtonDelegate_Setting(CCObject* sender);
 public:
     virtual bool init();
     CREATE_FUNC(GameUI_MainTitle);

@@ -181,7 +181,9 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         cell = new CCTableViewCell();
         cell->autorelease();
         
-        CCSprite* back = CCSprite::create("row.png");
+        CCSprite* back;
+        if(idx % 2 == 0) back = CCSprite::create("row.png");
+        else back = CCSprite::create("myrank.png");
         
         back->setPosition(CCPointZero);
 		back->setAnchorPoint(CCPointZero);
@@ -196,9 +198,8 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         CCLabelTTF *label = CCLabelTTF::create(str->getCString(), "Helvetica", 30.0);
         label->setPosition(ccp(144.0f, 0.0f));
 		label->setAnchorPoint(CCPointZero);
-        label->setTag(123);
         label->setColor(ccBLACK);
-        cell->addChild(label, 10);
+        cell->addChild(label);
         
         CCMenuItemImage* button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle_RoomList::ButtonDelegate_Picture));
         button->setTag(room->room_Index);
