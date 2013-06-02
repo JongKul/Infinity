@@ -17,6 +17,8 @@ extern void JNI_Picture(const char* id);
 extern void JNI_Invite(const char* id);
 
 extern void JNI_ShowAlert(const char* message);
+extern void JNI_GetToken(char* buf );
+
 }
 
 

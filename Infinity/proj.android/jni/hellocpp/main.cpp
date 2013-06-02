@@ -130,7 +130,7 @@ JNIEXPORT void JNICALL JNI_ShowAlert(const char* message)
 		if (instance==0) {
 				LOGD("instance is empty");
 		}
-		isHave =JniHelper::getMethodInfo(minfo, "Lgame/mobile/infinity/Helper","alert", "(Ljava/lang/String;)V" );
+		isHave =JniHelper::getMethodInfo(minfo, "game/mobile/infinity/Helper","alert", "(Ljava/lang/String;)V" );
 		if (!isHave) {
 			LOGD("jni:method no found.");
 		}
@@ -140,7 +140,27 @@ JNIEXPORT void JNICALL JNI_ShowAlert(const char* message)
 
 
 }
-
+void JNI_GetToken(char* buf )
+{
+	LOGD("jni:JNI_GetToken");
+	JniMethodInfo minfo;
+	bool isHave =JniHelper::getStaticMethodInfo( minfo,"game/mobile/infinity/Helper" ,"getInstance", "()Lgame/mobile/infinity/Helper;" );
+	if (!isHave) {
+		LOGD("jni:method no found.");
+	}
+	jobject instance = minfo.env->CallStaticObjectMethod(minfo.classID,minfo.methodID);
+	if (instance==0) {
+			LOGD("instance is empty");
+	}
+	isHave =JniHelper::getMethodInfo(minfo, "game/mobile/infinity/Helper","getToken", "()Ljava/lang/String;" );
+	if (!isHave) {
+		LOGD("jni:method no found.");
+	}
+	jstring string = (jstring)minfo.env->CallObjectMethod( instance,minfo.methodID);
+	const char *id = minfo.env->GetStringUTFChars(  string, 0);
+	strcpy(buf,id);
+	minfo.env->ReleaseStringUTFChars(  string, id);
+}
 
  void JNI_Login()
 {
