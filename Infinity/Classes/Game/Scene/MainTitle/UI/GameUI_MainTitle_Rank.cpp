@@ -285,14 +285,14 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
             for(int i = 0; i<Room_Manager::sharedInstance()->room_List.size(); ++i)
             {
                 Room_List* room = Room_Manager::sharedInstance()->room_List[i];
-                if(fri->name->isEqual(room->other_user_ID) == true)
+                if(fri->fbID->isEqual(room->other_user_ID) == true)
                 {
                     isPlaying = true;
                     break;
                 }
             }
             
-            if(isPlaying == true)
+            if(isPlaying == false)
             {
                 CCMenuItemImage* button = CCMenuItemImage::create("b_start.png", "b_start.png",this,menu_selector(GameUI_MainTitle_Rank::ButtonDelegate_Picture));
                 
