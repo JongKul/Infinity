@@ -24,14 +24,14 @@ class GameUI_MainTitle : public CCNode
 private:
     GameUI_MainTitle_Rank* uiLayer_Rank;
     GameUI_MainTitle_RoomList* uiLayer_RoomList;
-    CCMenuItemImage *button_Home, *button_Playing, *button_NewGame;
+    CCMenuItemImage *button_Home, *button_Playing, *button_Store;
 private:
     void Init_UISet();
     void Init_Button();
     void Add_UINode(CCNode* ui);
     void ButtonDelegate_Home(CCObject* sender);
     void ButtonDelegate_Playing(CCObject* sender);
-    void ButtonDelegate_NewGame(CCObject* sender);
+    void ButtonDelegate_Store(CCObject* sender);
     void ButtonDelegate_Setting(CCObject* sender);
 public:
     virtual bool init();

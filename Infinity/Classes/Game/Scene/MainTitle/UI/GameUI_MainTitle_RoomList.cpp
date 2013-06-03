@@ -118,7 +118,7 @@ void GameUI_MainTitle_RoomList::Callback_RoomInfo(int roomIndex)
 
 void GameUI_MainTitle_RoomList::fb_Callback_Picture(cocos2d::CCString *fbID, cocos2d::CCSprite *picture)
 {
-    if(picture == NULL || tableView_MyTurn == NULL)
+    if(picture == NULL || tableView_MyTurn == NULL || tableView_Waiting == NULL)
     {
         CCLOG("NULL");
         return;
@@ -126,19 +126,27 @@ void GameUI_MainTitle_RoomList::fb_Callback_Picture(cocos2d::CCString *fbID, coc
     
     for(int i = 0; i < list_MyTurn.size(); ++i)
     {
-        if(list_MyTurn[i]->other_user_ID->isEqual(fbID) == true)
+        if(list_MyTurn[i] != NULL)
         {
-            AddPicture(tableView_MyTurn->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
-            return;
+           CCString* frID = list_MyTurn[i]->other_user_ID;
+            if(frID != NULL && frID->isEqual(fbID) == true)
+            {
+                AddPicture(tableView_MyTurn->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+                return;
+            }
         }
     }
     
     for(int i = 0; i < list_Waiting.size(); ++i)
     {
-        if(list_Waiting[i]->other_user_ID->isEqual(fbID) == true)
+        if(list_Waiting[i] != NULL)
         {
-            AddPicture(tableView_Waiting->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
-            return;
+            CCString* frID = list_Waiting[i]->other_user_ID;
+            if(frID != NULL && frID->isEqual(fbID) == true)
+            {
+                AddPicture(tableView_Waiting->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+                return;
+            }
         }
     }
 }

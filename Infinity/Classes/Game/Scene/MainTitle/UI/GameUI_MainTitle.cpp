@@ -41,12 +41,12 @@ void GameUI_MainTitle::Init_Button()
                                                            this,menu_selector(GameUI_MainTitle::ButtonDelegate_Home));
     button_Playing = CCMenuItemImage::create("b_play.png", "b_bplay.png",
                                                               this,menu_selector(GameUI_MainTitle::ButtonDelegate_Playing));
-    button_NewGame = CCMenuItemImage::create("b_new.png", "b_bnew.png",
-                                                              this,menu_selector(GameUI_MainTitle::ButtonDelegate_NewGame));
+    button_Store = CCMenuItemImage::create("b_store.png", "b_bstore.png",
+                                                              this,menu_selector(GameUI_MainTitle::ButtonDelegate_Store));
     button_Home->setPosition(ccp(135,1280 - 1155)); button_Home->setRotation(17);
     button_Playing->setPosition(ccp(360,1280 - 1155)); button_Playing->setRotation(17);
-    button_NewGame->setPosition(ccp(585,1280 - 1155)); button_NewGame->setRotation(17);
-    CCMenu* menu = CCMenu::create(button_Home, button_Playing, button_NewGame, NULL);
+    button_Store->setPosition(ccp(585,1280 - 1155)); button_Store->setRotation(17);
+    CCMenu* menu = CCMenu::create(button_Home, button_Playing, button_Store, NULL);
     menu->setPosition(ccp(0,0));
     this->addChild(menu);
   
@@ -82,7 +82,7 @@ void GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)
     
     button_Home->setNormalImage(CCSprite::create("b_home.png"));
     button_Playing->setNormalImage(CCSprite::create("b_bplay.png"));
-    button_NewGame->setNormalImage(CCSprite::create("b_bnew.png"));
+    button_Store->setNormalImage(CCSprite::create("b_bstore.png"));
     
     uiLayer_Rank->setVisible(true);
     uiLayer_RoomList->setVisible(false);
@@ -100,13 +100,13 @@ void GameUI_MainTitle::ButtonDelegate_Playing(cocos2d::CCObject *sender)
     
     button_Home->setNormalImage(CCSprite::create("b_bhome.png"));
     button_Playing->setNormalImage(CCSprite::create("b_play.png"));
-    button_NewGame->setNormalImage(CCSprite::create("b_bnew.png"));
+    button_Store->setNormalImage(CCSprite::create("b_bstore.png"));
     
     uiLayer_Rank->setVisible(false);
     uiLayer_RoomList->setVisible(true);
 }
 
-void GameUI_MainTitle::ButtonDelegate_NewGame(cocos2d::CCObject *sender)
+void GameUI_MainTitle::ButtonDelegate_Store(cocos2d::CCObject *sender)
 {
     ReturnInput();
 }
