@@ -118,6 +118,8 @@ void GameUI_MainTitle_Rank::ButtonDelegate_RandomMatch(CCObject* sender)
     ReturnInput();
     
     CCLOG("ButtonDelegate_RandomMatch");
+    Room_Manager::sharedInstance()->Request_RoomRandomMake(Facebook_Manager::sharedInstance()->getMyAccount()->fbID, this);
+    UILayer_WaitBlack::AddLayer();
 }
 void GameUI_MainTitle_Rank::ButtonDelegate_Invite(CCObject* sender)
 {

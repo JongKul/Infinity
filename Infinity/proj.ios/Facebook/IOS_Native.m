@@ -55,7 +55,7 @@
     UIAlertView *alertDialog;
     
     alertDialog = [[UIAlertView alloc]
-                   initWithTitle:@"IOS Native!"
+                   initWithTitle:@"Warning!"
                    message:message
                    delegate:nil
                    cancelButtonTitle: @"OK"

@@ -58,6 +58,7 @@ public:
 public:
     void Request_RoomInfo(int roomIndex, Room_Callback* del);
     void Request_RoomMake(CCString* myID, CCString* otherID, Room_Callback* del);
+    void Request_RoomRandomMake(CCString* myID, Room_Callback* del);
     void Request_RoomTurn(int roomIndex, int x, int y, Room_Callback* del);
     void Request_RoomUpdate(Room_Callback* del);
     void Request_RoomEnd(CCString* myId, int roomIndex, Room_Callback* del);

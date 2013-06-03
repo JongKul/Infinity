@@ -18,6 +18,7 @@ void WebRequest_Login(CCObject* pTarget, SEL_CallFuncND pSelector, const char* t
 void WebRequest_SyncFriends(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, CCArray* friend_List);
 void WebRequest_RoomList(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID);
 void WebRequest_RoomInfo(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* other_fbID, int roomIndex);
+void WebRequest_RandomMatch(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID);
 void WebRequest_Turn(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* other_fbID, int roomIndex, int x, int y);
 void WebRequest_RoomEnd(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, int roomIndex);
 void WebRequest_Common(CCObject* pTarget, SEL_CallFuncND pSelector, const Json::Value& root, const char* tag, const char* url);

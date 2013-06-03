@@ -61,6 +61,14 @@ void WebRequest_RoomInfo(CCObject* pTarget, SEL_CallFuncND pSelector, const char
     WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/room_info");
 }
 
+void WebRequest_RandomMatch(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID)
+{
+    Json::Value root;
+    root["user_id"] = fbID;
+    
+    WebRequest_Common(pTarget, pSelector, root, tag, "http://infinityserver-JKInfinity.rhcloud.com/game/random_match");
+}
+
 void WebRequest_Turn(CCObject* pTarget, SEL_CallFuncND pSelector, const char* tag, const char* fbID, const char* other_fbID, int roomIndex, int x, int y)
 {
     Json::Value root;

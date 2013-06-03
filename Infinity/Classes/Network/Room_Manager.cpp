@@ -9,6 +9,7 @@
 #include "Room_Manager.h"
 #include "Facebook_Manager.h"
 #include "WebCommunication.h"
+#include "Native_Helper.h"
 
 Room_Manager::Room_Manager()
 {
@@ -87,6 +88,14 @@ void Room_Manager::Request_RoomMake(cocos2d::CCString *myID, cocos2d::CCString *
                         myID->getCString(), otherID->getCString(), -1);
 }
 
+void Room_Manager::Request_RoomRandomMake(CCString* myID, Room_Callback* del)
+{
+    callBack = del;
+    
+    WebRequest_RandomMatch(this, callfuncND_selector(Room_Manager::onHttpRequestCompleted_RoomMake), "Post RoomMake",
+                           myID->getCString());
+}
+
 void Room_Manager::onHttpRequestCompleted_RoomMake(cocos2d::CCNode *sender, void *data)
 {
     CCLOG("onHttpRequestCompleted_RoomMake!!");
@@ -95,14 +104,22 @@ void Room_Manager::onHttpRequestCompleted_RoomMake(cocos2d::CCNode *sender, void
     if(WebResponse_Common(sender, data, root) == false)
     {
         CCLOG("onHttpRequestCompleted_RoomMake = false!!");
+        Native_ShowAlert("Room Make Fail!!");
         if(callBack != NULL) callBack->Callback_RoomMake(-1);
         return;
     }
     
+    CCLOG(root.toStyledString().c_str());
+    
     int roomIndex = root["room_index"].asInt();
     std::string otherID = root["white"].asString();
-    if(otherID.compare(Facebook_Manager::sharedInstance()->getMyAccount()->fbID->m_sString) == 0) otherID = root["black"].asString();
-    std::string otherName = Facebook_Manager::sharedInstance()->Get_FriendName(CCString::create(otherID))->m_sString;
+    std::string otherName = root["white_user_name"].asString();
+    
+    if(otherID.compare(Facebook_Manager::sharedInstance()->getMyAccount()->fbID->m_sString) == 0)
+    {
+        otherID = root["black"].asString();
+        otherName = root["black_user_name"].asString();
+    }
     
     Room_List* room = Room_List::create();
     room->SetData_RoomList( Facebook_Manager::sharedInstance()->getMyAccount()->fbID->m_sString, otherID,
