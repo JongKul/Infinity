@@ -186,6 +186,23 @@ void Facebook_Manager::onHttpRequestCompleted_SyncFriends(cocos2d::CCNode *sende
     for(int i=0; i<array.size(); ++i)
     {
         Json::Value item = array[i];
+        
+        int index = 0;
+        bool isExist = false;
+        CCString* fbID = CCString::create(item["user_id"].asString());
+        CCArray* friList = Facebook_Manager::sharedInstance()->getGameFriendList();
+        
+        for(index=0; index<friList->count(); ++index)
+        {
+            Facebook_Account* fri = (Facebook_Account*)friList->objectAtIndex(index);
+            if(fri != NULL && fri->fbID->isEqual(fbID) == true)
+            {
+                isExist = true;
+                break;
+            }
+        }
+        
+        if(isExist == true) continue;
       
         Facebook_Account* fri = Facebook_Account::create();
         fri->name = CCString::create(item["user_name"].asString()) ;
