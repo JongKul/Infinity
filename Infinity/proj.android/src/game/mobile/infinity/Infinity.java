@@ -40,19 +40,21 @@ import android.content.pm.Signature;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
-import android.view.KeyEvent;
 
 import com.facebook.Session;
+import com.google.android.gcm.GCMRegistrar;
 
 public class Infinity extends Cocos2dxActivity{
 	public static Activity INFINITY;
+	private final static String SENDER_ID = "675424910294";
+	
+	public static String regId; 
 	
 	
-	
-
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);	
 		 Log.d("onCreate:", "onCreate");
+		 
 		INFINITY = this;
 		try {
 		    PackageInfo info = getPackageManager().getPackageInfo(
@@ -69,7 +71,16 @@ public class Infinity extends Cocos2dxActivity{
 		} catch (NoSuchAlgorithmException ex) {
 		}
 		
+		GCMRegistrar.checkDevice(this);
+		GCMRegistrar.checkManifest(this);
+		this.regId = GCMRegistrar.getRegistrationId(this);
+		
+		if(regId.equals("")){
+			GCMRegistrar.register(this, SENDER_ID);			
+		}
 	}
+	
+	
 
     public Cocos2dxGLSurfaceView onCreateView() {
     	Cocos2dxGLSurfaceView glSurfaceView = new Cocos2dxGLSurfaceView(this);

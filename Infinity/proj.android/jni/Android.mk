@@ -47,6 +47,7 @@ LOCAL_SRC_FILES += ../../Classes/Game/Scene/Match/Unit/Unit_Base.cpp
 LOCAL_SRC_FILES += ../../Classes/Game/Scene/Match/Unit/Unit_Black.cpp
 LOCAL_SRC_FILES += ../../Classes/Game/Scene/Match/Unit/Unit_White.cpp
 LOCAL_SRC_FILES += ../../Classes/Game/UILayer_WaitBlack.cpp
+LOCAL_SRC_FILES += ../../Classes/Game/UI_Utility.cpp
 LOCAL_SRC_FILES += ../../Classes/Native/Native_Helper.cpp
 LOCAL_SRC_FILES += ../../Classes/Network/Json/json_reader.cpp
 LOCAL_SRC_FILES += ../../Classes/Network/Json/json_value.cpp

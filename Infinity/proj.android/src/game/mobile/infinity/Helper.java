@@ -37,6 +37,9 @@ public class Helper {
 				  message,  
                   Toast.LENGTH_SHORT).show();*/
 	}
+	public String getToken(){
+		return Infinity.regId;
+	}
 	
 
 }

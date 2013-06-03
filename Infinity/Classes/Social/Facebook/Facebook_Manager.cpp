@@ -9,7 +9,7 @@
 
 
 #include "Facebook_Manager.h"
-
+#include <algorithm>
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "Facebook_Binder_IOS.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
