@@ -204,15 +204,15 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         
         CCString* str = CCString::createWithFormat("%s", room->other_user_Name->getCString());
         CCLabelTTF *label = CCLabelTTF::create(str->getCString(), "Helvetica", 30.0);
-        label->setPosition(ccp(144.0f, 0.0f));
+        label->setPosition(ccp(144.0f, 52.0f));
 		label->setAnchorPoint(CCPointZero);
         label->setColor(ccBLACK);
         cell->addChild(label);
         
-        CCMenuItemImage* button = CCMenuItemImage::create("CloseNormal.png", "CloseSelected.png", this,menu_selector(GameUI_MainTitle_RoomList::ButtonDelegate_Picture));
+        CCMenuItemImage* button = CCMenuItemImage::create("b_enter.png", "b_enter.png", this,menu_selector(GameUI_MainTitle_RoomList::ButtonDelegate_Picture));
         button->setTag(room->room_Index);
         CCMenu* menu = CCMenu::create(button, NULL);
-        menu->setPosition(ccp(170,75));
+        menu->setPosition(ccp(594.0f - (255.0f * 0.5f),75));
 		menu->setAnchorPoint(CCPointZero);
         cell->addChild(menu);
         

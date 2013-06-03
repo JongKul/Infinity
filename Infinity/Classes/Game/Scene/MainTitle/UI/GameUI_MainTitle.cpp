@@ -13,6 +13,7 @@
 #include "Input_Manager.h"
 #include "GameUI_MainTitle_RoomList.h"
 #include "GameUI_MainTitle_Rank.h"
+#include "GameUI_MainTitle_Store.h"
 
 bool GameUI_MainTitle::init()
 {
@@ -30,9 +31,11 @@ void GameUI_MainTitle::Init_UISet()
 {
     uiLayer_Rank = GameUI_MainTitle_Rank::create(); uiLayer_Rank->SetGameLayer(this);
     uiLayer_RoomList = GameUI_MainTitle_RoomList::create(); uiLayer_RoomList->SetGameLayer(this);
+    uiLayer_Store = GameUI_MainTitle_Store::create(); uiLayer_Store->SetGameLayer(this);
     
     Add_UINode(uiLayer_Rank);
     Add_UINode(uiLayer_RoomList);
+    Add_UINode(uiLayer_Store);
 }
 
 void GameUI_MainTitle::Init_Button()
@@ -48,14 +51,14 @@ void GameUI_MainTitle::Init_Button()
     button_Store->setPosition(ccp(585,1280 - 1155)); button_Store->setRotation(17);
     CCMenu* menu = CCMenu::create(button_Home, button_Playing, button_Store, NULL);
     menu->setPosition(ccp(0,0));
-    this->addChild(menu);
+    this->addChild(menu, 5);
   
     CCMenuItem* setting = CCMenuItemImage::create("setting.png", "setting.png",
                                                       this,menu_selector(GameUI_MainTitle::ButtonDelegate_Setting));
     setting->setPosition(ccp(605, 1280-120));
     menu = CCMenu::create(setting, NULL);
     menu->setPosition(ccp(0,0));
-    this->addChild(menu);
+    this->addChild(menu, 5);
 }
 
 void GameUI_MainTitle::Add_UINode(cocos2d::CCNode *child)
@@ -86,6 +89,7 @@ void GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)
     
     uiLayer_Rank->setVisible(true);
     uiLayer_RoomList->setVisible(false);
+    uiLayer_Store->setVisible(false);
 }
 
 void GameUI_MainTitle::ButtonDelegate_Playing(cocos2d::CCObject *sender)
@@ -104,9 +108,24 @@ void GameUI_MainTitle::ButtonDelegate_Playing(cocos2d::CCObject *sender)
     
     uiLayer_Rank->setVisible(false);
     uiLayer_RoomList->setVisible(true);
+    uiLayer_Store->setVisible(false);
 }
 
 void GameUI_MainTitle::ButtonDelegate_Store(cocos2d::CCObject *sender)
 {
     ReturnInput();
+    
+    if(uiLayer_Store->isVisible() == true)
+    {
+        CCLOG("Store visible");
+        return;
+    }
+    
+    button_Home->setNormalImage(CCSprite::create("b_bhome.png"));
+    button_Playing->setNormalImage(CCSprite::create("b_bplay.png"));
+    button_Store->setNormalImage(CCSprite::create("b_store.png"));
+    
+    uiLayer_Rank->setVisible(false);
+    uiLayer_RoomList->setVisible(false);
+    uiLayer_Store->setVisible(true);
 }

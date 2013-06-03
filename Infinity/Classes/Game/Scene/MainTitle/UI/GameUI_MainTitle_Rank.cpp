@@ -14,6 +14,7 @@
 #include "GameUI_MainTitle_RoomList.h"
 #include "UI_Utility.h"
 #include "Room_Manager.h"
+#include "GameUI_MainTitle_Invite.h"
 
 bool GameUI_MainTitle_Rank::init()
 {
@@ -126,6 +127,7 @@ void GameUI_MainTitle_Rank::ButtonDelegate_Invite(CCObject* sender)
     ReturnInput();
     
     CCLOG("ButtonDelegate_Invite");
+    uiMain->addChild(GameUI_MainTitle_Invite::create(), 10);
 }
 
 void GameUI_MainTitle_Rank::setVisible(bool visible)

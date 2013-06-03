@@ -18,12 +18,14 @@ using namespace cocos2d::extension;
 
 class GameUI_MainTitle_RoomList;
 class GameUI_MainTitle_Rank;
+class GameUI_MainTitle_Store;
 
 class GameUI_MainTitle : public CCNode
 {
 private:
     GameUI_MainTitle_Rank* uiLayer_Rank;
     GameUI_MainTitle_RoomList* uiLayer_RoomList;
+    GameUI_MainTitle_Store* uiLayer_Store;
     CCMenuItemImage *button_Home, *button_Playing, *button_Store;
 private:
     void Init_UISet();
