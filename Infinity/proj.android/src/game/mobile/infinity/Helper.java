@@ -1,7 +1,7 @@
 package game.mobile.infinity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 public class Helper {
@@ -13,9 +13,19 @@ public class Helper {
 		}
 		return instance;
 	}
-	public void alert(String message) {
+	public void alert(final String message) {
+		Handler mHandler = new Handler(Looper.getMainLooper());
+		mHandler.postDelayed(new Runnable() {
+		@Override
+		public void run() {
+			Toast.makeText(Infinity.INFINITY.getApplicationContext(), 
+					  message,  
+	                  Toast.LENGTH_SHORT).show();
+		 
+		}
+		}, 0);
 		
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+		/*AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 				Infinity.INFINITY.getApplicationContext());
 		alertDialogBuilder
 		.setMessage("Click yes to exit!")
@@ -32,10 +42,8 @@ public class Helper {
 	
 			// show it
 		  alertDialog.show();
-		
-		  /*Toast.makeText(Infinity.INFINITY.getApplicationContext(), 
-				  message,  
-                  Toast.LENGTH_SHORT).show();*/
+		*/
+		  
 	}
 	public String getToken(){
 		return Infinity.regId;
