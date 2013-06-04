@@ -1,10 +1,13 @@
 package game.mobile.infinity;
 
-import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -12,8 +15,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.BufferedHttpEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -34,18 +39,20 @@ import com.facebook.widget.WebDialog.OnCompleteListener;
 public class FacebookManager {
 	private static FacebookManager instance;
 	
+	private ExecutorService executor;
 	private Session.StatusCallback loginStatusCallback = 
 		    new SessionStatusCallback();
 	public static FacebookManager getInstance()	{
 		if(instance == null) {
 			instance  = new FacebookManager();
+			
 		//	Session session = Session.getActiveSession();
 		//	if(session != null)session.closeAndClearTokenInformation();
 		}
 		return instance;
 	}
 	public FacebookManager() {
-		
+		 executor = Executors.newFixedThreadPool(5);
 	}
 	public void login() {
 		Log.d("test","login");
@@ -141,29 +148,120 @@ public class FacebookManager {
 			}).executeAsync();
 		}
 	}
-	public void requestPicture(String id) throws Exception {
+	public void requestPicture(final String id) throws Exception {
+		/*Infinity.INFINITY.runOnUiThread(new Runnable () {
+
+			@Override
+			public void run() {
+				
+				long contentLength= 0;
+				String fbId = id;
+				StringBuilder sb = new StringBuilder("https://graph.facebook.com/");
+				sb.append(fbId);
+				sb.append("/picture?type=normal");
+				String urlString = sb.toString();
+				HttpGet httpRequest;
+				try {
+					httpRequest = new HttpGet(new URL(urlString).toURI());
+				
+				HttpClient httpClient = new DefaultHttpClient();
+				HttpResponse response = (HttpResponse) httpClient.execute(httpRequest);
+				HttpEntity entity = response.getEntity();
+				BufferedHttpEntity bufHttpEntity = new BufferedHttpEntity(entity); 
+				contentLength = bufHttpEntity.getContentLength();
+				InputStream is = bufHttpEntity.getContent();
+				
+
+				int nRead;
+				byte[] readData = new byte[(int) contentLength];
+				is.read(readData, 0, readData.length);
+				Log.d("requestPicture", new Integer((int)contentLength).toString());			
+				//		Bitmap bitmap = BitmapFactory.decodeStream(is);
+			//	jniCallbackPicture(fbId , readData);		
+				
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				
+			}
+		});*/
+		executor.execute(new Runnable () {
+
+			@Override
+			public void run() {
+				long contentLength= 0;
+				final String fbId = id;
+				StringBuilder sb = new StringBuilder("https://graph.facebook.com/");
+				sb.append(fbId);
+				sb.append("/picture?type=normal");
+				String urlString = sb.toString();
+				HttpGet httpRequest;
+				try {
+					httpRequest = new HttpGet(new URL(urlString).toURI());
+				
+				HttpClient httpClient = new DefaultHttpClient();
+				HttpResponse response = (HttpResponse) httpClient.execute(httpRequest);
+				HttpEntity entity = response.getEntity();
+				BufferedHttpEntity bufHttpEntity = new BufferedHttpEntity(entity); 
+				contentLength = bufHttpEntity.getContentLength();
+				InputStream is = bufHttpEntity.getContent();
+				
+
+				int nRead;
+				final byte[] readData = new byte[(int) contentLength];
+				is.read(readData, 0, readData.length);
+				Log.d("requestPicture", new Integer((int)contentLength).toString());			
+				//		Bitmap bitmap = BitmapFactory.decodeStream(is);
+				((Cocos2dxActivity) Infinity.INFINITY).runOnGLThread(new Runnable(){
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						jniCallbackPicture(fbId , readData);
+					}
+					
+				});
+						
+				
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 				
+			}
+		});
+	
+/*
+		long contentLength= 0;
+		String fbId = id;
 		StringBuilder sb = new StringBuilder("https://graph.facebook.com/");
-		sb.append(id);
+		sb.append(fbId);
 		sb.append("/picture?type=normal");
 		String urlString = sb.toString();
-		HttpGet httpRequest = new HttpGet(new URL(urlString).toURI());
+		HttpGet httpRequest;
+		try {
+			httpRequest = new HttpGet(new URL(urlString).toURI());
+		
 		HttpClient httpClient = new DefaultHttpClient();
 		HttpResponse response = (HttpResponse) httpClient.execute(httpRequest);
 		HttpEntity entity = response.getEntity();
 		BufferedHttpEntity bufHttpEntity = new BufferedHttpEntity(entity); 
-		final long contentLength = bufHttpEntity.getContentLength();
+		contentLength = bufHttpEntity.getContentLength();
 		InputStream is = bufHttpEntity.getContent();
-		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+		
 
 		int nRead;
-		byte[] data = new byte[(int) contentLength];
-		while ((nRead = is.read(data, 0, data.length)) != -1) {
-		  buffer.write(data, 0, nRead);
-		}
-		buffer.flush();
+		byte[] readData = new byte[(int) contentLength];
+		is.read(readData, 0, readData.length);
+		Log.d("requestPicture", new Integer((int)contentLength).toString());			
 		//		Bitmap bitmap = BitmapFactory.decodeStream(is);
-		jniCallbackPicture(id , buffer.toByteArray());
+		jniCallbackPicture(fbId , readData);		
 		
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} */
+	
 	}
 	
 	public void invite(String id) {

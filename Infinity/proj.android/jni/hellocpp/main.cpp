@@ -93,26 +93,30 @@ JNIEXPORT void JNICALL Java_game_mobile_infinity_FacebookManager_jniAddFriend(JN
 
 JNIEXPORT void JNICALL Java_game_mobile_infinity_FacebookManager_jniCallbackPicture(JNIEnv*  env, jobject thiz, jstring jid , jbyteArray  jimage)
 {
+
 	const char *id = env->GetStringUTFChars(  jid, 0);
+
 	CCString* cfbID = CCString::createWithFormat("%s",id);
 
-	CCImage *imf =new CCImage();
-	int len = env->GetArrayLength(   jimage );
-	jbyte *nativeBytes = env->GetByteArrayElements(  jimage, 0);
-	char *byteData = (char*)malloc(len);
+	int len  = env->GetArrayLength(jimage);
+	char* byteData = (char*)malloc(len);
+	env->GetByteArrayRegion(jimage,0,len,(jbyte*)byteData);
 
-	memcpy(byteData,nativeBytes,len);
 
+	CCImage* imf = new CCImage();
 	imf->initWithImageData(byteData,len);
 	imf->autorelease();
+
 	CCTexture2D* pTexture = new CCTexture2D();
 	pTexture->initWithImage(imf);
 	pTexture->autorelease();
 
 	CCSprite *sprit = CCSprite::createWithTexture(pTexture);
-
 	Facebook_Manager::sharedInstance()->Callback_Picture(cfbID, sprit);
+
+
 	env->ReleaseStringUTFChars(  jid, id);
+
 }
 
 
@@ -240,6 +244,7 @@ void JNI_GetToken(char* buf )
 
 	jstring jstr = minfo.env->NewStringUTF(  id);
 	minfo.env->CallVoidMethod( instance,minfo.methodID,jstr);
+	minfo.env->DeleteLocalRef(jstr);
 }
 
  void JNI_Invite(const char* id)
@@ -260,6 +265,6 @@ void JNI_GetToken(char* buf )
 
 		jstring jstr = minfo.env->NewStringUTF(  id);
 		minfo.env->CallVoidMethod( instance,minfo.methodID,jstr);
-
+		minfo.env->DeleteLocalRef(jstr);
 }
 }
