@@ -102,6 +102,8 @@ static AppDelegate s_sharedApplication;
 - (void) application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog( @"userInfo Desc: %@", [userInfo description] );
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
 }
 
 
