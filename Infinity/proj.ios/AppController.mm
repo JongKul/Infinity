@@ -66,6 +66,8 @@ static AppDelegate s_sharedApplication;
                                                                            UIRemoteNotificationTypeBadge |
                                                                            UIRemoteNotificationTypeSound)];
     
+    [NSThread sleepForTimeInterval:3.0];
+    
     cocos2d::CCApplication::sharedApplication()->run();
 
     return YES;
