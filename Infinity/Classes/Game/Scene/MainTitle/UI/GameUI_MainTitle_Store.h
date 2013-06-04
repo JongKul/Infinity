@@ -23,6 +23,12 @@ public:
     CREATE_FUNC(GameUI_MainTitle_Store);
 public:
     void SetGameLayer(GameUI_MainTitle* main){ uiMain = main; }
+    
+private:
+    void Init_Button();
+private:
+    void ButtonDelegate_Eraser(CCObject* sender);
+    void ButtonDelegate_Undo(CCObject* sender);
 };
 
 #endif /* defined(__Infinity__GameUI_MainTitle_Store__) */

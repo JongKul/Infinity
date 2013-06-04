@@ -4,19 +4,6 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../Classes/Game/Scene/MainTitle/UI/GameUI_MainTitle.cpp"
-         timestampString = "391980069.945555"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
@@ -28,6 +15,17 @@
          endingLineNumber = "32"
          landmarkName = "class GameUI_MainTitle"
          landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Classes/Game/Scene/MainTitle/UI/GameUI_MainTitle_Store.cpp"
+         timestampString = "392015025.33949"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "4"
+         endingLineNumber = "4">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

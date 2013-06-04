@@ -71,6 +71,8 @@ void GameUI_MainTitle::ButtonDelegate_Setting(CCObject* sender)
     ReturnInput();
     
     CCLOG("ButtonDelegate_Setting");
+    
+    Native_ShowAlert("Next Time!");
 }
 
 void GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)
