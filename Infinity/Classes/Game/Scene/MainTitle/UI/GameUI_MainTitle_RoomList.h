@@ -27,6 +27,7 @@ private:
     CCTableView *tableView_MyTurn, *tableView_Waiting;
     std::vector<Room_List*> list_MyTurn, list_Waiting;
     int curMakeTable;
+    int picture_Width, picture_Height, picture_Pos;
 public:
     virtual bool init();
     CREATE_FUNC(GameUI_MainTitle_RoomList);

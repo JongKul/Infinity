@@ -46,10 +46,10 @@ bool GameUI_MainTitle_Invite::init()
         Facebook_Manager::sharedInstance()->GetPicture(fri->fbID, this);
     }
     
-    CCMenuItem* setting = CCMenuItemImage::create("b_inviteback.png", "b_inviteback.png",
+    CCMenuItem* setting = CCMenuItemImage::create("b_back2.png", "b_back2.png",
                                                   this,menu_selector(GameUI_MainTitle_Invite::ButtonDelegate_Back));
-    setting->setPosition(ccp(605, 1280-120));
-    setting->setScale(2.0f);
+    setting->setPosition(ccp(605, 1280-310));
+    //setting->setScale(1.5f);
     CCMenu* menu = CCMenu::create(setting, NULL);
     menu->setPosition(ccp(0,0));
     this->addChild(menu);

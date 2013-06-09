@@ -14,6 +14,7 @@
 #include "GameUI_MainTitle_RoomList.h"
 #include "GameUI_MainTitle_Rank.h"
 #include "GameUI_MainTitle_Store.h"
+#include "GameUI_MainTitle_Setting.h"
 
 bool GameUI_MainTitle::init()
 {
@@ -72,7 +73,8 @@ void GameUI_MainTitle::ButtonDelegate_Setting(CCObject* sender)
     
     CCLOG("ButtonDelegate_Setting");
     
-    Native_ShowAlert("Next Time!");
+    GameUI_MainTitle_Setting* setting = GameUI_MainTitle_Setting::create();
+    this->addChild(setting, 20);
 }
 
 void GameUI_MainTitle::ButtonDelegate_Home(cocos2d::CCObject *sender)

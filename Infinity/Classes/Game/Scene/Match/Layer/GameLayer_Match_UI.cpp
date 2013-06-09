@@ -63,7 +63,7 @@ bool GameLayer_Match_UI::init()
     blackTurnNoti = CCSprite::create();
     this->addChild(blackTurnNoti);
     
-    CCMenuItemImage* changeScene_Button = CCMenuItemImage::create("b_back.png", "b_back.png", this,menu_selector(GameLayer_Match_UI::ButtonDelegate_ChangeScene));
+    CCMenuItemImage* changeScene_Button = CCMenuItemImage::create("back.png", "back.png", this,menu_selector(GameLayer_Match_UI::ButtonDelegate_ChangeScene));
     changeScene_Button->setPosition(ccp(0,0));
     CCMenu* menu = CCMenu::create(changeScene_Button, NULL);
     menu->setPosition(ccp(720-95, 1280 - 65));
@@ -105,7 +105,7 @@ void GameLayer_Match_UI::UpdateGameFinish()
         CCMenuItemImage* changeScene_Button = CCMenuItemImage::create("ok.png", "ok.png", this,menu_selector(GameLayer_Match_UI::ButtonDelegate_FinishOk));
         changeScene_Button->setPosition(ccp(0,0));
         CCMenu* menu = CCMenu::create(changeScene_Button, NULL);
-        menu->setPosition(ccp(379, 800 - 560));
+        menu->setPosition(ccp(450, 1280 - 810));
         ret->addChild(menu);
         
         Input_Manager::SharedInstance()->SetInputEnable(false);
@@ -140,7 +140,7 @@ CCSprite* GameLayer_Match_UI::AddSprite(const cocos2d::CCPoint &pos)
 void GameLayer_Match_UI::ButtonDelegate_ChangeScene(cocos2d::CCObject *sender)
 {
     ReturnInput();
-    
+
     GameScene_Match::ChangeScene();
 }
 

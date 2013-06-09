@@ -17,9 +17,13 @@ bool GameUI_MainTitle_RoomList::init()
 {
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
     
-    CCSprite* back = CCSprite::create("playing.png");
+    CCSprite* back = CCSprite::create("playing2.png");
     back->setPosition(ccp(winSize.width/2, winSize.height/2));
     this->addChild(back);
+    
+    picture_Width = 100;
+    picture_Height = 120;
+    picture_Pos = 30;
     
     return true;
 }
@@ -131,7 +135,7 @@ void GameUI_MainTitle_RoomList::fb_Callback_Picture(cocos2d::CCString *fbID, coc
            CCString* frID = list_MyTurn[i]->other_user_ID;
             if(frID != NULL && frID->isEqual(fbID) == true)
             {
-                AddPicture(tableView_MyTurn->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+                AddPicture(tableView_MyTurn->cellAtIndex(i), picture, ccp(0,0), ccp(picture_Pos, (144.0f - picture_Height) * 0.5f), 10, picture_Width, picture_Height);
                 return;
             }
         }
@@ -144,7 +148,7 @@ void GameUI_MainTitle_RoomList::fb_Callback_Picture(cocos2d::CCString *fbID, coc
             CCString* frID = list_Waiting[i]->other_user_ID;
             if(frID != NULL && frID->isEqual(fbID) == true)
             {
-                AddPicture(tableView_Waiting->cellAtIndex(i), picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+                AddPicture(tableView_Waiting->cellAtIndex(i), picture, ccp(0,0), ccp(picture_Pos, (144.0f - picture_Height) * 0.5f), 10, picture_Width, picture_Height);
                 return;
             }
         }
@@ -198,13 +202,14 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         cell->addChild(back);
         
         CCSprite* item = CCSprite::create("Icon-144.png");
-        item->setPosition(CCPointZero);
+        item->setPosition(ccp(picture_Pos, 24.0f));
+        item->setScale(0.6944f);
 		item->setAnchorPoint(CCPointZero);
         cell->addChild(item);
         
         CCString* str = CCString::createWithFormat("%s", room->other_user_Name->getCString());
         CCLabelTTF *label = CCLabelTTF::create(str->getCString(), "Helvetica", 30.0);
-        label->setPosition(ccp(144.0f, 52.0f));
+        label->setPosition(ccp(picture_Pos + picture_Width + 5.0f, 52.0f));
 		label->setAnchorPoint(CCPointZero);
         label->setColor(ccBLACK);
         cell->addChild(label);
@@ -221,7 +226,7 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         {
             Facebook_Manager::sharedInstance()->GetPicture(room->other_user_ID, this);
         }
-        else AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+        else AddPicture(cell, picture, ccp(0,0), ccp(picture_Pos, (144.0f - picture_Height) * 0.5f), 10, picture_Width, picture_Height);
     }
     else
     {
@@ -230,7 +235,7 @@ CCTableViewCell* GameUI_MainTitle_RoomList::tableCellAtIndex(cocos2d::extension:
         if(picture == NULL)
         {
             CCSprite* picture = Facebook_Manager::sharedInstance()->GetPicture_FromCache(room->other_user_ID);
-            AddPicture(cell, picture, ccp(0,0), ccp(0,0), 10, 144.0f, 144.0f);
+            AddPicture(cell, picture, ccp(0,0), ccp(picture_Pos, (144.0f - picture_Height) * 0.5f), 10, picture_Width, picture_Height);
         }
     }
     

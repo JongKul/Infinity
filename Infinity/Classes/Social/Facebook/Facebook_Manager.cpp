@@ -153,16 +153,34 @@ void Facebook_Manager::onHttpRequestCompleted_Login(cocos2d::CCNode *sender, voi
         return;
     }
     
-    Facebook_Account* fri = Facebook_Account::create();
-    fri->name = CCString::create(root["user_name"].asString()) ;
-    fri->name->retain();
-    fri->fbID = CCString::create(root["user_id"].asString());
-    fri->fbID->retain();
-    fri->win = root["win"].asInt();
-    fri->lose = root["lose"].asInt();
-    fri->isPlayGame = true;
-    fri->retain();
-    gameFriendList->addObject(fri);
+    CCString* fbID = CCString::create(root["user_name"].asString());
+    bool isExist = false;
+    for(int i=0; i<friendList->count(); ++i)
+    {
+        Facebook_Account* fri = (Facebook_Account*)friendList->objectAtIndex(i);
+        
+        if(fri->fbID->isEqual(fbID) == true)
+        {
+            CCLog("onHttpRequestCompleted_Login already exist, id: %s", fbID->getCString());
+            isExist = true;
+            break;
+        }
+        
+    }
+    
+    if(isExist == false)
+    {
+        Facebook_Account* fri = Facebook_Account::create();
+        fri->name = CCString::create(root["user_name"].asString()) ;
+        fri->name->retain();
+        fri->fbID = CCString::create(root["user_id"].asString());
+        fri->fbID->retain();
+        fri->win = root["win"].asInt();
+        fri->lose = root["lose"].asInt();
+        fri->isPlayGame = true;
+        fri->retain();
+        gameFriendList->addObject(fri);
+    }
     
     WebRequest_SyncFriends(this, callfuncND_selector(Facebook_Manager::onHttpRequestCompleted_SyncFriends), "Post SyncFriends", myAccount->fbID->getCString(), friendList);
     CCLOG(root.toStyledString().c_str());
