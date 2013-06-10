@@ -2,7 +2,7 @@
 //  GameUI_MainTitle_Rank.cpp
 //  Infinity
 //
-//  Created by 정 기호 on 13. 5. 21..
+//  Created by ��湲고샇 on 13. 5. 21..
 //
 //
 
@@ -236,24 +236,24 @@ CCTableViewCell* GameUI_MainTitle_Rank::tableCellAtIndex(cocos2d::extension::CCT
             if(idx % 2 == 0) back = CCSprite::create("row.png");
             else back = CCSprite::create("myrank.png");
         }
-        
+
         back->setPosition(CCPointZero);
 		back->setAnchorPoint(CCPointZero);
         cell->addChild(back);
-        
+
         CCSprite* item = CCSprite::create("Icon-144.png");
         item->setPosition(ccp(x, 24.0f));
         item->setScale(0.6944f);
 		item->setAnchorPoint(CCPointZero);
         cell->addChild(item);
-        
+
         CCString* str_Win = CCString::createWithFormat("WIN %03d", fri->win);
         CCString* str_Lose = CCString::createWithFormat("LOSE %03d", fri->lose);
 
         UI_Utility::Util_AddLabel(cell, ccp(x + picture_Width + 10.0f, 60.0f + 21.0f), CCPointZero, fri->name->getCString(), 30, ccBLACK);
         UI_Utility::Util_AddLabel(cell, ccp(x + picture_Width + 10.0f, 30.0f + 21.0f), CCPointZero, str_Win->getCString(), 30, ccBLACK);
         UI_Utility::Util_AddLabel(cell, ccp(x + picture_Width + 10.0f, 0.0f  + 21.0f), CCPointZero, str_Lose->getCString(), 30, ccBLACK);
-        
+
         char fileName[256];
         
         int rank = idx + 1;

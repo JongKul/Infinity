@@ -79,7 +79,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 		super.onResume();
 
 		Cocos2dxHelper.onResume();
-		this.mGLSurfaceView.onResume();
+		//this.mGLSurfaceView.onResume();
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 		super.onPause();
 
 		Cocos2dxHelper.onPause();
-		this.mGLSurfaceView.onPause();
+		//this.mGLSurfaceView.onPause();
 	}
 
 	@Override
