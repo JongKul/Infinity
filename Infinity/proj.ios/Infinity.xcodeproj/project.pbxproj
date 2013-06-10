@@ -185,6 +185,8 @@
 		6F552397174B983A00179042 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F55238A174B983A00179042 /* tile.png */; };
 		6F55239B174BA1E600179042 /* GameScene_Intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F552399174BA1E600179042 /* GameScene_Intro.cpp */; };
 		6F55239E174BA9C300179042 /* GameUI_MainTitle_Rank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F55239C174BA9C300179042 /* GameUI_MainTitle_Rank.cpp */; };
+		6F5CA7651766545600046712 /* Sound_BGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6F5CA7641766545600046712 /* Sound_BGM.mp3 */; };
+		6F5CA7691766545600046712 /* Sound_Manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F5CA7671766545600046712 /* Sound_Manager.cpp */; };
 		6F7F6CC91704AC4D004F61BB /* GameScene_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CC41704AC4D004F61BB /* GameScene_MainTitle.cpp */; };
 		6F7F6CCA1704AC4D004F61BB /* GameUI_MainTitle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CC71704AC4D004F61BB /* GameUI_MainTitle.cpp */; };
 		6F7F6CD41704AE35004F61BB /* IOS_Facebook.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F6CCD1704AE35004F61BB /* IOS_Facebook.mm */; };
@@ -625,6 +627,9 @@
 		6F55239A174BA1E600179042 /* GameScene_Intro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_Intro.h; sourceTree = "<group>"; };
 		6F55239C174BA9C300179042 /* GameUI_MainTitle_Rank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI_MainTitle_Rank.cpp; sourceTree = "<group>"; };
 		6F55239D174BA9C300179042 /* GameUI_MainTitle_Rank.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUI_MainTitle_Rank.h; sourceTree = "<group>"; };
+		6F5CA7641766545600046712 /* Sound_BGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sound_BGM.mp3; sourceTree = "<group>"; };
+		6F5CA7671766545600046712 /* Sound_Manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sound_Manager.cpp; sourceTree = "<group>"; };
+		6F5CA7681766545600046712 /* Sound_Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound_Manager.h; sourceTree = "<group>"; };
 		6F7F6CC41704AC4D004F61BB /* GameScene_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene_MainTitle.cpp; sourceTree = "<group>"; };
 		6F7F6CC51704AC4D004F61BB /* GameScene_MainTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene_MainTitle.h; sourceTree = "<group>"; };
 		6F7F6CC71704AC4D004F61BB /* GameUI_MainTitle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUI_MainTitle.cpp; sourceTree = "<group>"; };
@@ -1563,6 +1568,8 @@
 				6FCFF72D1709918C00BB3476 /* Scene_Manager.h */,
 				6F55236D1746900500179042 /* Input_Manager.cpp */,
 				6F55236E1746900500179042 /* Input_Manager.h */,
+				6F5CA7671766545600046712 /* Sound_Manager.cpp */,
+				6F5CA7681766545600046712 /* Sound_Manager.h */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1636,6 +1643,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6F5CA7641766545600046712 /* Sound_BGM.mp3 */,
 				6FEA64D917646B5600F74D26 /* b_off.png */,
 				6FEA64DA17646B5600F74D26 /* b_on.png */,
 				6FEA64DB17646B5600F74D26 /* back_setting.png */,
@@ -1901,6 +1909,7 @@
 				6FEA64DC17646B5600F74D26 /* b_off.png in Resources */,
 				6FEA64DD17646B5600F74D26 /* b_on.png in Resources */,
 				6FEA64DE17646B5600F74D26 /* back_setting.png in Resources */,
+				6F5CA7651766545600046712 /* Sound_BGM.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2073,6 +2082,7 @@
 				6FE7F957175D11B500482A8E /* GameUI_MainTitle_Invite.cpp in Sources */,
 				6FE7F966175D22D800482A8E /* GameUI_MainTitle_Store.cpp in Sources */,
 				6FEA64E11764718F00F74D26 /* GameUI_MainTitle_Setting.cpp in Sources */,
+				6F5CA7691766545600046712 /* Sound_Manager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

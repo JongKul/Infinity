@@ -13,7 +13,7 @@
 #include "UILayer_WaitBlack.h"
 #include "Room_Manager.h"
 #include "WebCommunication.h"
-
+#include "Sound_Manager.h"
 #pragma region Scene
 
 bool GameScene_Intro::init()
@@ -54,6 +54,9 @@ bool GameLayer_Intro::init()
     menu->setPosition(ccp(winSize.width/2, winSize.height * 0.2f));
     
     this->addChild(menu);
+    
+    Sound_Manager::SetSoundVolume();
+    Sound_Manager::PlayBackground();
     
     return true;
 }

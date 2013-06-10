@@ -8,6 +8,7 @@
 
 #include "GameUI_MainTitle_Setting.h"
 #include "Input_Manager.h"
+#include "Sound_Manager.h"
 
 bool GameUI_MainTitle_Setting::init()
 {
@@ -21,6 +22,7 @@ bool GameUI_MainTitle_Setting::init()
     
     sig_Push = CCUserDefault::sharedUserDefault()->getBoolForKey("setting_push", true);
     sig_Sound = CCUserDefault::sharedUserDefault()->getBoolForKey("setting_sound", true);
+    
     
     Init_Button();
     Input_Manager::SetInputEnable(false);
@@ -82,11 +84,13 @@ void GameUI_MainTitle_Setting::ButtonDelegate_Sound(CCObject* sender)
     {
         button_Sound->setNormalImage(CCSprite::create("b_on.png"));
         button_Sound->setSelectedImage(CCSprite::create("b_on.png"));
+        Sound_Manager::SetSoundOn();
     }
     else
     {
         button_Sound->setNormalImage(CCSprite::create("b_off.png"));
         button_Sound->setSelectedImage(CCSprite::create("b_off.png"));
+        Sound_Manager::SetSoundOff();
     }
   
     CCUserDefault::sharedUserDefault()->setBoolForKey("setting_sound", sig_Sound);

@@ -153,7 +153,7 @@ void Facebook_Manager::onHttpRequestCompleted_Login(cocos2d::CCNode *sender, voi
         return;
     }
     
-    CCString* fbID = CCString::create(root["user_name"].asString());
+    CCString* fbID = CCString::create(root["user_id"].asString());
     bool isExist = false;
     for(int i=0; i<friendList->count(); ++i)
     {
